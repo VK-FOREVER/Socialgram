@@ -84,7 +84,7 @@ const SignUp = () => {
                   <FormLabel>Username:</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Username:"
+                      placeholder="Username"
                       {...field}
                       className="shad-input"
                     />
@@ -103,7 +103,7 @@ const SignUp = () => {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Email:"
+                      placeholder="Email"
                       {...field}
                       className="shad-input"
                     />
@@ -121,7 +121,7 @@ const SignUp = () => {
                   <FormLabel>Password:</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Password:"
+                      placeholder="Password"
                       {...field}
                       type="password"
                       className="shad-input"

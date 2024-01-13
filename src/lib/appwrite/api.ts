@@ -13,5 +13,6 @@ export async function createUserAccount(user: INewUser) {
     return newAccount;
   } catch (error) {
     console.log(error);
+    return error;
   }
 }
