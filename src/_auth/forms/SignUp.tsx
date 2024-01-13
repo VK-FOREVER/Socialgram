@@ -16,12 +16,6 @@ import Loader from "@/components/shared/Loader";
 import { Link } from "react-router-dom";
 import { createUserAccount } from "@/lib/appwrite/api";
 
-// const formSchema = z.object({
-//   username: z.string().min(2, {
-//     message: "Username must be at least 2 characters.",
-//   }),
-// });
-
 const SignUp = () => {
   const isLoading = false;
   // 1. Define your form.
