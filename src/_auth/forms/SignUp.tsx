@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -13,6 +12,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SignUpValidation } from "@/lib/validation";
+import Loader from "@/components/shared/Loader";
+import { Link } from "react-router-dom";
 
 // const formSchema = z.object({
 //   username: z.string().min(2, {
@@ -21,6 +22,7 @@ import { SignUpValidation } from "@/lib/validation";
 // });
 
 const SignUp = () => {
+  const isLoading = false;
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignUpValidation>>({
     resolver: zodResolver(SignUpValidation),
@@ -42,18 +44,19 @@ const SignUp = () => {
   return (
     <>
       <Form {...form}>
-        <div className="sm:w-420 flex-center flex-col">
-          <img src="/assets/images/logo.svg" alt="Social Gram" />
-          <h2 className="h3-bold md:h2-bold pt-2 sm:pt-12">
-            Create an account
-          </h2>
-          <p className="text-light-3 small-medium md:base-regular mt-8 ">
-            Enter your details to join SocialGram
-          </p>
-
+        <div className="sm:w-420 flex-center flex-col ">
+          <div className="flex flex-1 items-center justify-center flex-col w-full pt-4">
+            <img src="/assets/images/logo.svg" alt="Social Gram" />
+            <h2 className="h3-bold md:h2-bold pt-6 md:pt-4">
+              Create an account
+            </h2>
+            <p className="text-light-3 small-medium md:base-regular mt-4 ">
+              Please enter your details to join SocialGram
+            </p>
+          </div>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-5 w-full mt-4"
+            className="flex flex-col gap-4 w-full mt-4"
           >
             <FormField
               control={form.control}
@@ -68,10 +71,8 @@ const SignUp = () => {
                       className="shad-input"
                     />
                   </FormControl>
-                  <FormDescription className="text-light-2 tiny-medium">
-                    Enter your Name
-                  </FormDescription>
-                  <FormMessage />
+
+                  <FormMessage className="text-rose-500 tiny-medium " />
                 </FormItem>
               )}
             />
@@ -88,10 +89,8 @@ const SignUp = () => {
                       className="shad-input"
                     />
                   </FormControl>
-                  <FormDescription className="text-light-2 tiny-medium">
-                    Enter your unique Username
-                  </FormDescription>
-                  <FormMessage />
+
+                  <FormMessage className="text-rose-500 tiny-medium" />
                 </FormItem>
               )}
             />
@@ -103,15 +102,14 @@ const SignUp = () => {
                   <FormLabel>Email:</FormLabel>
                   <FormControl>
                     <Input
+                      type="email"
                       placeholder="Email:"
                       {...field}
                       className="shad-input"
                     />
                   </FormControl>
-                  <FormDescription className="text-light-2 tiny-medium ">
-                    your@email.com
-                  </FormDescription>
-                  <FormMessage />
+
+                  <FormMessage className="text-rose-500 tiny-medium" />
                 </FormItem>
               )}
             />
@@ -125,17 +123,27 @@ const SignUp = () => {
                     <Input
                       placeholder="Password:"
                       {...field}
+                      type="password"
                       className="shad-input"
                     />
                   </FormControl>
-                  <FormDescription className="text-light-2 tiny-medium ">
-                    between 8 to 12 characters
-                  </FormDescription>
-                  <FormMessage />
+
+                  <FormMessage className="text-rose-500 tiny-medium" />
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="shad-button_primary">
+              {isLoading ? <Loader /> : "Signup"}
+            </Button>
+            <p className="text-small-regular text-light-2 text-center">
+              Already have an account?
+              <Link
+                to="/sign-in"
+                className="text-primary-500 text-small-semibold ml-1"
+              >
+                Log in
+              </Link>
+            </p>
           </form>
         </div>
       </Form>
