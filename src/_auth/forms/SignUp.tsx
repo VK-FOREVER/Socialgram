@@ -29,9 +29,9 @@ const SignUp = () => {
     resolver: zodResolver(SignUpValidation),
     defaultValues: {
       name: "",
+      username: "",
       email: "",
       password: "",
-      username: "",
     },
   });
 
