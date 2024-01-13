@@ -1,7 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
 
-import React from "react";
-
 const Authlayout = () => {
   const isAuthenticated = false;
 
@@ -11,9 +9,14 @@ const Authlayout = () => {
         <Navigate to="/" />
       ) : (
         <>
-          <section>
+          <section className="flex flex-1 justify-center items-center flex-col py-10 ">
             <Outlet />
           </section>
+          <img
+            src="/assets/images/side-img.svg"
+            alt="Login-Form"
+            className="hidden xl:block h-screen w-1/2 bg-no-repeat object-cover"
+          />
         </>
       )}
     </>
