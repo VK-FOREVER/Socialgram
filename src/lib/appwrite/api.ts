@@ -2,6 +2,7 @@ import { INewUser } from "@/types";
 import { account, appwriteConfig, avatars, databases } from "./config";
 import { ID } from "appwrite";
 
+// Create a new user account
 export async function createUserAccount(user: INewUser) {
   try {
     const newAccount = await account.create(
@@ -29,6 +30,7 @@ export async function createUserAccount(user: INewUser) {
   }
 }
 
+// Save the User to DB
 export async function saveUserToDB(user: {
   accountId: string;
   email: string;
@@ -45,6 +47,18 @@ export async function saveUserToDB(user: {
     );
     return newUser;
   } catch (error) {
+    return error;
+  }
+}
+
+// Sign in
+export async function signInAccount(user: { email: string; passward: string }) {
+  try {
+    const session = await account.createEmailSession(user.email, user.passward);
+
+    return session;
+  } catch (error) {
+    console.log(error);
     return error;
   }
 }
