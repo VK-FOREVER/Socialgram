@@ -52,9 +52,9 @@ export async function saveUserToDB(user: {
 }
 
 // Sign in
-export async function signInAccount(user: { email: string; passward: string }) {
+export async function signInAccount(user: { email: string; password: string }) {
   try {
-    const session = await account.createEmailSession(user.email, user.passward);
+    const session = await account.createEmailSession(user.email, user.password);
 
     return session;
   } catch (error) {
