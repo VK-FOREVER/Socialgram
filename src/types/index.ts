@@ -1,3 +1,5 @@
+import React from "react";
+
 export type INavLink = {
   imgURL: string;
   route: string;
@@ -42,7 +44,14 @@ export type IUser = {
 
 export type INewUser = {
   name: string;
-  username: string;
   email: string;
+  username: string;
   password: string;
+};
+
+export type IContextType = {
+  user: IUser;
+  isLoading: boolean;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  isAuthenticated: boolean;
 };
