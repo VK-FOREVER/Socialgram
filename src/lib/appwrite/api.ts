@@ -62,3 +62,15 @@ export async function signInAccount(user: { email: string; password: string }) {
     return error;
   }
 }
+
+// Get the currently logged user
+export async function getCurrentAccount() {
+  try {
+    const currentAccount = await account.get();
+
+    if (!currentAccount) throw Error;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
