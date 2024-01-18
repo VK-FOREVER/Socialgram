@@ -33,16 +33,15 @@ const INITIAL_STATE = {
 const AuthContext = createContext<IContextType>(INITIAL_STATE);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const naviagte = useNavigate();
   const [user, setUser] = useState<IUser>(INITIAL_USER);
   const [loading, setLoading] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
-  const naviagte = useNavigate();
 
   // CheckAuthUser function
   const checkAuthUser = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-
       const currentAccount = await getCurrentUser();
 
       if (currentAccount) {
@@ -56,6 +55,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         });
 
         setAuthenticated(true);
+
+        return true;
       }
 
       return false;
@@ -69,9 +70,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   // UserEffect hook
   useEffect(() => {
+    const cookieFallback = localStorage.getItem("cookieFallback");
     if (
-      localStorage.getItem("cookieFallback") === "[]" ||
-      localStorage.getItem("cookieFallback") === null
+      cookieFallback === "[]" ||
+      cookieFallback === null ||
+      cookieFallback === undefined
     ) {
       naviagte("/sign-in");
     }
