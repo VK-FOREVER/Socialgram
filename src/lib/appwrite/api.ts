@@ -45,6 +45,9 @@ export async function saveUserToDB(user: {
       ID.unique(),
       user
     );
+
+    console.log("save user to db :", newUser);
+
     return newUser;
   } catch (error) {
     return error;
@@ -67,6 +70,7 @@ export async function signInAccount(user: { email: string; password: string }) {
 export async function getAccount() {
   try {
     const currentAccount = await account.get();
+    console.log(currentAccount);
 
     return currentAccount;
   } catch (error) {
@@ -86,6 +90,8 @@ export async function getCurrentUser() {
       appwriteConfig.userCollectionId,
       [Query.equal("accountId", currentAccount.$id)]
     );
+
+    console.log(currentUser);
 
     if (!currentUser) throw Error;
 
