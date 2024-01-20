@@ -33,6 +33,7 @@ const SignUp = () => {
   // Queries
   const { mutateAsync: createUserAccount, isPending: creatingUser } =
     useCreateUserAccount();
+
   const { mutateAsync: signInAccount, isPending: signingIn } =
     useSignInAccount();
 
