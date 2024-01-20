@@ -35,13 +35,15 @@ const AuthContext = createContext<IContextType>(INITIAL_STATE);
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const naviagte = useNavigate();
   const [user, setUser] = useState<IUser>(INITIAL_USER);
-  const [loading, setLoading] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // CheckAuthUser function
   const checkAuthUser = async () => {
-    setLoading(true);
+    setIsLoading(true);
     try {
+      // It's not getting the "zasz", Why???? and saying that there is a error in types of "checkAuthUser"🤔😑😣😠. Becouse of this issue, i can't able to sign up.
+
       const currentAccount = await getCurrentUser();
       console.log(currentAccount);
 
@@ -55,7 +57,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           bio: currentAccount.bio,
         });
 
-        setAuthenticated(true);
+        setIsAuthenticated(true);
 
         return true;
       }
@@ -65,7 +67,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       console.log(error);
       return false;
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -85,9 +87,9 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const value = {
     user,
     setUser,
-    loading,
-    authenticated,
-    setAuthenticated,
+    isLoading,
+    isAuthenticated,
+    setIsAuthenticated,
     checkAuthUser,
   };
 
