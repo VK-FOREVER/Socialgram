@@ -68,8 +68,6 @@ const SignUp = () => {
       if (!session) {
         toast({ title: "Sign in failed. Please try again." });
         naviagte("/sign-in");
-
-        return;
       }
 
       const isLoggedIn = await checkAuthUser();
