@@ -27,11 +27,12 @@ const SignUp = () => {
   const { toast } = useToast();
   const naviagte = useNavigate();
 
-  const { mutateAsync: createUserAccount, isPending: creatingUser } =
-    useCreateUserAccount();
-
+  // 3rd checkAuthUser
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
+  // Queries
+  const { mutateAsync: createUserAccount, isPending: creatingUser } =
+    useCreateUserAccount();
   const { mutateAsync: signInAccount, isPending: signingIn } =
     useSignInAccount();
 
@@ -48,32 +49,39 @@ const SignUp = () => {
 
   //  Defining a submit handler.
   async function onSubmit(values: z.infer<typeof SignUpValidation>) {
-    const newUser = await createUserAccount(values);
+    try {
+      const newUser = await createUserAccount(values);
 
-    if (!newUser) {
-      return toast({
-        title: "Sign up error.",
-        description: "Please Sign up again.",
+      if (!newUser) {
+        return toast({
+          title: "Sign up error.",
+          description: "Please Sign up again.",
+        });
+      }
+
+      const session = await signInAccount({
+        email: values.email,
+        password: values.password,
       });
-    }
 
-    const session = await signInAccount({
-      email: values.email,
-      password: values.password,
-    });
+      if (!session) {
+        toast({ title: "Sign in failed. Please try again." });
+        naviagte("/sign-in");
 
-    if (!session) {
-      return toast({ title: "Sign in failed. Please try again." });
-    }
+        return;
+      }
 
-    const isLoggedIn = await checkAuthUser();
+      const isLoggedIn = await checkAuthUser();
 
-    if (isLoggedIn) {
-      form.reset();
+      if (isLoggedIn) {
+        form.reset();
 
-      naviagte("/");
-    } else {
-      return toast({ title: "Sign up failed, Please try again." });
+        naviagte("/");
+      } else {
+        return toast({ title: "Sign up failed, Please try again." });
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
