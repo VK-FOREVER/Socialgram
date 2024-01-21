@@ -52,6 +52,7 @@ const SignUp = () => {
   async function onSubmit(values: z.infer<typeof SignUpValidation>) {
     try {
       const newUser = await createUserAccount(values);
+      // console.log(newUser);
 
       if (!newUser) {
         return toast({
@@ -60,7 +61,7 @@ const SignUp = () => {
         });
       }
 
-      const session = await signInAccount({
+      const session: any = await signInAccount({
         email: values.email,
         password: values.password,
       });
