@@ -3,15 +3,6 @@ import { IUser } from "@/types";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-type IContextType = {
-  user: IUser;
-  isLoading: boolean;
-  setUser: React.Dispatch<React.SetStateAction<IUser>>;
-  isAuthenticated: boolean;
-  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
-  checkAuthUser: () => Promise<boolean>;
-};
-
 export const INITIAL_USER = {
   id: "",
   name: "",
@@ -20,7 +11,6 @@ export const INITIAL_USER = {
   imageUrl: "",
   bio: "",
 };
-
 const INITIAL_STATE = {
   user: INITIAL_USER,
   isLoading: false,
@@ -28,6 +18,14 @@ const INITIAL_STATE = {
   setUser: () => {},
   setIsAuthenticated: () => {},
   checkAuthUser: async () => false as boolean,
+};
+type IContextType = {
+  user: IUser;
+  isLoading: boolean;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  isAuthenticated: boolean;
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  checkAuthUser: () => Promise<boolean>;
 };
 
 const AuthContext = createContext<IContextType>(INITIAL_STATE);
@@ -42,8 +40,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const checkAuthUser = async () => {
     setIsLoading(true);
     try {
-      // It's not getting the "zasz", Why???? and saying that there is a error in types of "checkAuthUser"🤔😑😣😠. Becouse of this issue, i can't able to sign up.
-
       const currentAccount = await getCurrentUser();
       console.log(currentAccount);
 
