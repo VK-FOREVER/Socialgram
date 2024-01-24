@@ -26,7 +26,7 @@ const SignUp = () => {
   // Variables
   const { toast } = useToast();
   const naviagte = useNavigate();
-
+  ``;
   // 3rd checkAuthUser
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
