@@ -9,6 +9,7 @@ import { createUserAccount, signInAccount } from "../appwrite/api";
 
 export const useCreateUserAccount = () => {
   return useMutation({
+    // Having error 400
     mutationFn: (user: INewUser) => createUserAccount(user),
   });
 };

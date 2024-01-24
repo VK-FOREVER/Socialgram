@@ -15,6 +15,7 @@ export async function createUserAccount(user: INewUser) {
 
     const avatarUrl = avatars.getInitials(user.name);
 
+    // Having error 400
     const newUser = await saveUserToDB({
       accountId: newAccount.$id,
       name: newAccount.name,
@@ -39,6 +40,7 @@ export async function saveUserToDB(user: {
   username?: string;
 }) {
   try {
+    // Having error 400
     const newUser = await databases.createDocument(
       appwriteConfig.databasesId,
       appwriteConfig.userCollectionId,

@@ -50,6 +50,7 @@ const SignUp = () => {
   //  Defining a submit handler.
   async function onSubmit(values: z.infer<typeof SignUpValidation>) {
     try {
+      // Having error 400
       const newUser = await createUserAccount(values);
       // console.log(newUser);
 
