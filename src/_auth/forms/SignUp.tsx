@@ -178,7 +178,7 @@ const SignUp = () => {
               {isCreatingAccount || isUserLoading || isSigningInUser ? (
                 <Loader />
               ) : (
-                "Signing..."
+                "Sign up"
               )}
             </Button>
             <p className="text-small-regular text-light-2 text-center">
