@@ -44,6 +44,8 @@ export async function saveUserToDB(user: {
   imageUrl: URL;
   username?: string;
 }) {
+  console.log(user);
+
   try {
     const newUser = await databases.createDocument(
       appwriteConfig.databasesId,
@@ -51,6 +53,8 @@ export async function saveUserToDB(user: {
       ID.unique(),
       user
     );
+
+    // https://cloud.appwrite.io/v1/databases/65a3bfe21482dbb53bd6/collections/65a3c1d8740c060eb265/documents
 
     return newUser;
   } catch (error) {
