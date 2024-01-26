@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const Topbar = () => {
   return (
@@ -13,6 +14,15 @@ const Topbar = () => {
             height={325}
           />
         </Link>
+        <div className="flex gap-4">
+          <Button
+            className="shad-button_ghost"
+            variant="ghost"
+            onClick={signOut}
+          >
+            <img src="/assets/icons/logout.svg" alt="logout" />
+          </Button>
+        </div>
       </div>
     </div>
   );
