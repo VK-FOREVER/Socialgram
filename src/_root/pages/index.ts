@@ -7,3 +7,4 @@ export { default as EditPost } from "./EditPost";
 export { default as CreatePost } from "./CreatePost";
 export { default as People } from "./People";
 export { default as Explore } from "./Explore";
+export { default as LikedPosts } from "./LikedPosts";
