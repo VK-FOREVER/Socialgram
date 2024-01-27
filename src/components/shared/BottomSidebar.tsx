@@ -5,7 +5,7 @@ const BottomSidebar = () => {
   const { pathname } = useLocation();
   return (
     <div className="bottom-bar">
-      {bottombarLinks.map((link) => {
+      {bottombarLinks.map((link, idx) => {
         const active = pathname === link.route;
 
         return (
@@ -15,7 +15,7 @@ const BottomSidebar = () => {
               className={`bottombar-link group ${
                 active && "bg-primary-500 rounded-[10px]"
               } flex-center flex-col gap-1 p-2 transition`}
-              key={link.label}
+              key={`bottom-link-${idx}`}
             >
               <img
                 src={link.imgURL}
