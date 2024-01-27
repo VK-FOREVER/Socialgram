@@ -33,9 +33,6 @@ const Topbar = () => {
             variant="ghost"
             onClick={() => signOut()}
           >
-            {/* {
-                isSuccess
-            } */}
             <img src="/assets/icons/logout.svg" alt="logout" />
           </Button>
           <Link to={`/profile/${user.id}`} className="flex-center gap-3 ">
