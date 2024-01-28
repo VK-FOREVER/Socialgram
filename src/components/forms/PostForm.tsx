@@ -21,7 +21,7 @@ const formSchema = z.object({
   }),
 });
 
-const PostForm = () => {
+const PostForm = ({ post }) => {
   // Diffining Form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -35,7 +35,7 @@ const PostForm = () => {
   }
 
   return (
-    <div>
+    <div className="w-full capitalize ">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -65,7 +65,10 @@ const PostForm = () => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Images</FormLabel>
                 <FormControl>
-                  <FileUploader />
+                  <FileUploader
+                    fieldChange={field.onChange}
+                    mediaUrl={post.imageUrl}
+                  />
                 </FormControl>
                 <FormMessage className="shad-form_message" />
               </FormItem>
