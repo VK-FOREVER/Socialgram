@@ -19,6 +19,7 @@ import { PostValidation } from "@/lib/validation";
 import { useCreatePost } from "@/lib/react-query/queriesAndMutations";
 import { useUserContext } from "@/context/AuthContext";
 import { toast } from "../ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 type PostFormProps = {
   post?: Models.Document;
@@ -26,6 +27,7 @@ type PostFormProps = {
 };
 
 const PostForm = ({ post, action }: PostFormProps) => {
+  const navigate = useNavigate();
   const { user } = useUserContext();
 
   // Queries and mutations
@@ -38,11 +40,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
       caption: post ? post?.caption : "",
       file: [],
       location: post ? post?.location : "",
-      tags: post ? post.tags.join(",") : "",
+      tag: post ? post.tag.join(",") : "",
     },
   });
 
-  console.log(post);
+  // console.log(post);
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     const newPost = await createPost({
@@ -55,7 +57,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
         title: "Unable to submit form, Please try again.",
       });
     }
-
+    navigate("/");
     console.log(values);
   }
 
@@ -74,7 +76,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
                 <FormLabel className="shad-form_label">Caption</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="shadcn"
+                    placeholder="Enter your Caption"
                     className="shad-textarea custom-scrollbar"
                     {...field}
                   />
@@ -106,7 +108,12 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Location</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input
+                    type="text"
+                    placeholder="Enter Location"
+                    className="shad-input"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage className="shad-form_message" />
               </FormItem>
@@ -114,7 +121,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
           />
           <FormField
             control={form.control}
-            name="tags"
+            name="tag"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="shad-form_label">

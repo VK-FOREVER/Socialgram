@@ -137,7 +137,7 @@ export async function createPost(post: INewPost) {
     }
 
     // Convert tags into array
-    const tags = post.tags?.replace(/ /g, "").split(",") || [];
+    const tag = post.tag?.replace(/ /g, "").split(",") || [];
 
     // Create post
     const newPost = await databases.createDocument(
@@ -150,7 +150,7 @@ export async function createPost(post: INewPost) {
         imageUrl: fileUrl,
         imageId: uploadedFile.$id,
         location: post.location,
-        tags: tags,
+        tag: tag,
       }
     );
 
@@ -295,7 +295,7 @@ export async function updatePost(post: IUpdatePost) {
     }
 
     // Convert tags into array
-    const tags = post.tags?.replace(/ /g, "").split(",") || [];
+    const tags = post.tag?.replace(/ /g, "").split(",") || [];
 
     //  Update post
     const updatedPost = await databases.updateDocument(
@@ -307,7 +307,7 @@ export async function updatePost(post: IUpdatePost) {
         imageUrl: image.imageUrl,
         imageId: image.imageId,
         location: post.location,
-        tags: tags,
+        tag: tags,
       }
     );
 
