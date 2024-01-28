@@ -5,14 +5,14 @@ import {
   useInfiniteQuery,
 } from "@tanstack/react-query";
 
-// import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
+import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
 import {
   createUserAccount,
   signInAccount,
   getCurrentUser,
   signOutAccount,
   // getUsers,
-  // createPost,
+  createPost,
   // getPostById,
   // updatePost,
   // getUserPosts,
@@ -87,17 +87,17 @@ export const useSignOutAccount = () => {
 //   });
 // };
 
-// export const useCreatePost = () => {
-//   const queryClient = useQueryClient();
-//   return useMutation({
-//     mutationFn: (post: INewPost) => createPost(post),
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({
-//         queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
-//       });
-//     },
-//   });
-// };
+export const useCreatePost = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (post: INewPost) => createPost(post),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+      });
+    },
+  });
+};
 
 // export const useGetPostById = (postId?: string) => {
 //   return useQuery({
