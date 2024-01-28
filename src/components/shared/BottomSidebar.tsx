@@ -4,18 +4,17 @@ import { Link, useLocation } from "react-router-dom";
 const BottomSidebar = () => {
   const { pathname } = useLocation();
   return (
-    <div className="bottom-bar">
+    <ul className="bottom-bar">
       {bottombarLinks.map((link, idx) => {
         const active = pathname === link.route;
 
         return (
-          <>
+          <li key={`bottom-link-${idx}`}>
             <Link
               to={link.route}
               className={`bottombar-link group ${
                 active && "bg-primary-500 rounded-[10px]"
               } flex-center flex-col gap-1 p-2 transition`}
-              key={`bottom-link-${idx}`}
             >
               <img
                 src={link.imgURL}
@@ -28,10 +27,10 @@ const BottomSidebar = () => {
               />
               <p className="tiny-medium text-light-2">{link.label}</p>
             </Link>
-          </>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 

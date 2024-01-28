@@ -42,14 +42,14 @@ const LeftSidebar = () => {
           </div>
         </Link>
         <ul className="flex flex-col gap-6">
-          {sidebarLinks.map((link: INavLink) => {
+          {sidebarLinks.map((link: INavLink, idx) => {
             const active = pathname === link.route;
             return (
               <li
                 className={`leftsidebar-link group ${
                   active && "bg-primary-500"
                 }`}
-                key={link.label}
+                key={`leftsidebar-${link.label}-${idx}`}
               >
                 <NavLink
                   to={link.route}
