@@ -69,6 +69,7 @@ const PostCard = ({ post }: PostCardProps) => {
               ? post.imageUrl
               : "/assets/icons/profile-placeholder.svg"
           }
+          className="post-card_img"
           alt={post.cation}
         />
       </Link>
