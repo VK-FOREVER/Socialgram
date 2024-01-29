@@ -30,7 +30,3 @@ export function timeAgo(dateString: string): string {
     }
   }
 }
-
-// const dateStr = "2024-01-28T12:56:32.492+00:00";
-// const formattedTime = timeAgo(dateStr);
-// // console.log(formattedTime);
