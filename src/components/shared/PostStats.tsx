@@ -5,7 +5,7 @@ import {
   useSavePost,
 } from "@/lib/react-query/queriesAndMutations";
 import { Models } from "appwrite";
-import React, { useState } from "react";
+import  { useState } from "react";
 
 type PostStatsProps = {
   post: Models.Document;
