@@ -16,10 +16,14 @@ import { Textarea } from "../ui/textarea";
 import FileUploader from "../shared/FileUploader";
 import { Models } from "appwrite";
 import { PostValidation } from "@/lib/validation";
-import { useCreatePost } from "@/lib/react-query/queriesAndMutations";
+import {
+  useCreatePost,
+  useUpdatePost,
+} from "@/lib/react-query/queriesAndMutations";
 import { useUserContext } from "@/context/AuthContext";
 import { toast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
+import Loader from "../shared/Loader";
 
 type PostFormProps = {
   post?: Models.Document;
@@ -32,6 +36,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 
   // Queries and mutations
   const { mutateAsync: createPost, isPending: creatingPost } = useCreatePost();
+  const { mutateAsync: updatePost, isPending: updatingPost } = useUpdatePost();
 
   // Diffining Form
   const form = useForm<z.infer<typeof PostValidation>>({
@@ -47,6 +52,24 @@ const PostForm = ({ post, action }: PostFormProps) => {
   // console.log(post);
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
+    if (post && action === "Update") {
+      const updatedPost = await updatePost({
+        ...values,
+        postId: post?.$id,
+        imageId: post?.imageId,
+        imageUrl: post?.imageUrl,
+      });
+
+      if (!updatedPost) {
+        toast({
+          title: "Can't update the Post",
+          description: "please try again...",
+        });
+      }
+
+      return navigate(`/posts/${post.$id}`);
+    }
+
     const newPost = await createPost({
       ...values,
       userId: user.id,
@@ -146,8 +169,9 @@ const PostForm = ({ post, action }: PostFormProps) => {
             <Button
               className="shad-button_primary whitespace-nowrap"
               type="submit"
+              disabled={updatingPost || creatingPost}
             >
-              Submit
+              {updatingPost || creatingPost ? <Loader /> : `${action} Post`}
             </Button>
           </div>
         </form>
