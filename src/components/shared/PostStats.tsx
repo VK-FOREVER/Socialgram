@@ -1,12 +1,13 @@
 import { useUserContext } from "@/context/AuthContext";
 import {
   useDeleteSavedPost,
+  useGetCurrentUser,
   useLikePost,
   useSavePost,
 } from "@/lib/react-query/queriesAndMutations";
 import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type PostStatsProps = {
   post: Models.Document;
@@ -15,7 +16,15 @@ type PostStatsProps = {
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
   const likeList = post.likes.map((user: Models.Document) => user.$id);
-  const { data: currentUser } = useUserContext();
+  const { data: currentUser } = useGetCurrentUser();
+
+  const hasSaved = currentUser?.save.find(
+    (record: Models.Document) => record.post.$id === post.$id
+  );
+
+  useEffect(() => {
+    setIsSaved(hasSaved ? true : false);
+  }, [currentUser]);
 
   const [likes, setLikes] = useState(likeList);
   const [isSaved, setIsSaved] = useState(false);
@@ -26,10 +35,30 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
   const handleLikePosts = (e: React.MouseEvent) => {
     e.stopPropagation();
-    console.log(e);
+    // console.log(e);
+    let newLikes = [...likes];
+    const hasLiked = newLikes.includes(userId);
+
+    if (hasLiked) {
+      newLikes = newLikes.filter((id) => id !== userId);
+    } else {
+      newLikes.push(userId);
+    }
+    setLikes(newLikes);
+    likePost({ postId: post.$id, likesArray: newLikes });
   };
 
-  const handleSavePosts = () => {};
+  const handleSavePosts = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    if (hasSaved) {
+      setIsSaved(false);
+      deleteSavePost(hasSaved.$id);
+    } else {
+      savePost({ postId: post.$id, userId });
+      setIsSaved(true);
+    }
+  };
 
   return (
     <div className="flex justify-between items-center z-20">
