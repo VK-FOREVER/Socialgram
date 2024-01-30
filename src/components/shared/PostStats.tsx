@@ -11,16 +11,16 @@ import { useEffect, useState } from "react";
 import Loader from "./Loader";
 
 type PostStatsProps = {
-  post: Models.Document;
+  post?: Models.Document;
   userId: string;
 };
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
-  const likeList = post.likes.map((user: Models.Document) => user.$id);
+  const likeList = post?.likes.map((user: Models.Document) => user.$id);
   const { data: currentUser } = useGetCurrentUser();
 
   const hasSaved = currentUser?.save.find(
-    (record: Models.Document) => record.post.$id === post.$id
+    (record: Models.Document) => record.post.$id === post?.$id
   );
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
       newLikes.push(userId);
     }
     setLikes(newLikes);
-    likePost({ postId: post.$id, likesArray: newLikes });
+    likePost({ postId: post?.$id || "", likesArray: newLikes });
   };
 
   const handleSavePosts = (e: React.MouseEvent) => {
@@ -57,7 +57,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
       setIsSaved(false);
       deleteSavePost(hasSaved.$id);
     } else {
-      savePost({ postId: post.$id, userId });
+      savePost({ postId: post?.$id || "", userId });
       setIsSaved(true);
     }
   };
@@ -68,8 +68,8 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
         <img
           src={`${
             checkIsLiked(likes, userId)
-              ? "assets/icons/liked.svg"
-              : "assets/icons/like.svg"
+              ? "/assets/icons/liked.svg"
+              : "/assets/icons/like.svg"
           }`}
           alt="like"
           width={20}
@@ -87,7 +87,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
           </span>
         ) : (
           <img
-            src={isSaved ? "assets/icons/saved.svg" : "assets/icons/save.svg"}
+            src={isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"}
             alt="like"
             width={20}
             height={20}
