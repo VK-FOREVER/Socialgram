@@ -24,7 +24,10 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   const { mutate: savePost } = useSavePost();
   const { mutate: deleteSavePost } = useDeleteSavedPost();
 
-  const handleLikePosts = () => {};
+  const handleLikePosts = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    console.log(e);
+  };
 
   const handleSavePosts = () => {};
 
