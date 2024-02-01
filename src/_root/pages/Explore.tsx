@@ -23,6 +23,10 @@ const Explore = () => {
           />
         </div>
       </div>
+      <div className="flex-between w-full  max-w-5xl mt-16 mb-7">
+        <h3 className="body-bold md:h3-bold">Explore what's trending</h3>
+        <div className="flex-center gap-3 "></div>
+      </div>
     </div>
   );
 };
