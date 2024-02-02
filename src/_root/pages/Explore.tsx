@@ -1,13 +1,36 @@
 import GridPost from "@/components/shared/GridPost";
+import Loader from "@/components/shared/Loader";
 import SearchResults from "@/components/shared/SearchResults";
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+import useDebounce from "@/hooks/useDebounce";
+import {
+  useGetPosts,
+  useSearchPosts,
+} from "@/lib/react-query/queriesAndMutations";
+import { useState } from "react";
 
 const Explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const posts = [];
+  const debounceValue = useDebounce(searchTerm, 888);
+  // Mutations
+  const { data: posts, fetchNextPage: hasNextPage } = useGetPosts();
+  const { data: searchedPosts, isFetching: searching } =
+    useSearchPosts(debounceValue);
+
   const showResults = searchTerm !== "";
-  const showPosts = !showResults && posts.length;
+  const showPosts =
+    !showResults && posts?.pages.every((post) => post?.documents.length === 0);
+
+  console.log(posts);
+
+  if (!posts) {
+    return (
+      <div className="flex-center w-full h-full">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="explore-container">
       <div className="explore-inner_container">
@@ -44,17 +67,17 @@ const Explore = () => {
       </div>
 
       <div className="flex flex-wrap gap-9 w-full max-w-5xl">
-        {/* {
-          showResults ? (
-            <SearchResults />
-          ) : showPosts ? (
-            <p className="text-light-4 mt-10 text-center w-full">
-              End of the Posts.
-            </p>
-          ) : posts.pages.map((item, index) => (
-            <GridPost key={`page-${index}`}  posts={item.document}/>
+        {showResults ? (
+          <SearchResults />
+        ) : showPosts ? (
+          <p className="text-light-4 mt-10 text-center w-full">
+            End of the Posts.
+          </p>
+        ) : (
+          posts?.pages.map((item, index) => (
+            <GridPost key={`page-${index}`} posts={item?.documents} />
           ))
-        } */}
+        )}
       </div>
     </div>
   );
