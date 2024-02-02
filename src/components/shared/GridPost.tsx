@@ -6,7 +6,13 @@ type GridPostListProps = {
 };
 
 const GridPost = ({ posts }: GridPostListProps) => {
-  return <div>GridPost</div>;
+  return (
+    <ul className="grid-container">
+      {posts.map((post) => (
+        <li>{post.caption}</li>
+      ))}
+    </ul>
+  );
 };
 
 export default GridPost;
