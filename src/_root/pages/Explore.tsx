@@ -77,6 +77,11 @@ const Explore = () => {
           ))
         )}
       </div>
+      {hasNextPage && !searchTerm && (
+        <div ref={ref} className="mt-10">
+          <Loader />
+        </div>
+      )}
     </div>
   );
 };
