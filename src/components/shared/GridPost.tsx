@@ -2,6 +2,7 @@ import { useUserContext } from "@/context/AuthContext";
 import { Models } from "appwrite";
 import React from "react";
 import { Link } from "react-router-dom";
+import PostStats from "./PostStats";
 
 type GridPostListProps = {
   posts: Models.Document[];
@@ -28,14 +29,16 @@ const GridPost = ({
           </Link>
           <div className="grid-post_user">
             {showUser && (
-              <div className="flex">
+              <div className="flex items-center justify-start gap-2 flex-1">
                 <img
                   src={post.creator.imageUrl}
                   alt={post.creator.username}
                   className="h-8 w-8 rounded-full"
                 />
+                <p className="link-clap-1">{post.creator.name}</p>
               </div>
             )}
+            {showStats && <PostStats post={post} userId={user.id} />}
           </div>
         </li>
       ))}
