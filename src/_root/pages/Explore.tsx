@@ -21,8 +21,6 @@ const Explore = () => {
   const showPosts =
     !showResults && posts?.pages.every((post) => post?.documents.length === 0);
 
-  console.log(posts);
-
   if (!posts) {
     return (
       <div className="flex-center w-full h-full">
@@ -68,7 +66,7 @@ const Explore = () => {
 
       <div className="flex flex-wrap gap-9 w-full max-w-5xl">
         {showResults ? (
-          <SearchResults />
+          <SearchResults searching={searching} searchedPosts={searchedPosts} />
         ) : showPosts ? (
           <p className="text-light-4 mt-10 text-center w-full">
             End of the Posts.
