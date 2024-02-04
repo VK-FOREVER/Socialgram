@@ -7,19 +7,27 @@ import {
   useGetPosts,
   useSearchPosts,
 } from "@/lib/react-query/queriesAndMutations";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 const Explore = () => {
+  const { ref, inView } = useInView();
   const [searchTerm, setSearchTerm] = useState("");
   const debounceValue = useDebounce(searchTerm, 888);
   // Mutations
-  const { data: posts, fetchNextPage: hasNextPage } = useGetPosts();
+  const { data: posts, fetchNextPage, hasNextPage } = useGetPosts();
   const { data: searchedPosts, isFetching: searching } =
     useSearchPosts(debounceValue);
 
   const showResults = searchTerm !== "";
   const showPosts =
     !showResults && posts?.pages.every((post) => post?.documents.length === 0);
+
+  useEffect(() => {
+    if (inView && searchTerm) {
+      fetchNextPage();
+    }
+  }, [inView, searchTerm]);
 
   if (!posts) {
     return (
