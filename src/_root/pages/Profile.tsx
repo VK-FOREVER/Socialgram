@@ -3,32 +3,48 @@ import PostCard from "@/components/shared/PostCard";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/ui/tabs";
 import { useUserContext } from "@/context/AuthContext";
-import { useGetRecentPosts } from "@/lib/react-query/queriesAndMutations";
+import {
+  useGetPostById,
+  useGetRecentPosts,
+  useGetUserById,
+} from "@/lib/react-query/queriesAndMutations";
 import { TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Models } from "appwrite";
 import { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 
 const Profile = () => {
-  // const {
-  //   data: posts,
-  //   isPending: isLoading,
-  //   isError: isError,
-  // } = useGetRecentPosts();
-  // const [allPosts, setallPosts] = useState(posts);
+  const { id } = useParams();
   const { user } = useUserContext();
+  const { pathname } = useLocation();
+  const {
+    data: posts,
+    isFetching: loading,
+    isError: error,
+  } = useGetPostById(id || "");
+  const { data: currentUser } = useGetUserById(id || "");
   return (
     <div className="w-full p-8">
       <div className="profile-container">
         <div className="profile-inner_container w-full">
           <img
             className="w-24 h-24 rounded-full"
-            src={user.imageUrl}
-            alt={user.username}
+            src={currentUser?.imageUrl}
+            alt={currentUser?.username}
           />
           <div className="flex flex-col w-full items-start justify-start gap-4">
             <div className="flex items-start justify-center flex-col">
-              <p className="text-2xl text-light-2">{user.name}</p>
-              <span className="text-light-3 text-base">@{user.username}</span>
+              <p className="text-2xl text-light-2">{currentUser?.name}</p>
+              <span className="text-light-3 text-base">
+                @{currentUser?.username}
+              </span>
+              <div className="w-10/12 text-justify text-base leading-6 tracking-tighter">
+                <span className="text-light-2 w-10/12">
+                  {currentUser?.bio ||
+                    `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolore quis sapiente iusto repellendus, culpa quas!`}
+                </span>
+              </div>
             </div>
             <div className="w-full flex items-start justify-start gap-10">
               <div className="flex items-center  flex-col justify-start">
@@ -62,50 +78,14 @@ const Profile = () => {
             </Button>
           </div>
         </div>
-        <div className="w-full mt-4 flex items-center justify-center gap-8">
-          <Tabs defaultValue="all-posts" className="">
-            <TabsList className="flex items-center justify-center gap-10 p-2  w-full bg-dark-4">
-              <TabsTrigger
-                className=" px-4 py-1 rounded-lg outline-white outline-1 outline "
-                value="all-post"
-              >
-                All Posts
-              </TabsTrigger>
-              <TabsTrigger
-                className={`  px-4 py-1 rounded-lg outline-white outline-1 outline `}
-                value="liked-posts"
-              >
-                Liked Posts
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="all-posts">
-              <div className="flex flex-col flex-1 gap-9 w-full">
-                <ul className="flex flex-col flex-1 gap-9 w-full">
-                  {/* {allPosts?.documents.map((post: Models.Document) => (
-                    <PostCard key={post.$createdAt} post={post} />
-                  ))} */}
-                </ul>
-              </div>
-            </TabsContent>
-            <TabsContent value="liked-posts">
-              Liked Posts are building...
-            </TabsContent>
-          </Tabs>
+        <div className="w-full mt-4 flex items-center justify-evenly ">
+          <Button variant="outline" className="px-4 py-3 rounded-lg">
+            All Posts
+          </Button>
+          <Button variant="outline" className="px-4 py-3 rounded-lg">
+            Liked Posts
+          </Button>
         </div>
-        {/* <div className="w-full">
-          <div className="home-posts">
-            <h2 className="h3-bold md:h2-bold text-left w-full">All Posts</h2>
-            {isLoading && !posts ? (
-              <Loader />
-            ) : (
-              <ul className="flex flex-col flex-1 gap-9 w-full">
-                {posts?.documents.map((post: Models.Document) => (
-                  <PostCard key={post.$createdAt} post={post} />
-                ))}
-              </ul>
-            )}
-          </div>
-        </div> */}
       </div>
     </div>
   );
