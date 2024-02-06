@@ -62,11 +62,17 @@ const Profile = () => {
         </div>
         <div className="w-full mt-4 flex items-center justify-center gap-8">
           <Tabs defaultValue="all-posts" className="">
-            <TabsList className="flex items-center justify-center gap-10 p-2 rounded-lg w-full ">
-              <TabsTrigger className="bg-dark-4 " value="all-post">
+            <TabsList className="flex items-center justify-center gap-10 p-2  w-full ">
+              <TabsTrigger
+                className="bg-dark-4 px-4 py-1 rounded-lg outline-white outline-1 outline "
+                value="all-post"
+              >
                 All Posts
               </TabsTrigger>
-              <TabsTrigger className="bg-dark-4 " value="liked-posts">
+              <TabsTrigger
+                className={`${} bg-dark-4 px-4 py-1 rounded-lg outline-white outline-1 outline `}
+                value="liked-posts"
+              >
                 Liked Posts
               </TabsTrigger>
             </TabsList>
