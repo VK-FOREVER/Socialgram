@@ -6,14 +6,16 @@ import { useUserContext } from "@/context/AuthContext";
 import { useGetRecentPosts } from "@/lib/react-query/queriesAndMutations";
 import { TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Models } from "appwrite";
+import { useState } from "react";
 
 const Profile = () => {
+  // const {
+  //   data: posts,
+  //   isPending: isLoading,
+  //   isError: isError,
+  // } = useGetRecentPosts();
+  // const [allPosts, setallPosts] = useState(posts);
   const { user } = useUserContext();
-  const {
-    data: posts,
-    isPending: isLoading,
-    isError: isError,
-  } = useGetRecentPosts();
   return (
     <div className="w-full p-8">
       <div className="profile-container">
@@ -62,32 +64,28 @@ const Profile = () => {
         </div>
         <div className="w-full mt-4 flex items-center justify-center gap-8">
           <Tabs defaultValue="all-posts" className="">
-            <TabsList className="flex items-center justify-center gap-10 p-2  w-full ">
+            <TabsList className="flex items-center justify-center gap-10 p-2  w-full bg-dark-4">
               <TabsTrigger
-                className="bg-dark-4 px-4 py-1 rounded-lg outline-white outline-1 outline "
+                className=" px-4 py-1 rounded-lg outline-white outline-1 outline "
                 value="all-post"
               >
                 All Posts
               </TabsTrigger>
               <TabsTrigger
-                className={`${} bg-dark-4 px-4 py-1 rounded-lg outline-white outline-1 outline `}
+                className={`  px-4 py-1 rounded-lg outline-white outline-1 outline `}
                 value="liked-posts"
               >
                 Liked Posts
               </TabsTrigger>
             </TabsList>
             <TabsContent value="all-posts">
-              <ul className="flex flex-col flex-1 gap-9 w-full">
-                {isLoading && !posts ? (
-                  <Loader />
-                ) : (
-                  <ul className="flex flex-col flex-1 gap-9 w-full">
-                    {posts?.documents.map((post: Models.Document) => (
-                      <PostCard key={post.$createdAt} post={post} />
-                    ))}
-                  </ul>
-                )}
-              </ul>
+              <div className="flex flex-col flex-1 gap-9 w-full">
+                <ul className="flex flex-col flex-1 gap-9 w-full">
+                  {/* {allPosts?.documents.map((post: Models.Document) => (
+                    <PostCard key={post.$createdAt} post={post} />
+                  ))} */}
+                </ul>
+              </div>
             </TabsContent>
             <TabsContent value="liked-posts">
               Liked Posts are building...
