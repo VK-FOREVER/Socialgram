@@ -1,9 +1,17 @@
+import PostCard from "@/components/shared/PostCard";
 import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
-import React from "react";
+import { useGetRecentPosts } from "@/lib/react-query/queriesAndMutations";
+import { Models } from "appwrite";
+import { Loader } from "lucide-react";
 
 const Profile = () => {
   const { user } = useUserContext();
+  const {
+    data: posts,
+    isPending: isLoading,
+    isError: isError,
+  } = useGetRecentPosts();
   return (
     <div className="w-full p-8">
       <div className="profile-container">
@@ -50,13 +58,20 @@ const Profile = () => {
             </Button>
           </div>
         </div>
-        <div className="w-full mt-4 flex items-center justify-center gap-8">
-          <Button variant="outline" className="px-6 py-3">
-            Your Posts
-          </Button>
-          <Button variant="outline" className="px-6 py-3">
-            Liked Posts
-          </Button>
+        <div className="w-full mt-4 flex items-center justify-center gap-8"></div>
+        <div className="w-full">
+          <div className="home-posts">
+            <h2 className="h3-bold md:h2-bold text-left w-full">All Posts</h2>
+            {isLoading && !posts ? (
+              <Loader />
+            ) : (
+              <ul className="flex flex-col flex-1 gap-9 w-full">
+                {posts?.documents.map((post: Models.Document) => (
+                  <PostCard key={post.$createdAt} post={post} />
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </div>
