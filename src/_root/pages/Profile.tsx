@@ -1,9 +1,11 @@
+import Loader from "@/components/shared/Loader";
 import PostCard from "@/components/shared/PostCard";
 import { Button } from "@/components/ui/button";
+import { Tabs } from "@/components/ui/tabs";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetRecentPosts } from "@/lib/react-query/queriesAndMutations";
+import { TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Models } from "appwrite";
-import { Loader } from "lucide-react";
 
 const Profile = () => {
   const { user } = useUserContext();
@@ -58,8 +60,35 @@ const Profile = () => {
             </Button>
           </div>
         </div>
-        <div className="w-full mt-4 flex items-center justify-center gap-8"></div>
-        <div className="w-full">
+        <div className="w-full mt-4 flex items-center justify-center gap-8">
+          <Tabs defaultValue="all-posts" className="">
+            <TabsList className="flex items-center justify-center gap-10 p-2 rounded-lg w-full ">
+              <TabsTrigger className="bg-dark-4 " value="all-post">
+                All Posts
+              </TabsTrigger>
+              <TabsTrigger className="bg-dark-4 " value="liked-posts">
+                Liked Posts
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="all-posts">
+              <ul className="flex flex-col flex-1 gap-9 w-full">
+                {isLoading && !posts ? (
+                  <Loader />
+                ) : (
+                  <ul className="flex flex-col flex-1 gap-9 w-full">
+                    {posts?.documents.map((post: Models.Document) => (
+                      <PostCard key={post.$createdAt} post={post} />
+                    ))}
+                  </ul>
+                )}
+              </ul>
+            </TabsContent>
+            <TabsContent value="liked-posts">
+              Liked Posts are building...
+            </TabsContent>
+          </Tabs>
+        </div>
+        {/* <div className="w-full">
           <div className="home-posts">
             <h2 className="h3-bold md:h2-bold text-left w-full">All Posts</h2>
             {isLoading && !posts ? (
@@ -72,7 +101,7 @@ const Profile = () => {
               </ul>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
