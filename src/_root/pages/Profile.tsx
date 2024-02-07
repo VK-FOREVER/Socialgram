@@ -68,15 +68,26 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {user.id === currentUser?.$id && (
+          {user.id === currentUser?.$id ? (
             <div className="flex items-end justify-center hover:hover-shadow ">
               <Button className="px-4 py-2 gap-2" variant="outline">
                 <img
-                  className="w-5 flex items-start justify-center "
+                  className="w-5 flex items-start justify-center  "
                   src="/assets/icons/edit.svg"
                   alt="edit-profile"
                 />
-                edit profile
+                Edit Profile
+              </Button>
+            </div>
+          ) : (
+            <div className="flex items-end justify-center hover:hover-shadow ">
+              <Button className="px-4 py-2 gap-2" variant="outline">
+                <img
+                  className="w-5 flex items-start justify-center  "
+                  src="/assets/icons/follow.svg"
+                  alt="follow"
+                />
+                Follow
               </Button>
             </div>
           )}
