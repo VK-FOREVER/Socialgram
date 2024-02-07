@@ -40,8 +40,9 @@ const Profile = () => {
               </span>
               <div className="w-10/12 text-justify text-base leading-6 tracking-tighter">
                 <span className="text-light-2 w-10/12">
-                  {currentUser?.bio ||
-                    `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  {currentUser?.bio
+                    ? currentUser.bio
+                    : `Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Dolore quis sapiente iusto repellendus, culpa quas!`}
                 </span>
               </div>
