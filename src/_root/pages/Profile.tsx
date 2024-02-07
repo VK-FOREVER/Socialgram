@@ -1,3 +1,4 @@
+import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
 import PostCard from "@/components/shared/PostCard";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,15 @@ import {
 import { TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Models } from "appwrite";
 import { useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router-dom";
+import { LikedPosts } from ".";
 
 const Profile = () => {
   const { id } = useParams();
@@ -92,6 +101,7 @@ const Profile = () => {
             </div>
           )}
         </div>
+        {/* Tabs */}
         <div className="w-full  flex items-center justify-evenly ">
           <Link to={`/profile/${id}`}>
             <Button
@@ -126,6 +136,18 @@ const Profile = () => {
               Liked Posts
             </Button>
           </Link>
+        </div>
+        <div className="w-full max-w-5xl">
+          <Routes>
+            <Route
+              index
+              element={<GridPost posts={currentUser?.posts} showUser={false} />}
+            />
+            {currentUser?.$id === user.id && (
+              <Route path="/liked-posts" element={<LikedPosts />} />
+            )}
+          </Routes>
+          <Outlet />
         </div>
       </div>
     </div>
