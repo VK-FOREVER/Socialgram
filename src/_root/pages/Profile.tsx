@@ -79,11 +79,17 @@ const Profile = () => {
             </Button>
           </div>
         </div>
-        <div className="w-full mt-4 flex items-center justify-evenly ">
-          <Button variant="outline" className="px-4 py-3 rounded-lg">
+        <div className="w-full  flex items-center justify-evenly ">
+          <Button
+            variant="outline"
+            className="px-4 py-3 rounded-lg hover:scale-105 hover:shadow-light-2 hover:shadow-md "
+          >
             All Posts
           </Button>
-          <Button variant="outline" className="px-4 py-3 rounded-lg">
+          <Button
+            variant="outline"
+            className="px-4 py-3 rounded-lg hover:scale-105 hover:shadow-light-2 hover:shadow-md "
+          >
             Liked Posts
           </Button>
         </div>
