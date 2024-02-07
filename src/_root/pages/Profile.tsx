@@ -68,27 +68,29 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-end justify-center">
-            <Button className="px-4 py-2 gap-2" variant="outline">
-              <img
-                className="w-5 flex items-start justify-center "
-                src="/assets/icons/edit.svg"
-                alt="edit-profile"
-              />
-              edit profile
-            </Button>
-          </div>
+          {user.id === currentUser?.$id && (
+            <div className="flex items-end justify-center hover:hover-shadow ">
+              <Button className="px-4 py-2 gap-2" variant="outline">
+                <img
+                  className="w-5 flex items-start justify-center "
+                  src="/assets/icons/edit.svg"
+                  alt="edit-profile"
+                />
+                edit profile
+              </Button>
+            </div>
+          )}
         </div>
         <div className="w-full  flex items-center justify-evenly ">
           <Button
             variant="outline"
-            className="px-4 py-3 rounded-lg hover:scale-105 hover:shadow-light-2 hover:shadow-md "
+            className="px-4 py-3 rounded-lg  hover:hover-shadow "
           >
             All Posts
           </Button>
           <Button
             variant="outline"
-            className="px-4 py-3 rounded-lg hover:scale-105 hover:shadow-light-2 hover:shadow-md "
+            className="px-4 py-3 rounded-lg hover:hover-shadow "
           >
             Liked Posts
           </Button>
