@@ -11,7 +11,7 @@ import {
 import { TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Models } from "appwrite";
 import { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const Profile = () => {
   const { id } = useParams();
@@ -93,18 +93,39 @@ const Profile = () => {
           )}
         </div>
         <div className="w-full  flex items-center justify-evenly ">
-          <Button
-            variant="outline"
-            className="px-4 py-3 rounded-lg  hover:hover-shadow "
-          >
-            All Posts
-          </Button>
-          <Button
-            variant="outline"
-            className="px-4 py-3 rounded-lg hover:hover-shadow "
-          >
-            Liked Posts
-          </Button>
+          <Link to={`/profile/${id}`}>
+            <Button
+              variant="outline"
+              className={`profile-tab  px-4 py-3 rounded-lg  hover:hover-shadow  ${
+                pathname === `/profile/${id}` && "!bg-dark-3"
+              }`}
+            >
+              <img
+                src={"/assets/icons/posts.svg"}
+                alt="posts"
+                width={20}
+                height={20}
+              />
+              All Posts
+            </Button>
+          </Link>
+
+          <Link to={`/profile/${id}/liked-posts`}>
+            <Button
+              variant="outline"
+              className={`profile-tab px-4 py-3 rounded-lg hover:hover-shadow ${
+                pathname === `/profile/${id}/liked-posts` && "!bg-dark-3"
+              }`}
+            >
+              <img
+                src={"/assets/icons/like.svg"}
+                alt="like"
+                width={20}
+                height={20}
+              />
+              Liked Posts
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
