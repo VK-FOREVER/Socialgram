@@ -105,7 +105,7 @@ const Profile = () => {
         <div className="w-full  flex items-center justify-evenly ">
           <Link to={`/profile/${id}`}>
             <Button
-              variant="outline"
+              variant={pathname === `/profile/${id}` ? "outline" : "default"}
               className={`profile-tab  px-4 py-3 rounded-lg  hover:hover-shadow  ${
                 pathname === `/profile/${id}` && "!bg-dark-3"
               }`}
@@ -122,7 +122,11 @@ const Profile = () => {
 
           <Link to={`/profile/${id}/liked-posts`}>
             <Button
-              variant="outline"
+              variant={
+                pathname === `/profile/${id}/liked-posts`
+                  ? "outline"
+                  : "default"
+              }
               className={`profile-tab px-4 py-3 rounded-lg hover:hover-shadow ${
                 pathname === `/profile/${id}/liked-posts` && "!bg-dark-3"
               }`}
