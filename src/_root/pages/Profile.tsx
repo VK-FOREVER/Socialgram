@@ -128,7 +128,11 @@ const Profile = () => {
               }`}
             >
               <img
-                src={"/assets/icons/like.svg"}
+                src={
+                  pathname === `/profile/${id}/liked-posts`
+                    ? "/assets/icons/liked.svg"
+                    : "/assets/icons/like.svg"
+                }
                 alt="like"
                 width={20}
                 height={20}
