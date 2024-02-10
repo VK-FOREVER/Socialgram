@@ -7,12 +7,14 @@ type GridPostListProps = {
   posts: Models.Document[];
   showUser?: boolean;
   showStats?: boolean;
+  lowWidth?: boolean;
 };
 
 const GridPost = ({
   posts,
   showUser = true,
   showStats = true,
+  lowWidth = false,
 }: GridPostListProps) => {
   const { user } = useUserContext();
   return (
