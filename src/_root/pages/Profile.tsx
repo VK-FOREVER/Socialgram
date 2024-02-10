@@ -26,11 +26,7 @@ const Profile = () => {
   const { id } = useParams();
   const { user } = useUserContext();
   const { pathname } = useLocation();
-  // const {
-  //   data: posts,
-  //   isFetching: loading,
-  //   isError: error,
-  // } = useGetPostById(id || "");
+
   const { data: currentUser } = useGetUserById(id || "");
   return (
     <div className="w-full p-8">
