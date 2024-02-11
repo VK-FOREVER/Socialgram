@@ -2,16 +2,9 @@ import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
 import PostCard from "@/components/shared/PostCard";
 import { Button } from "@/components/ui/button";
-import { Tabs } from "@/components/ui/tabs";
 import { useUserContext } from "@/context/AuthContext";
-import {
-  useGetPostById,
-  useGetRecentPosts,
-  useGetUserById,
-} from "@/lib/react-query/queriesAndMutations";
-import { TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
-import { Models } from "appwrite";
-import { useState } from "react";
+import { useGetUserById } from "@/lib/react-query/queriesAndMutations";
+
 import {
   Link,
   Outlet,
@@ -27,8 +20,11 @@ const Profile = () => {
   const { user } = useUserContext();
   const { pathname } = useLocation();
 
-  const { data: currentUser } = useGetUserById(id || "");
-  console.log("lets check what is current user", currentUser);
+  const { data: currentUser, isFetching: loading } = useGetUserById(id || "");
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full p-8">
@@ -55,7 +51,11 @@ const Profile = () => {
               </div>
             </div>
             <div className="w-full flex items-start justify-start gap-10">
-              <div className="flex items-center  flex-col justify-start">
+              <div
+                className="flex items-center  flex-col j
+              ustify-start"
+              >
+                <img src="assets/icons" alt="" />
                 <span className="text-primary-600 text-xl font-semibold">
                   2K
                 </span>
