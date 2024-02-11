@@ -1,6 +1,5 @@
 import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
-import PostCard from "@/components/shared/PostCard";
 import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetUserById } from "@/lib/react-query/queriesAndMutations";
