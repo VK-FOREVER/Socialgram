@@ -19,10 +19,23 @@ const Profile = () => {
   const { user } = useUserContext();
   const { pathname } = useLocation();
 
-  const { data: currentUser, isFetching: loading } = useGetUserById(id || "");
+  const {
+    data: currentUser,
+    isFetching: loading,
+    isError: gotError,
+  } = useGetUserById(id || "");
 
   if (loading) {
     return <Loader />;
+  }
+
+  if (gotError) {
+    return (
+      <div className="mt-20 flex items-center justify-center gap-4 flex-col">
+        <big className="text-light-2 text-2xl">Something went wrong</big>
+        <small className="text-light-2 text-base">Please try again...</small>
+      </div>
+    );
   }
 
   return (
