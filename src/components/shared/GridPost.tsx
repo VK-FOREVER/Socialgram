@@ -23,7 +23,7 @@ const GridPost = ({
         <li
           key={post.$id}
           className={`relative ${
-            lowWidth ? `min-w-72 min-h-60` : `min-w-80 h-80`
+            lowWidth ? `min-w-72 max-h-80` : `min-w-80 h-80`
           }`}
         >
           <Link to={`/posts/${post.$id}`} className="grid-post_link">
