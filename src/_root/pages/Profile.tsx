@@ -28,6 +28,8 @@ const Profile = () => {
   const { pathname } = useLocation();
 
   const { data: currentUser } = useGetUserById(id || "");
+  console.log("lets check what is current user", currentUser);
+
   return (
     <div className="w-full p-8">
       <div className="profile-container">
