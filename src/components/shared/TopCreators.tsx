@@ -1,5 +1,8 @@
+import { useGetUsers } from "@/lib/react-query/queriesAndMutations";
+
 const TopCreators = () => {
-  return <div>TopCreators</div>;
+  const {} = useGetUsers(12);
+  return <div className=""></div>;
 };
 
 export default TopCreators;
