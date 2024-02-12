@@ -170,7 +170,7 @@ const Profile = () => {
             {currentUser?.$id === user.id && (
               <Route
                 path="/liked-posts"
-                element={<LikedPosts likedPosts={currentUser.liked} />}
+                element={<LikedPosts likedPosts={currentUser?.liked} />}
               />
             )}
           </Routes>
