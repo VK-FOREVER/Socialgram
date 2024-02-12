@@ -8,7 +8,20 @@ const TopCreators = () => {
   }
   //   console.log(creators);
 
-  return <div className=""></div>;
+  return (
+    <div className="p-4">
+      <h1>Top Creators</h1>
+      {creators?.documents.map((creator, index) => (
+        <div className="flex" key={index}>
+          <img
+            src={creator.imageUrl}
+            className="w-10 h-10"
+            alt={`${creator.name}'s post`}
+          />
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default TopCreators;
