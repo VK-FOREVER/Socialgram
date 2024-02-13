@@ -6,22 +6,25 @@ const TopCreators = () => {
   if (loading) {
     return <Loader />;
   }
-  //   console.log(creators);
 
   return (
-    <div className="right-sidebar">
-      <h1>Top Creators</h1>
-      <div className="user-grid">
+    <div className="home-creators">
+      <h1 className="text-light-1 text-2xl mb-4">Top Creators</h1>
+      <div className="creator-grid">
         {creators?.documents.map((creator, index) => (
           <div
-            className="p-2 flex items-center justify-center gap-2 w-full rounded-full"
+            className="p-2 flex items-center justify-center  w-full rounded-xl px-4 py-5 flex-col border-light-3 border-2 "
             key={index}
           >
             <img
               src={creator.imageUrl}
-              className="w-10 h-10 object-contain rounded-full"
+              className="w-14 h-14 object-contain rounded-full"
               alt={`${creator.name}'s post`}
             />
+            <h4 className="text-light-1 text-lg font-semibold">
+              {creator.name}
+            </h4>
+            <span className="text-light-3 text-sm">{creator.username}</span>
           </div>
         ))}
       </div>
