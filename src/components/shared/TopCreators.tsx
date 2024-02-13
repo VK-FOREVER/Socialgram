@@ -9,17 +9,22 @@ const TopCreators = () => {
   //   console.log(creators);
 
   return (
-    <div className="p-4">
+    <div className="right-sidebar">
       <h1>Top Creators</h1>
-      {creators?.documents.map((creator, index) => (
-        <div className="flex" key={index}>
-          <img
-            src={creator.imageUrl}
-            className="w-10 h-10"
-            alt={`${creator.name}'s post`}
-          />
-        </div>
-      ))}
+      <div className="user-grid">
+        {creators?.documents.map((creator, index) => (
+          <div
+            className="p-2 flex items-center justify-center gap-2 w-full rounded-full"
+            key={index}
+          >
+            <img
+              src={creator.imageUrl}
+              className="w-10 h-10 object-contain rounded-full"
+              alt={`${creator.name}'s post`}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -249,6 +249,11 @@
   .hover-shadow {
     @apply hover:scale-105 hover:shadow-light-2 hover:shadow-md;
   }
+
+  /* Right sidebar */
+  .right-sidebar {
+    @apply hidden md:flex px-6 pt-10 pb-0 flex-col justify-start min-w-[270px] bg-dark-2;
+  }
 }
 
 @layer components {
