@@ -13,7 +13,7 @@ const TopCreators = () => {
       <h1 className="text-light-1 text-2xl mb-4">Top Creators</h1>
       <div className="creator-grid">
         {creators?.documents.map((creator, index) => (
-          <Link to={`/user-profile/${creator.$id}`}>
+          <Link to={`/profile/${creator.$id}`}>
             <div
               className="p-2 flex items-center justify-center  w-full rounded-xl px-4 py-5 flex-col border-light-3 border-2 "
               key={index}
