@@ -13,6 +13,7 @@ import {
   Profile,
   Save,
   UpdateProfile,
+  UserProfile,
 } from "./_root/pages";
 import { Toaster } from "./components/ui/toaster";
 import "./globals.css";
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/profile/:id/*" element={<Profile />} />
           <Route path="/update-profile/:id" element={<UpdateProfile />} />
           <Route path="/liked-posts" element={<LikedPosts likedPosts={[]} />} />
+          <Route path="/user-profile/:id" element={<UserProfile />} />
         </Route>
       </Routes>
       <Toaster />
