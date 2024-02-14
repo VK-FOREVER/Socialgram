@@ -5,19 +5,19 @@ import { useGetUsers } from "@/lib/react-query/queriesAndMutations";
 import { Link } from "react-router-dom";
 
 const People = () => {
-  const { data: creators, isFetching: loading } = useGetUsers();
+  const { data: users, isFetching: loading } = useGetUsers();
   const { user } = useUserContext();
 
   if (loading) {
     return <Loader />;
   }
-  console.log(creators);
+  // console.log(creators);
 
   return (
     <div className="user-container p-8">
       <h1 className="text-light-1 text-2xl mb-4">All Users</h1>
       <div className="user-grid">
-        {creators?.documents.map((creator, index) => (
+        {users?.documents.map((creator, index) => (
           <Link to={`/profile/${creator.$id}`} key={index}>
             <div className="px-2 flex items-center justify-center w-full rounded-xl  py-3 flex-col border-light-3 border-2 text-center">
               <img
