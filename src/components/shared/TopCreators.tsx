@@ -17,13 +17,13 @@ const TopCreators = () => {
       <div className="creator-grid">
         {creators?.documents.map((creator, index) => (
           <Link to={`/profile/${creator.$id}`} key={index}>
-            <div className="px-2 flex items-center justify-center w-full rounded-xl  py-3 flex-col border-light-3 border-2 ">
+            <div className="px-2 flex items-center justify-center w-full rounded-xl  py-3 flex-col border-light-3 border-2 text-center">
               <img
                 src={creator.imageUrl}
                 className="w-14 h-14 object-contain rounded-full"
                 alt={`${creator.name}'s post`}
               />
-              <h4 className="text-light-1 text-lg font-semibold">
+              <h4 className="text-light-1 text-base font-semibold max-w-[105px] w-[104px]">
                 {creator.name}
               </h4>
               <span className="text-light-3 text-xs">@{creator.username}</span>
