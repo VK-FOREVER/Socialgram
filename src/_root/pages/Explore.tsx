@@ -27,7 +27,7 @@ const Explore = () => {
     if (inView && searchTerm) {
       fetchNextPage();
     }
-    console.log(hasNextPage);
+    // console.log(hasNextPage);
   }, [inView, searchTerm]);
 
   if (!posts) {
