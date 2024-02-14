@@ -394,6 +394,12 @@ export async function savePost(userId: string, postId: string) {
     console.log(error);
   }
 }
+
+// ============================GET SAVED POST
+export async function getSavedPost() {
+  return console.log("Build it by own");
+}
+
 // ============================== DELETE SAVED POST
 export async function deleteSavedPost(savedRecordId: string) {
   try {
