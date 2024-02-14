@@ -11,7 +11,6 @@ const People = () => {
   if (loading) {
     return <Loader />;
   }
-  // console.log(creators);
 
   return (
     <div className="user-container p-8">
