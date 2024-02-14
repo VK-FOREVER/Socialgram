@@ -47,7 +47,7 @@ const LeftSidebar = () => {
             return (
               <li
                 className={`leftsidebar-link group ${
-                  active && "bg-primary-500"
+                  active && "bg-primary-600"
                 }`}
                 key={`leftsidebar-${link.label}-${idx}`}
               >

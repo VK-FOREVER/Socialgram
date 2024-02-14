@@ -13,7 +13,7 @@ const BottomSidebar = () => {
             <Link
               to={link.route}
               className={`bottombar-link group ${
-                active && "bg-primary-500 rounded-[10px]"
+                active && "bg-primary-600 rounded-[10px]"
               } flex-center flex-col gap-1 p-2 transition`}
             >
               <img

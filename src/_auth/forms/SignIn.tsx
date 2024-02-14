@@ -130,7 +130,7 @@ const SignIn = () => {
               Don't have an account?
               <Link
                 to="/sign-up"
-                className="text-primary-500 text-small-semibold ml-1"
+                className="text-primary-600 text-small-semibold ml-1"
               >
                 Create an Account
               </Link>

@@ -5,16 +5,18 @@ import { useGetUsers } from "@/lib/react-query/queriesAndMutations";
 import { Link } from "react-router-dom";
 
 const People = () => {
-  const { data: creators, isFetching: loading } = useGetUsers(12);
+  const { data: creators, isFetching: loading } = useGetUsers();
   const { user } = useUserContext();
 
   if (loading) {
     return <Loader />;
   }
+  console.log(creators);
+
   return (
-    <div className="">
-      <h1 className="text-light-1 text-2xl mb-4">Top Creators</h1>
-      <div className="creator-grid">
+    <div className="user-container p-8">
+      <h1 className="text-light-1 text-2xl mb-4">All Users</h1>
+      <div className="user-grid">
         {creators?.documents.map((creator, index) => (
           <Link to={`/profile/${creator.$id}`} key={index}>
             <div className="px-2 flex items-center justify-center w-full rounded-xl  py-3 flex-col border-light-3 border-2 text-center">
@@ -27,12 +29,19 @@ const People = () => {
                 {creator.name}
               </h4>
               <span className="text-light-3 text-xs">@{creator.username}</span>
-              {creator.$id !== user.id && (
+              {creator.$id !== user.id ? (
                 <Button
                   variant="outline"
-                  className="bg-primary-600 text-sm px-3 h-8 mt-2"
+                  className="bg-primary-500 text-sm px-3 h-8 mt-2"
                 >
                   Follow
+                </Button>
+              ) : (
+                <Button
+                  variant="outline"
+                  className="bg-primary-500 text-sm px-3 h-8 mt-2"
+                >
+                  Edit
                 </Button>
               )}
             </div>
