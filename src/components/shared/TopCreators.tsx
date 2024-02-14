@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { useUserContext } from "@/context/AuthContext";
 
 const TopCreators = () => {
-  const { data: creators, isFetching: loading } = useGetUsers(12);
+  const { data: creators, isFetching: loading } = useGetUsers(10);
   const { user } = useUserContext();
 
   if (loading) {
