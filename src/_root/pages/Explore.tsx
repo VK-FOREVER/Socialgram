@@ -27,7 +27,7 @@ const Explore = () => {
     if (inView && searchTerm) {
       fetchNextPage();
     }
-    // console.log(hasNextPage);
+    console.log({ hasNextPage, showResults, showPosts });
   }, [inView, searchTerm]);
 
   if (!posts) {
@@ -86,9 +86,15 @@ const Explore = () => {
           ))
         )}
       </div>
-      {hasNextPage && !searchTerm && (
+      {hasNextPage && !searchTerm ? (
         <div ref={ref} className="mt-10">
           <Loader />
+        </div>
+      ) : (
+        <div ref={ref} className="mt-10">
+          <p className="text-light-4 mt-10 text-center w-full">
+            End of the Posts.
+          </p>
         </div>
       )}
     </div>
