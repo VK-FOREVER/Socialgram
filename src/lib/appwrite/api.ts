@@ -396,14 +396,14 @@ export async function savePost(userId: string, postId: string) {
 }
 
 // ============================GET SAVED POST
-export async function getSavedPost() {
-  try {
-    // const savedPost = await databases.getDocument(
-    //   appwriteConfig.databasesId,
-    //   appwriteConfig.userCollectionId,
-    // )
-  } catch (error) {}
-}
+// export async function getSavedPost() {
+//   try {
+//     // const savedPost = await databases.getDocument(
+//     //   appwriteConfig.databasesId,
+//     //   appwriteConfig.userCollectionId,
+//     // )
+//   } catch (error) {}
+// }
 
 // ============================== DELETE SAVED POST
 export async function deleteSavedPost(savedRecordId: string) {

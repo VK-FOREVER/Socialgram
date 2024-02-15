@@ -12,8 +12,6 @@ const People = () => {
     return <Loader />;
   }
 
-  console.log(users);
-
   return (
     <div className="user-container p-8">
       <h1 className="text-light-1 text-2xl mb-4">All Users</h1>
