@@ -44,7 +44,7 @@ export async function saveUserToDB(user: {
   imageUrl: URL;
   username?: string;
 }) {
-  console.log(user);
+  // console.log(user);
 
   try {
     const newUser = await databases.createDocument(
@@ -53,9 +53,6 @@ export async function saveUserToDB(user: {
       ID.unique(),
       user
     );
-
-    // https://cloud.appwrite.io/v1/databases/65a3bfe21482dbb53bd6/collections/65a3c1d8740c060eb265/documents
-
     return newUser;
   } catch (error) {
     console.log(error);
@@ -396,14 +393,17 @@ export async function savePost(userId: string, postId: string) {
 }
 
 // ============================GET SAVED POST
-// export async function getSavedPost() {
-//   try {
-//     // const savedPost = await databases.getDocument(
-//     //   appwriteConfig.databasesId,
-//     //   appwriteConfig.userCollectionId,
-//     // )
-//   } catch (error) {}
-// }
+export async function getSavedPost(userId: string) {
+  try {
+    const savedPost = await databases.getDocument(
+      appwriteConfig.databasesId,
+      appwriteConfig.userCollectionId,
+      userId
+    );
+  } catch (error) {
+    throw error;
+  }
+}
 
 // ============================== DELETE SAVED POST
 export async function deleteSavedPost(savedRecordId: string) {

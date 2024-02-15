@@ -1,18 +1,22 @@
 import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
 import { useUserContext } from "@/context/AuthContext";
-import { useGetUserById } from "@/lib/react-query/queriesAndMutations";
+import {
+  useGetSavedPost,
+  useGetUserById,
+} from "@/lib/react-query/queriesAndMutations";
 
 const Save = () => {
   const { user } = useUserContext();
   const { data: currentUser, isFetching: loading } = useGetUserById(
     user.id || ""
   );
+  const { data: savedPost } = useGetSavedPost(user.id);
 
   if (loading) {
     return <Loader />;
   }
-  console.log(currentUser);
+  console.log(savedPost);
 
   return (
     <div className="saved-container">

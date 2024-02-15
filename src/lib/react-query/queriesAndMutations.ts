@@ -25,6 +25,7 @@ import {
   searchPosts,
   savePost,
   deleteSavedPost,
+  getSavedPost,
 } from "@/lib/appwrite/api";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 
@@ -204,12 +205,12 @@ export const useDeleteSavedPost = () => {
   });
 };
 
-// export const useGetSavedPost = () =>{
-//   return useQuery({
-//     queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
-//     queryFn: getSavedPosts,
-//   })
-// }
+export const useGetSavedPost = (userId: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+    queryFn: () => getSavedPost(userId),
+  });
+};
 
 // // ============================================================
 // // USER QUERIES
