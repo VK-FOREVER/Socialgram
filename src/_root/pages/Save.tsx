@@ -1,22 +1,16 @@
 import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
 import { useUserContext } from "@/context/AuthContext";
-import {
-  useGetSavedPost,
-  useGetUserById,
-} from "@/lib/react-query/queriesAndMutations";
+import { useGetCurrentUser } from "@/lib/react-query/queriesAndMutations";
 
 const Save = () => {
   const { user } = useUserContext();
-  const { data: currentUser, isFetching: loading } = useGetUserById(
-    user.id || ""
-  );
-  const { data: savedPost } = useGetSavedPost(user.id);
+  const { data: currentUser, isFetching } = useGetCurrentUser();
 
-  if (loading) {
+  if (isFetching) {
     return <Loader />;
   }
-  console.log(savedPost);
+  console.log(currentUser);
 
   return (
     <div className="saved-container">
@@ -30,12 +24,12 @@ const Save = () => {
       </div>
 
       <div className="w-full">
-        <GridPost
+        {/* <GridPost
           posts={currentUser?.save.post}
           lowWidth={true}
           showStats={false}
           showUser={false}
-        />
+        /> */}
       </div>
     </div>
   );

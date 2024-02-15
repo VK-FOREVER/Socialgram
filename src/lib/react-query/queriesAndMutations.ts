@@ -25,7 +25,6 @@ import {
   searchPosts,
   savePost,
   deleteSavedPost,
-  getSavedPost,
 } from "@/lib/appwrite/api";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 
