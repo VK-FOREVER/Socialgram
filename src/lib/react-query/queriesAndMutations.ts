@@ -204,6 +204,13 @@ export const useDeleteSavedPost = () => {
   });
 };
 
+// export const useGetSavedPost = () =>{
+//   return useQuery({
+//     queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+//     queryFn: getSavedPosts,
+//   })
+// }
+
 // // ============================================================
 // // USER QUERIES
 // // ============================================================
