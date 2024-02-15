@@ -249,6 +249,9 @@
   .hover-shadow {
     @apply hover:scale-105 hover:shadow-light-2 hover:shadow-md;
   }
+  .hover-shadow-light {
+    @apply hover:shadow-light-1 hover:shadow-sm;
+  }
 
   /* Creator grid */
   .creator-grid {
