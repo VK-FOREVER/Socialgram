@@ -1,11 +1,9 @@
 import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
-import { useUserContext } from "@/context/AuthContext";
 import { useGetCurrentUser } from "@/lib/react-query/queriesAndMutations";
 import { Models } from "appwrite";
 
 const Save = () => {
-  const { user } = useUserContext();
   const { data: currentUser, isFetching } = useGetCurrentUser();
 
   const savePosts = currentUser?.save
