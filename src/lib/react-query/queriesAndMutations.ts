@@ -205,13 +205,6 @@ export const useDeleteSavedPost = () => {
   });
 };
 
-export const useGetSavedPost = (userId: string) => {
-  return useQuery({
-    queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
-    queryFn: () => getSavedPost(userId),
-  });
-};
-
 // // ============================================================
 // // USER QUERIES
 // // ============================================================
