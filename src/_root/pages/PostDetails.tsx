@@ -82,7 +82,7 @@ const PostDetails = () => {
               </div>
             </div>
             <hr className="border w-full border-dark-4/80" />
-            <div className="flex flex-col flex-1 w-full small-medium lg:base-regular">
+            <div className="justify-between flex flex-col flex-1 w-full small-medium lg:base-regular">
               <p className="">{post?.caption}</p>
               <ul className="flex gap-1 mt-2">
                 {post?.tag.map((t: string) => (
