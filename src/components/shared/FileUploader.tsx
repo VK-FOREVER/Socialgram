@@ -45,7 +45,11 @@ const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
         </>
       ) : (
         <div className="file_uploader-box">
-          <img src="/assets/icons/file-upload.svg" alt="Upload Files Here" />
+          <img
+            src="/assets/icons/file-upload.svg"
+            className="file_uploader-img"
+            alt="Upload Files Here"
+          />
 
           <h3 className="base-medium text-light-2 mb-2 mt-6 ">
             Drag your Images here.
