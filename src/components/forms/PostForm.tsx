@@ -163,11 +163,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
             )}
           />
           <div className="flex gap-4 items-center justify-end">
-            <Button type="button" className="shad-button_dark_4">
+            <Button type="button" className="shad-button_dark_4 py-4 text-sm">
               Cancel
             </Button>
             <Button
-              className="shad-button_primary whitespace-nowrap"
+              className="shad-button_primary whitespace-nowrap py-4 text-sm"
               type="submit"
               disabled={updatingPost || creatingPost}
             >
