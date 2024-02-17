@@ -31,7 +31,7 @@ const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
   return (
     <div
       {...getRootProps()}
-      className={`flex flex-center flex-col bg-dark-3 rounded-xl cursor-pointer  ${
+      className={`flex flex-center flex-col bg-dark-1 rounded-xl cursor-pointer  ${
         isDragActive && " border-2 shadow-md shadow-blue-400 border-blue-800"
       }`}
     >
