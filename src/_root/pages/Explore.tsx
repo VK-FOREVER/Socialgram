@@ -19,7 +19,9 @@ const Explore = () => {
   const { data: searchedPosts, isFetching: searching } =
     useSearchPosts(debounceValue);
 
+  // Show the Results when user searched something
   const showResults = searchTerm !== "";
+  // Show the Posts when user searched and post is true
   const showPosts =
     !showResults && posts?.pages.every((post) => post?.documents.length === 0);
 
@@ -27,7 +29,14 @@ const Explore = () => {
     if (inView && searchTerm) {
       fetchNextPage();
     }
-    console.log({ hasNextPage, showResults, showPosts });
+    console.log({
+      hasNextPage,
+      showResults,
+      showPosts,
+      searchTerm,
+      inView,
+      ref,
+    });
   }, [inView, searchTerm]);
 
   if (!posts) {
@@ -86,7 +95,7 @@ const Explore = () => {
           ))
         )}
       </div>
-      {hasNextPage && !searchTerm ? (
+      {!hasNextPage && !searchTerm ? (
         <div ref={ref} className="mt-10">
           <Loader />
         </div>
