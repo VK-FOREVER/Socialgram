@@ -26,7 +26,7 @@ const Explore = () => {
     !showResults && posts?.pages.every((post) => post?.documents.length === 0);
 
   useEffect(() => {
-    if (inView && searchTerm) {
+    if (inView && !searchTerm) {
       fetchNextPage();
     }
     console.log({
