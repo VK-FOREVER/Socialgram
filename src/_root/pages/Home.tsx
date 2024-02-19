@@ -11,6 +11,16 @@ const Home = () => {
     isError: isError,
   } = useGetRecentPosts();
 
+  if (isError) {
+    return (
+      <div className="w-full flex items-center justify-center">
+        <h4 className="text-light-1 text-3xl font-semibold">
+          Something went wrong. <br />
+          Please re-fresh the page.
+        </h4>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-1 ">
       <div className="home-container ">
