@@ -13,7 +13,14 @@ const TopCreators = () => {
   }
   return (
     <div className="home-creators">
-      <h1 className="text-light-1 text-2xl mb-4">Top Creators</h1>
+      <div className="w-full flex items-center justify-start">
+        <img
+          src="/assets/icons/people.svg"
+          alt="saved-post"
+          className="w-8 h-8"
+        />
+        <h1 className="text-light-1 text-2xl font-semibold">Top Creators</h1>
+      </div>
       <div className="creator-grid">
         {creators?.documents.map((creator, index) => (
           <Link to={`/profile/${creator.$id}`} key={index}>
