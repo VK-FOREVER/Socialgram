@@ -13,8 +13,18 @@ const People = () => {
   }
 
   return (
-    <div className="user-container p-8">
-      <h1 className="text-light-1 text-2xl mb-4">All Users</h1>
+    <div className="user-container ">
+      <div className="w-full flex items-center justify-start">
+        <img
+          src="/assets/icons/people.svg"
+          alt="saved-post"
+          className="w-8 h-8"
+        />
+        <h1 className="text-light-1  font-semibold text-2xl w-full  ">
+          All Users
+        </h1>
+      </div>
+
       <div className="user-grid">
         {users?.documents.map((creator, index) => (
           <Link to={`/profile/${creator.$id}`} key={index}>
