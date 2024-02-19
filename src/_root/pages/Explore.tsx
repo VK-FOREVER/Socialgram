@@ -95,15 +95,9 @@ const Explore = () => {
           ))
         )}
       </div>
-      {!hasNextPage && !searchTerm ? (
+      {hasNextPage && !searchTerm && (
         <div ref={ref} className="mt-10">
           <Loader />
-        </div>
-      ) : (
-        <div ref={ref} className="mt-10">
-          <p className="text-light-4 mt-10 text-center w-full">
-            End of the Posts.
-          </p>
         </div>
       )}
     </div>
