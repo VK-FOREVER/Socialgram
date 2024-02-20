@@ -259,7 +259,7 @@
   }
 
   .edit-form_container {
-    @apply flex flex-col  items-center  py-10 px-5 md:p-14 w-4/5;
+    @apply flex flex-col  items-center  py-10 px-5 md:p-14 md:w-4/5 sm:w-full overflow-y-scroll custom-scrollbar;
   }
 }
 

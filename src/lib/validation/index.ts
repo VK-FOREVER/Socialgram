@@ -30,4 +30,5 @@ export const EditPostValidation = z.object({
   name: z.string().min(2, { message: "Enter your Valid Name" }),
   username: z.string().min(2, { message: "Too Short" }),
   email: z.string().email(),
+  bio: z.string().min(10, { message: "Add Meaningfull Bio" }).max(1111),
 });

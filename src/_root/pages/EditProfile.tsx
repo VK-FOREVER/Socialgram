@@ -1,3 +1,4 @@
+import FileUploader from "@/components/shared/FileUploader";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -26,6 +27,7 @@ const EditProfile = () => {
       name: "",
       username: "",
       email: "",
+      bio: "",
     },
   });
 
@@ -82,10 +84,7 @@ const EditProfile = () => {
                 <FormItem>
                   <FormLabel className="shad-form_label">Add Images</FormLabel>
                   <FormControl>
-                    {/* <FileUploader
-                      fieldChange={field.onChange}
-                      mediaUrl={post?.imageUrl}
-                    /> */}
+                    {/* <FileUploader fieldChange={field.onChange} mediaUrl={""} /> */}
                     Image
                   </FormControl>
                   <FormMessage className="shad-form_message" />
@@ -97,13 +96,12 @@ const EditProfile = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="shad-form_label">
-                    Profile Name
-                  </FormLabel>
+                  <FormLabel className="shad-form_label">Name</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder="Enter your Caption"
-                      className="shad-textarea custom-scrollbar"
+                    <Input
+                      type="text"
+                      placeholder="Enter Name"
+                      className="shad-input"
                       {...field}
                     />
                   </FormControl>
@@ -141,6 +139,23 @@ const EditProfile = () => {
                       type="text"
                       className="shad-input"
                       placeholder="Coding, Entertainment, Learinig"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="shad-form_message" />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="bio"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="shad-form_label">Add Bio</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Enter your Bio"
+                      className="shad-textarea custom-scrollbar"
                       {...field}
                     />
                   </FormControl>
