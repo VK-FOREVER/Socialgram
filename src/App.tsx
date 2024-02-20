@@ -5,6 +5,7 @@ import RootLayout from "./_root/RootLayout";
 import {
   CreatePost,
   EditPost,
+  EditProfile,
   Explore,
   Home,
   LikedPosts,
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/profile/:id/*" element={<Profile />} />
           <Route path="/update-profile/:id" element={<UpdateProfile />} />
           <Route path="/liked-posts" element={<LikedPosts likedPosts={[]} />} />
+          <Route path="/edit-profile/:id" element={<EditProfile />} />
         </Route>
       </Routes>
       <Toaster />
