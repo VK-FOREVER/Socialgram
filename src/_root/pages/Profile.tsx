@@ -89,14 +89,16 @@ const Profile = () => {
           </div>
           {user.id === currentUser?.$id ? (
             <div className="flex items-end justify-center hover:hover-shadow ">
-              <Button className="px-4 py-2 gap-2" variant="outline">
-                <img
-                  className="w-5 flex items-start justify-center  "
-                  src="/assets/icons/edit.svg"
-                  alt="edit-profile"
-                />
-                Edit Profile
-              </Button>
+              <Link to={`/edit-profile/${user?.id}`}>
+                <Button className="px-4 py-2 gap-2" variant="outline">
+                  <img
+                    className="w-5 flex items-start justify-center  "
+                    src="/assets/icons/edit.svg"
+                    alt="edit-profile"
+                  />
+                  Edit Profile
+                </Button>
+              </Link>
             </div>
           ) : (
             <div className="flex items-end justify-center hover:hover-shadow ">

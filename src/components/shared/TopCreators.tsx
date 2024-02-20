@@ -42,12 +42,14 @@ const TopCreators = () => {
                   Follow
                 </Button>
               ) : (
-                <Button
-                  variant="outline"
-                  className="w-18 h-8 hover-shadow-light"
-                >
-                  Edit
-                </Button>
+                <Link to={`/edit-profile/${user?.id}`}>
+                  <Button
+                    variant="outline"
+                    className="w-18 h-8 hover-shadow-light"
+                  >
+                    Edit
+                  </Button>
+                </Link>
               )}
             </div>
           </Link>
