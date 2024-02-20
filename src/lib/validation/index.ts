@@ -24,3 +24,10 @@ export const PostValidation = z.object({
   location: z.string().min(2).max(100),
   tag: z.string(),
 });
+
+export const EditPostValidation = z.object({
+  image: z.custom<File[]>(),
+  name: z.string().min(2, { message: "Enter your Valid Name" }),
+  username: z.string().min(2, { message: "Too Short" }),
+  email: z.string().email(),
+});

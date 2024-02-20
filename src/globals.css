@@ -257,6 +257,10 @@
   .creator-grid {
     @apply w-full grid grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 max-w-6xl;
   }
+
+  .edit-form_container {
+    @apply flex flex-col  items-center  py-10 px-5 md:p-14 w-4/5;
+  }
 }
 
 @layer components {
