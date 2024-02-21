@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 type FileUploaderProps = {
   fieldChange: (FILES: File[]) => void;
   mediaUrl: string;
-  rounded: boolean;
+  rounded?: boolean;
 };
 
 const FileUploader = ({
@@ -36,9 +36,9 @@ const FileUploader = ({
   return (
     <div
       {...getRootProps()}
-      className={`flex flex-center flex-col bg-dark-1 rounded-xl cursor-pointer  ${
+      className={`flex flex-center flex-col bg-dark-1  cursor-pointer  ${
         isDragActive && " border-2 shadow-md shadow-blue-400 border-blue-800"
-      }`}
+      } ${rounded ? "rounded-full" : "rounded-xl"}`}
     >
       <input {...getInputProps()} className="cursor-pointer " />
       {fileUrl ? (
@@ -65,14 +65,18 @@ const FileUploader = ({
           )}
 
           <h3 className="base-medium text-light-2 mb-2 mt-6 ">
-            Drag your Images here.
+            Drag/Click to add your Image.
           </h3>
 
-          <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
+          {!rounded && (
+            <>
+              <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
 
-          <Button className="shad-button_dark_4">
-            Select file form computer
-          </Button>
+              <Button className="shad-button_dark_4">
+                Select file form computer
+              </Button>
+            </>
+          )}
         </div>
       )}
     </div>
