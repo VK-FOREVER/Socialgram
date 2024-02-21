@@ -17,7 +17,6 @@ import {
 import { EditPostValidation } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
 import { z } from "zod";
 
 const EditProfile = () => {
@@ -32,10 +31,10 @@ const EditProfile = () => {
   const form = useForm<z.infer<typeof EditPostValidation>>({
     resolver: zodResolver(EditPostValidation),
     defaultValues: {
-      image: [],
-      name: "",
-      username: "",
-      email: "",
+      image: currentUser ? currentUser?.imageUrl : [],
+      name: currentUser ? currentUser?.name : "",
+      username: currentUser ? currentUser?.username : "",
+      email: currentUser ? currentUser?.email : "",
       bio: "",
     },
   });
