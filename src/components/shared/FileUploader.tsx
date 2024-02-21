@@ -5,9 +5,14 @@ import { Button } from "../ui/button";
 type FileUploaderProps = {
   fieldChange: (FILES: File[]) => void;
   mediaUrl: string;
+  rounded: boolean;
 };
 
-const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
+const FileUploader = ({
+  fieldChange,
+  mediaUrl,
+  rounded,
+}: FileUploaderProps) => {
   const [fileUrl, setFileUrl] = useState(mediaUrl);
   const [dropFile, setDropFile] = useState<File[]>([]);
 
