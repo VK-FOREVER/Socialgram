@@ -75,10 +75,10 @@ const EditProfile = () => {
                 <FormItem>
                   <FormLabel className="shad-form_label">Add Images</FormLabel>
                   <FormControl>
-                    <FileUploader
+                    {/* <FileUploader
                       fieldChange={field.onChange}
                       mediaUrl={currentUser?.imageUrl}
-                    />
+                    /> */}
                     Image
                   </FormControl>
                   <FormMessage className="shad-form_message" />
