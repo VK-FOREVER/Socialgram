@@ -10,16 +10,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useGetCurrentUser } from "@/lib/react-query/queriesAndMutations";
 import { EditPostValidation } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import { z } from "zod";
-const EditProfile = () => {
-  //   const formSchema = z.object({
-  //     username: z.string().min(2).max(50),
-  //   });
 
-  // 1. Define your form.
+const EditProfile = () => {
+  //  const {id} = useParams()
+  const { data: currentUser, isFetching: loading } = useGetCurrentUser();
   const form = useForm<z.infer<typeof EditPostValidation>>({
     resolver: zodResolver(EditPostValidation),
     defaultValues: {
@@ -30,6 +30,8 @@ const EditProfile = () => {
       bio: "",
     },
   });
+
+  console.log(currentUser);
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof EditPostValidation>) {
@@ -48,29 +50,7 @@ const EditProfile = () => {
         />
         <h1 className="text-2xl font-semibold ">Edit Profile</h1>
       </div>
-      {/* <div className="w-full mt-6">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input placeholder="shadcn" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit">Submit</Button>
-          </form>
-        </Form>
-      </div> */}
+
       <div className="w-full capitalize ">
         <Form {...form}>
           <form
@@ -84,7 +64,10 @@ const EditProfile = () => {
                 <FormItem>
                   <FormLabel className="shad-form_label">Add Images</FormLabel>
                   <FormControl>
-                    {/* <FileUploader fieldChange={field.onChange} mediaUrl={""} /> */}
+                    <FileUploader
+                      fieldChange={field.onChange}
+                      mediaUrl={currentUser?.imageUrl}
+                    />
                     Image
                   </FormControl>
                   <FormMessage className="shad-form_message" />
