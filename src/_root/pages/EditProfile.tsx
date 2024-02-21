@@ -44,24 +44,30 @@ const EditProfile = () => {
   // console.log(currentUser);
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof EditPostValidation>) {
+  async function onSubmit(values: z.infer<typeof EditPostValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
 
     // update user
-    const updatedPost = await updateUser({
-      ...values,
-      bio: values.bio,
-    });
+    // const updatedPost = await updateUser({
+    //   ...values,
+    //   bio: values.bio
+    //   userId: currentUser?.$id,
+    //   imageId: currentUser?.imageId,
+    //   imageUrl:
+    //   file: values.image
+    // });
 
-    if (!updatedPost) {
-      toast({
-        title: "Can't update the Post",
-        description: "please try again...",
-      });
-    }
+    // if (!updatedPost) {
+    //   toast({
+    //     title: "Can't update the Post",
+    //     description: "please try again...",
+    //   });
+    // }
 
-    return navigate(`/profile/${currentUser?.$id}`);
+    // return navigate(`/profile/${currentUser?.$id}`);
+
+    console.log(values);
   }
 
   return (
