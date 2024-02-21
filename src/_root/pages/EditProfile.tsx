@@ -10,7 +10,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useGetCurrentUser } from "@/lib/react-query/queriesAndMutations";
+import {
+  useGetCurrentUser,
+  useUpdateUser,
+} from "@/lib/react-query/queriesAndMutations";
 import { EditPostValidation } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -18,6 +21,12 @@ import { useParams } from "react-router-dom";
 import { z } from "zod";
 
 const EditProfile = () => {
+  const {
+    mutateAsync: updateUser,
+    isPending: updatingUser,
+    isError,
+  } = useUpdateUser();
+
   //  const {id} = useParams()
   const { data: currentUser, isFetching: loading } = useGetCurrentUser();
   const form = useForm<z.infer<typeof EditPostValidation>>({
@@ -37,6 +46,8 @@ const EditProfile = () => {
   function onSubmit(values: z.infer<typeof EditPostValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+
+    // update user
     console.log(values);
   }
 
