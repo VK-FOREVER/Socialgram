@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/use-toast";
 import {
   useGetCurrentUser,
   useUpdateUser,
@@ -17,16 +18,17 @@ import {
 import { EditPostValidation } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const EditProfile = () => {
+  const navigate = useNavigate();
   const {
     mutateAsync: updateUser,
     isPending: updatingUser,
     isError,
   } = useUpdateUser();
 
-  //  const {id} = useParams()
   const { data: currentUser, isFetching: loading } = useGetCurrentUser();
   const form = useForm<z.infer<typeof EditPostValidation>>({
     resolver: zodResolver(EditPostValidation),
@@ -39,7 +41,7 @@ const EditProfile = () => {
     },
   });
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof EditPostValidation>) {
@@ -47,7 +49,19 @@ const EditProfile = () => {
     // ✅ This will be type-safe and validated.
 
     // update user
-    console.log(values);
+    const updatedPost = await updateUser({
+      ...values,
+      bio: values.bio,
+    });
+
+    if (!updatedPost) {
+      toast({
+        title: "Can't update the Post",
+        description: "please try again...",
+      });
+    }
+
+    return navigate(`/profile/${currentUser?.$id}`);
   }
 
   return (
@@ -64,7 +78,7 @@ const EditProfile = () => {
       <div className="w-full capitalize ">
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit(onsubmit)}
             className="flex flex-col gap-9 w-full  "
           >
             <FormField
