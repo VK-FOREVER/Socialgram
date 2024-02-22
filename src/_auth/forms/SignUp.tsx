@@ -43,7 +43,7 @@ const SignUp = () => {
   const { mutateAsync: signInAccount, isPending: isSigningInUser } =
     useSignInAccount();
 
-  // Handler
+  // Form submit Handler
   const handleSignup = async (user: z.infer<typeof SignUpValidation>) => {
     try {
       const newUser = await createUserAccount(user);
