@@ -84,7 +84,7 @@ const EditProfile = () => {
       <div className="w-full capitalize ">
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onsubmit)}
+            onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col gap-9 w-full  "
           >
             <FormField
