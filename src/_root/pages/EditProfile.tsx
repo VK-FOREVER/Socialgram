@@ -57,14 +57,18 @@ const EditProfile = () => {
     // ✅ This will be type-safe and validated.
 
     // update user
-    // const updatedPost = await updateUser({
-    //   ...values,
-    //   bio: values.bio
-    //   userId: currentUser?.$id,
-    //   imageId: currentUser?.imageId,
-    //   imageUrl:
-    //   file: values.image
-    // });
+
+    // userId: string;
+    // name: string;
+    // bio: string;
+    // imageId: string;
+    // imageUrl: URL | string;
+    // file: File[];
+
+    const updatedPost = await updateUser({
+      ...values,
+      // bio: values.bio
+    });
 
     // if (!updatedPost) {
     //   toast({
