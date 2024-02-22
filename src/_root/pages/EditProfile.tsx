@@ -68,13 +68,13 @@ const EditProfile = () => {
     // imageUrl: URL | string;
     // file: File[];
 
-    const updatedPost = await updateUser({
-      ...values,
-      bio: values.bio,
-      userId: currentUser?.$id,
-      imageId: ID.unique(),
-      imageUrl: values.image[0].
-    });
+    // const updatedPost = await updateUser({
+    //   ...values,
+    //   bio: values.bio,
+    //   userId: currentUser?.$id,
+    //   imageId: ID.unique(),
+    //   imageUrl: values.image[0].
+    // });
 
     // if (!updatedPost) {
     //   toast({
