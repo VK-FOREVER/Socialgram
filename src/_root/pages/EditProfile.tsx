@@ -17,6 +17,7 @@ import {
 } from "@/lib/react-query/queriesAndMutations";
 import { EditPostValidation } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ID } from "appwrite";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -40,6 +41,8 @@ const EditProfile = () => {
       bio: "",
     },
   });
+
+  console.log(currentUser);
 
   // ITypeUser
   // export type IUpdateUser = {
@@ -65,10 +68,13 @@ const EditProfile = () => {
     // imageUrl: URL | string;
     // file: File[];
 
-    const updatedPost = await updateUser({
-      ...values,
-      // bio: values.bio
-    });
+    // const updatedPost = await updateUser({
+    //   ...values,
+    //   bio: values.bio,
+    //   userId: currentUser?.$id,
+    //   imageId: ID.unique(),
+    //   imageUrl: values.image[0].
+    // });
 
     // if (!updatedPost) {
     //   toast({
