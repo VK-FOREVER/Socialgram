@@ -41,6 +41,7 @@ const EditProfile = () => {
     },
   });
 
+  // ITypeUser
   // export type IUpdateUser = {
   //   userId: string;
   //   name: string;
