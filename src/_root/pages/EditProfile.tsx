@@ -42,6 +42,14 @@ const EditProfile = () => {
   });
 
   // console.log(currentUser);
+  // export type IUpdateUser = {
+  //   userId: string;
+  //   name: string;
+  //   bio: string;
+  //   imageId: string;
+  //   imageUrl: URL | string;
+  //   file: File[];
+  // };
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof EditPostValidation>) {
