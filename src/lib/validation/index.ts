@@ -26,7 +26,7 @@ export const PostValidation = z.object({
 });
 
 export const EditPostValidation = z.object({
-  image: z.custom<File[]>(),
+  file: z.custom<File[]>(),
   name: z.string().min(2, { message: "Enter your Valid Name" }),
   username: z.string().min(2, { message: "Too Short" }),
   email: z.string().email(),

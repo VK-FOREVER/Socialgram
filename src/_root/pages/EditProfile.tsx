@@ -18,6 +18,7 @@ import {
 import { EditPostValidation } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ID } from "appwrite";
+import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -34,7 +35,7 @@ const EditProfile = () => {
   const form = useForm<z.infer<typeof EditPostValidation>>({
     resolver: zodResolver(EditPostValidation),
     defaultValues: {
-      image: currentUser ? currentUser?.imageUrl : [],
+      file: currentUser ? currentUser?.imageUrl : [],
       name: currentUser ? currentUser?.name : "",
       username: currentUser ? currentUser?.username : "",
       email: currentUser ? currentUser?.email : "",
@@ -59,8 +60,6 @@ const EditProfile = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
 
-    // update user
-
     // userId: string;
     // name: string;
     // bio: string;
@@ -68,24 +67,25 @@ const EditProfile = () => {
     // imageUrl: URL | string;
     // file: File[];
 
-    // const updatedPost = await updateUser({
-    //   ...values,
-    //   bio: values.bio,
-    //   userId: currentUser?.$id,
-    //   imageId: ID.unique(),
-    //   imageUrl: values.image[0].path
-    // });
+    // update user
+    const updatedUser = await updateUser({
+      ...values,
+      userId: currentUser?.$id,
+      imageId: ID.unique(),
+      imageUrl: currentUser?.imageUrl,
+      bio: values.bio,
+    });
 
-    // if (!updatedPost) {
-    //   toast({
-    //     title: "Can't update the Post",
-    //     description: "please try again...",
-    //   });
-    // }
+    if (!updatedUser) {
+      toast({
+        title: "Can't update the User",
+        description: "please try again...",
+      });
+    }
 
-    // return navigate(`/profile/${currentUser?.$id}`);
+    return navigate(`/profile/${currentUser?.$id}`);
 
-    console.log(values);
+    // console.log(values);
   }
 
   return (
@@ -107,10 +107,12 @@ const EditProfile = () => {
           >
             <FormField
               control={form.control}
-              name="image"
+              name="file"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="shad-form_label">Add Images</FormLabel>
+                  <FormLabel className="shad-form_label">
+                    Add Profile Pic
+                  </FormLabel>
                   <FormControl>
                     <FileUploader
                       fieldChange={field.onChange}
@@ -201,10 +203,9 @@ const EditProfile = () => {
               <Button
                 className="shad-button_primary whitespace-nowrap "
                 type="submit"
-                //  disabled={updatingPost || creatingPost}
+                disabled={updatingUser}
               >
-                {/* {updatingPost || creatingPost ? <Loader /> : `${action} Post`} */}
-                update
+                {updatingUser ? <Loader /> : `Update User`}
               </Button>
             </div>
           </form>
