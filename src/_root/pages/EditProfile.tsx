@@ -42,7 +42,7 @@ const EditProfile = () => {
     },
   });
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   // ITypeUser
   // export type IUpdateUser = {
@@ -73,7 +73,7 @@ const EditProfile = () => {
     //   bio: values.bio,
     //   userId: currentUser?.$id,
     //   imageId: ID.unique(),
-    //   imageUrl: values.image[0].
+    //   imageUrl: values.image[0].path
     // });
 
     // if (!updatedPost) {
