@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -25,6 +24,7 @@ import { toast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import Loader from "../shared/Loader";
 
+// PostFrom type
 type PostFormProps = {
   post?: Models.Document;
   action: "Create" | "Update";
