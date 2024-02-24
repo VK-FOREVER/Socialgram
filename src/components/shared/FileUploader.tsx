@@ -15,6 +15,7 @@ const FileUploader = ({
 }: FileUploaderProps) => {
   const [fileUrl, setFileUrl] = useState(mediaUrl);
   const [dropFile, setDropFile] = useState<File[]>([]);
+  console.log(fileUrl);
 
   const onDrop = useCallback(
     (file: FileWithPath[]) => {
@@ -23,6 +24,7 @@ const FileUploader = ({
       fieldChange(file);
       setFileUrl(URL.createObjectURL(file[0]));
     },
+
     [dropFile]
   );
 
