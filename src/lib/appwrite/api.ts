@@ -227,7 +227,6 @@ export async function searchPosts(searchTerm: string) {
 
 // To get infinite Posts
 export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
-  
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
 
   if (pageParam) {
@@ -522,6 +521,8 @@ export async function updateUser(user: IUpdateUser) {
 
       // Get new file url
       const fileUrl = getFilePreview(uploadedFile.$id);
+      console.log(uploadedFile?.$id);
+
       if (!fileUrl) {
         await deleteFile(uploadedFile.$id);
         throw Error;
