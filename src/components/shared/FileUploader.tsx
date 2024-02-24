@@ -13,16 +13,16 @@ const FileUploader = ({
   mediaUrl,
   rounded,
 }: FileUploaderProps) => {
-  const [fileUrl, setFileUrl] = useState(mediaUrl);
+  const [fileUrl, setFileUrl] = useState(mediaUrl); // Post Image URL
   const [dropFile, setDropFile] = useState<File[]>([]);
   console.log(fileUrl);
 
   const onDrop = useCallback(
     (file: FileWithPath[]) => {
-      console.log(file);
       setDropFile(file);
       fieldChange(file);
       setFileUrl(URL.createObjectURL(file[0]));
+      console.log({ dropFile, fileUrl, fieldChange });
     },
 
     [dropFile]
@@ -31,7 +31,7 @@ const FileUploader = ({
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".png", ".jpeg", ".jpg", ".svg"],
+      "image/*": [".png", ".jpeg", ".jpg", ".svg", ".gif"],
     },
   });
 
