@@ -43,7 +43,7 @@ const EditProfile = () => {
     },
   });
 
-  // console.log(currentUser);
+  console.log(ID.unique());
 
   // ITypeUser
   // export type IUpdateUser = {
@@ -67,11 +67,13 @@ const EditProfile = () => {
     // imageUrl: URL | string;
     // file: File[];
 
+    // ERROR IN api.js (524, 203, 207) -> imageId XX
+
     // update user
     const updatedUser = await updateUser({
       ...values,
       userId: currentUser?.$id,
-      imageId: ID.unique(),
+      imageId: `${currentUser?.username}${currentUser?.$id}`,
       imageUrl: currentUser?.imageUrl,
       bio: values.bio,
     });
@@ -205,7 +207,7 @@ const EditProfile = () => {
                 type="submit"
                 disabled={updatingUser}
               >
-                {updatingUser ? <Loader /> : `Update User`}
+                {updatingUser || loading ? <Loader /> : `Update User`}
               </Button>
             </div>
           </form>

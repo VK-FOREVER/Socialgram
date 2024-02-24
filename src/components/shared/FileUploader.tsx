@@ -15,8 +15,6 @@ const FileUploader = ({
 }: FileUploaderProps) => {
   const [fileUrl, setFileUrl] = useState(mediaUrl); // Post Image URL
   const [dropFile, setDropFile] = useState<File[]>([]);
-  console.log(fileUrl);
-
   const onDrop = useCallback(
     (file: FileWithPath[]) => {
       setDropFile(file);
