@@ -200,7 +200,6 @@ export function getFilePreview(fileId: string) {
 // ============================== DELETE FILE
 export async function deleteFile(fileId: string) {
   try {
-    // Taking "Unique()" as "fileId"
     await storage.deleteFile(appwriteConfig.storageId, fileId);
 
     return { status: "ok" };
