@@ -29,6 +29,8 @@ const Profile = () => {
     return <Loader />;
   }
 
+  console.log(currentUser);
+
   if (gotError) {
     return (
       <div className="mt-20 flex items-center justify-center gap-4 flex-col">
