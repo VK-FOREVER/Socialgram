@@ -43,7 +43,7 @@ const EditProfile = () => {
     },
   });
 
-  console.log(ID.unique());
+  console.log(new Date().getTime());
 
   // ITypeUser
   // export type IUpdateUser = {
@@ -73,7 +73,7 @@ const EditProfile = () => {
     const updatedUser = await updateUser({
       ...values,
       userId: currentUser?.$id,
-      imageId: `${currentUser?.username}${currentUser?.$id}`,
+      imageId: `${new Date().getTime()}`,
       imageUrl: currentUser?.imageUrl,
       bio: values.bio,
     });
