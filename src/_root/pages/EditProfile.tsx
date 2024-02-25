@@ -73,7 +73,7 @@ const EditProfile = () => {
     const updatedUser = await updateUser({
       ...values,
       userId: currentUser?.$id,
-      imageId: `${new Date().getTime()}`,
+      imageId: currentUser?.imageId,
       imageUrl: currentUser?.imageUrl,
       bio: values.bio,
     });
