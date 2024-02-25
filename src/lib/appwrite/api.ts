@@ -395,21 +395,6 @@ export async function savePost(userId: string, postId: string) {
   }
 }
 
-// ============================GET SAVED POST
-// export async function getSavedPost(userId: string) {
-//   try {
-//     const savedPost = await databases.getDocument(
-//       appwriteConfig.databasesId,
-//       appwriteConfig.savesCollectionId,
-//       userId
-//     );
-
-//     return savedPost;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
 // ============================== DELETE SAVED POST
 export async function deleteSavedPost(savedRecordId: string) {
   try {
@@ -524,7 +509,7 @@ export async function updateUser(user: IUpdateUser) {
       // Get new file url
       const fileUrl = getFilePreview(uploadedFile.$id);
       //[uploadedFile?.$id] 65da2726c755ead6ae23
-      console.log(uploadedFile?.$id);
+      console.log({ uploadedFile, user });
 
       if (!fileUrl) {
         await deleteFile(uploadedFile.$id);
