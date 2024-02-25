@@ -202,7 +202,6 @@ export async function deleteFile(fileId: string) {
 
     return { status: "ok" };
   } catch (error) {
-    // [Error] writeException: Invalid `fileId` param: UID must contain at most 36 chars. Valid chars are a-z, A-Z, 0-9, and underscore. Can't start with a leading underscore
     console.log(error);
   }
 }
@@ -505,8 +504,6 @@ export async function updateUser(user: IUpdateUser) {
 
       // Get new file url
       const fileUrl = getFilePreview(uploadedFile.$id);
-      //[uploadedFile?.$id] 65da2726c755ead6ae23
-      console.log({ uploadedFile, user });
 
       if (!fileUrl) {
         await deleteFile(uploadedFile.$id);
@@ -543,7 +540,6 @@ export async function updateUser(user: IUpdateUser) {
     if (user.imageId && hasFileToUpdate) {
       await deleteFile(user.imageId);
     }
-    console.log(user);
 
     return updatedUser;
   } catch (error) {

@@ -43,31 +43,12 @@ const EditProfile = () => {
     },
   });
 
-  // ITypeUser
-  // export type IUpdateUser = {
-  //   userId: string;
-  //   name: string;
-  //   bio: string;
-  //   imageId: string;
-  //   imageUrl: URL | string;
-  //   file: File[];
-  // };
-
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof EditPostValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
 
-    // userId: string;
-    // name: string;
-    // bio: string;
-    // imageId: string;
-    // imageUrl: URL | string;
-    // file: File[];
-
-    // ERROR IN api.js (524, 203, 207) -> imageId XX
-
-    // update user
+    // update the user
     const updatedUser = await updateUser({
       ...values,
       userId: currentUser?.$id,
@@ -84,8 +65,6 @@ const EditProfile = () => {
     }
 
     return navigate(`/profile/${currentUser?.$id}`);
-
-    // console.log(values);
   }
 
   return (
