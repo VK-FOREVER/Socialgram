@@ -43,8 +43,6 @@ const EditProfile = () => {
     },
   });
 
-  console.log(new Date().getTime());
-
   // ITypeUser
   // export type IUpdateUser = {
   //   userId: string;
