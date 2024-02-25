@@ -20,7 +20,6 @@ const FileUploader = ({
       setDropFile(file);
       fieldChange(file);
       setFileUrl(URL.createObjectURL(file[0]));
-      console.log({ dropFile, fileUrl, fieldChange });
     },
 
     [dropFile]

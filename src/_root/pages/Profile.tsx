@@ -29,7 +29,7 @@ const Profile = () => {
     return <Loader />;
   }
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   if (gotError) {
     return (

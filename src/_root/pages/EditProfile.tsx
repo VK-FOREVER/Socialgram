@@ -1,4 +1,5 @@
 import FileUploader from "@/components/shared/FileUploader";
+import Loader from "@/components/shared/Loader";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,19 +18,13 @@ import {
 } from "@/lib/react-query/queriesAndMutations";
 import { EditPostValidation } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ID } from "appwrite";
-import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const EditProfile = () => {
   const navigate = useNavigate();
-  const {
-    mutateAsync: updateUser,
-    isPending: updatingUser,
-    isError,
-  } = useUpdateUser();
+  const { mutateAsync: updateUser, isPending: updatingUser } = useUpdateUser();
 
   const { data: currentUser, isFetching: loading } = useGetCurrentUser();
   const form = useForm<z.infer<typeof EditPostValidation>>({
