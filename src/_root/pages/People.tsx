@@ -35,7 +35,9 @@ const People = () => {
                 alt={`${creator.name}'s post`}
               />
               <h4 className="text-light-1 text-base font-semibold max-w-[105px] w-[104px]">
-                {creator.name}
+                {creator.name.length >= 11
+                  ? `${creator.name.slice(0, 9)}..`
+                  : creator.name}
               </h4>
               <span className="text-light-3 text-xs">@{creator.username}</span>
               {creator.$id !== user.id ? (
