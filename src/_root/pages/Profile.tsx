@@ -28,8 +28,8 @@ const Profile = () => {
   if (loading) {
     return <Loader />;
   }
-
-  // console.log(currentUser);
+  const unAuthorized = currentUser?.$id !== user.id;
+  console.log(currentUser);
 
   if (gotError) {
     return (
@@ -71,7 +71,7 @@ const Profile = () => {
               >
                 <img src="assets/icons" alt="" />
                 <span className="text-primary-600 text-xl font-semibold">
-                  2K
+                  {currentUser?.posts.length}
                 </span>
                 <span className="text-light-2">Posts</span>
               </div>
@@ -89,7 +89,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {user.id === currentUser?.$id ? (
+          {!unAuthorized ? (
             <div className="flex items-end justify-center hover:hover-shadow ">
               <Link to={`/edit-profile/${user?.id}`}>
                 <Button className="px-4 py-2 gap-2" variant="outline">
@@ -133,31 +133,46 @@ const Profile = () => {
               All Posts
             </Button>
           </Link>
-
-          <Link to={`/profile/${id}/liked-posts`}>
+          {!unAuthorized ? (
+            <Link to={`/profile/${id}/liked-posts`}>
+              <Button
+                variant={
+                  pathname === `/profile/${id}/liked-posts`
+                    ? "outline"
+                    : "default"
+                }
+                className={`profile-tab px-4 py-3 rounded-lg hover:hover-shadow ${
+                  pathname === `/profile/${id}/liked-posts` && "!bg-dark-3"
+                }`}
+              >
+                <img
+                  src={
+                    pathname === `/profile/${id}/liked-posts`
+                      ? "/assets/icons/liked.svg"
+                      : "/assets/icons/like.svg"
+                  }
+                  alt="like"
+                  width={20}
+                  height={20}
+                />
+                Liked Posts
+              </Button>
+            </Link>
+          ) : (
             <Button
-              variant={
-                pathname === `/profile/${id}/liked-posts`
-                  ? "outline"
-                  : "default"
-              }
-              className={`profile-tab px-4 py-3 rounded-lg hover:hover-shadow ${
-                pathname === `/profile/${id}/liked-posts` && "!bg-dark-3"
-              }`}
+              variant="default"
+              className={`profile-tab px-4 py-3 rounded-lg hover:hover-shadow `}
+              disabled={unAuthorized}
             >
               <img
-                src={
-                  pathname === `/profile/${id}/liked-posts`
-                    ? "/assets/icons/liked.svg"
-                    : "/assets/icons/like.svg"
-                }
+                src="/assets/icons/lock.svg"
                 alt="like"
                 width={20}
                 height={20}
               />
               Liked Posts
             </Button>
-          </Link>
+          )}
         </div>
         <div className="w-full max-w-5xl">
           <Routes>
@@ -171,7 +186,7 @@ const Profile = () => {
                 />
               }
             />
-            {currentUser?.$id === user.id && (
+            {!unAuthorized && (
               <Route
                 path="/liked-posts"
                 element={<LikedPosts likedPosts={currentUser?.liked} />}
