@@ -29,7 +29,7 @@ const Profile = () => {
     return <Loader />;
   }
   const unAuthorized = currentUser?.$id !== user.id;
-  console.log(currentUser);
+  // console.log(currentUser);
 
   if (gotError) {
     return (
