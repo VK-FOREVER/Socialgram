@@ -46,7 +46,7 @@ const EditProfile = () => {
     // update the user
     const updatedUser = await updateUser({
       ...values,
-      userId: currentUser?.$id,
+      userId: currentUser ? currentUser?.$id : "",
       imageId: currentUser?.imageId,
       imageUrl: currentUser?.imageUrl,
       bio: values.bio,
