@@ -77,7 +77,7 @@ const SignIn = () => {
             <h2 className="h3-bold md:h2-bold pt-6 md:pt-4">
               Log In to existing Account
             </h2>
-            <p className="text-light-3 small-medium md:base-regular mt-4 ">
+            <p className="text-light-2 small-medium md:base-regular mt-4 ">
               Please Enter your Email and Password
             </p>
           </div>
@@ -130,7 +130,7 @@ const SignIn = () => {
               Don't have an account?
               <Link
                 to="/sign-up"
-                className="text-primary-600 text-small-semibold ml-1"
+                className="text-primary-500 text-small-semibold ml-1"
               >
                 Create an Account
               </Link>

@@ -20,7 +20,7 @@ const Authlayout = () => {
             autoPlay={true}
             loop
             muted
-            className="sm:w-0 xl:block  w-full  h-full  object-cover"
+            className="max-sm:w-[500px] xl:block  w-full  h-full  object-cover"
           />
         </main>
       )}

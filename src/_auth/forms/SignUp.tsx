@@ -86,13 +86,13 @@ const SignUp = () => {
   return (
     <>
       <Form {...form}>
-        <div className="sm:w-[555px] flex-center flex-col bg-[#00000080]  p-4 ">
+        <div className="sm:w-[450px] flex-center flex-col bg-[#00000080] w-[500px]  py-4 px-9">
           <div className="flex flex-1 items-center justify-center flex-col w-full pt-4">
             <img src="/assets/images/logo.svg" alt="Social Gram" />
             <h2 className="h3-bold md:h2-bold pt-6 md:pt-4">
               Create an account
             </h2>
-            <p className="text-light-3 small-medium md:base-regular mt-4 ">
+            <p className="text-light-2 small-medium md:base-regular mt-4 ">
               Please enter your details to join SocialGram
             </p>
           </div>
@@ -185,7 +185,7 @@ const SignUp = () => {
               Already have an account?
               <Link
                 to="/sign-in"
-                className="text-primary-600 text-small-semibold ml-1"
+                className="text-primary-500 text-small-semibold ml-1"
               >
                 Log in
               </Link>
