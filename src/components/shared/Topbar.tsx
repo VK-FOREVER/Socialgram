@@ -18,7 +18,7 @@ const Topbar = () => {
 
   return (
     <div className="topbar">
-      <div className="flex-between py-4 px-5">
+      <div className="flex-between py-4 px-5 items-center justify-center">
         <Link to="/" className="flex gap-3 items-center">
           <img
             src="/assets/images/socialgram1.png"
@@ -26,12 +26,8 @@ const Topbar = () => {
             width={170}
           />
         </Link>
-        <div className="flex gap-4">
-          <Button
-            className="shad-button_ghost"
-            variant="ghost"
-            onClick={() => signOut()}
-          >
+        <div className="flex gap-4 items-center justify-center">
+          <Button className="w-10" variant="ghost" onClick={() => signOut()}>
             <img src="/assets/icons/logout.svg" alt="logout" />
           </Button>
           <Link to={`/profile/${user.id}`} className="flex-center gap-3 ">
