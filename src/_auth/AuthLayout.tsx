@@ -12,9 +12,11 @@ const Authlayout = () => {
           <section className="flex flex-1 justify-center items-center flex-col ">
             <Outlet />
           </section>
-          <img
-            src="/assets/images/side-img.svg"
-            alt="Login-Form"
+          <video
+            src="/assets/video/pictures.mp4"
+            autoPlay={true}
+            loop
+            muted
             className="hidden xl:block h-screen w-1/2 bg-no-repeat object-cover"
           />
         </>
