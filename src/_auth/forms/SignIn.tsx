@@ -74,8 +74,8 @@ const SignIn = () => {
         <div className="sm:w-450 flex-center flex-col bg-[#00000080] w-[500px] p-9 rounded-3xl">
           <div className="flex flex-1 items-center justify-center flex-col w-full pt-4 ">
             <img
-              src="/assets/images/socialgram.png"
-              className=""
+              src="/assets/images/socialgram1.png"
+              className="w-[200px]"
               alt="Social Gram"
             />
             <h2 className="h3-bold md:h2-bold pt-6 md:pt-4">
