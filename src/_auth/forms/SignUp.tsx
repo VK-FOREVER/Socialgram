@@ -87,9 +87,13 @@ const SignUp = () => {
     <>
       <Form {...form}>
         <div className="sm:w-[450px] flex-center flex-col bg-[#00000080] w-[500px]  py-4 px-9">
-          <div className="flex flex-1 items-center justify-center flex-col w-full pt-4">
-            <img src="/assets/images/logo.svg" alt="Social Gram" />
-            <h2 className="h3-bold md:h2-bold pt-6 md:pt-4">
+          <div className="flex flex-1 items-center justify-center flex-col w-full pt-2">
+            <img
+              src="/assets/images/socialgram1.png"
+              className="w-[200px]"
+              alt="Social Gram"
+            />
+            <h2 className="h3-bold md:h2-bold pt-6 md:pt-2">
               Create an account
             </h2>
             <p className="text-light-2 small-medium md:base-regular mt-4 ">
