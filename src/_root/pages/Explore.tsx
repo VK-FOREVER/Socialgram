@@ -22,8 +22,9 @@ const Explore = () => {
   // Show the Results when user searched something
   const showResults = searchTerm !== "";
   // Show the Posts when user searched and post is true
-  const showPosts =
-    !showResults && posts?.pages.every((post) => post?.documents.length === 0);
+  const showPosts = Boolean(
+    !showResults && posts?.pages.every((post) => post?.documents.length === 0)
+  );
 
   useEffect(() => {
     if (inView && !searchTerm) {
