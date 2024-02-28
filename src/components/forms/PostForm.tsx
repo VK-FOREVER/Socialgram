@@ -81,7 +81,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
       });
     }
     navigate("/");
-    console.log(values);
+    // console.log(values);
   }
 
   return (
