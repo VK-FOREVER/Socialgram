@@ -29,7 +29,6 @@ const Profile = () => {
     return <Loader />;
   }
   const unAuthorized = currentUser?.$id !== user.id;
-  // console.log(currentUser);
 
   if (gotError) {
     return (
@@ -57,10 +56,13 @@ const Profile = () => {
               </span>
               <div className="w-full text-justify text-base leading-6 tracking-tighter">
                 <span className="text-light-2 ">
-                  {currentUser?.bio
-                    ? currentUser.bio
-                    : `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolore quis sapiente iusto repellendus, culpa quas!`}
+                  {currentUser?.bio ? (
+                    currentUser.bio
+                  ) : (
+                    <span className="text-sm text-light-3 italic">
+                      "Add your bio by editing profile"
+                    </span>
+                  )}
                 </span>
               </div>
             </div>
