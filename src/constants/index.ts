@@ -26,8 +26,8 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/icons/chat.svg",
-    route: "/comments",
-    label: "Comments",
+    route: "/chats",
+    label: "Chats",
   },
 ];
 
