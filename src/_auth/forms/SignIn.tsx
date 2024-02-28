@@ -36,7 +36,7 @@ const SignIn = () => {
   const { mutateAsync: signInAccount, isPending: isSigningInUser } =
     useSignInAccount();
 
-  // Handler
+  // SignUp Function
   const handleSignup = async (user: z.infer<typeof SignInValidation>) => {
     try {
       const session = await signInAccount({
