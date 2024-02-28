@@ -12,7 +12,7 @@ const RootLayout = () => {
       <Topbar />
       <LeftSidebar />
 
-      <section className="flex flex-1 h-full">
+      <section className="flex flex-1 h-full overflow-y-scroll custom-scrollbar">
         <Outlet />
       </section>
       {/* Only show top creators in Home route */}
