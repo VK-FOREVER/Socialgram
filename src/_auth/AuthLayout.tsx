@@ -1,8 +1,9 @@
 import { Outlet, Navigate } from "react-router-dom";
 import Pictures from "/assets/video/pictures.mp4";
+import { useUserContext } from "@/context/AuthContext";
 
 const Authlayout = () => {
-  const isAuthenticated = false;
+  const { isAuthenticated } = useUserContext();
 
   return (
     <>
