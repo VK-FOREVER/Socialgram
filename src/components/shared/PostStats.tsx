@@ -16,11 +16,14 @@ type PostStatsProps = {
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
   const likeList = post?.likes.map((user: Models.Document) => user.$id);
+  const savePostLength = post?.save.length;
   const { data: currentUser } = useGetCurrentUser();
 
   const hasSaved = currentUser?.save.find(
     (record: Models.Document) => record.post.$id === post?.$id
   );
+
+  // console.log(savePostsz);
 
   useEffect(() => {
     setIsSaved(hasSaved ? true : false);
@@ -85,14 +88,19 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
             <Loader />
           </span>
         ) : (
-          <img
-            src={isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"}
-            alt="like"
-            width={20}
-            height={20}
-            onClick={handleSavePosts}
-            className="cursor-pointer"
-          />
+          <div className="flex gap-2 mr-5 items-center justify-center">
+            <img
+              src={
+                isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"
+              }
+              alt="like"
+              width={20}
+              height={20}
+              onClick={handleSavePosts}
+              className="cursor-pointer"
+            />
+            <p className="small-medium lg:base-medium">{savePostLength}</p>
+          </div>
         )}
       </div>
     </div>
