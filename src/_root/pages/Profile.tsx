@@ -72,20 +72,20 @@ const Profile = () => {
               ustify-start"
               >
                 <img src="assets/icons" alt="" />
-                <span className="text-primary-600 text-xl font-semibold">
+                <span className="text-primary-500 text-xl font-semibold">
                   {currentUser?.posts.length}
                 </span>
                 <span className="text-light-2">Posts</span>
               </div>
               <div className="flex items-center flex-col justify-center">
-                <span className="text-primary-600 text-xl font-semibold">
-                  2M
+                <span className="text-primary-500 text-xl font-semibold">
+                  0
                 </span>
                 <span className="text-light-2">Followers</span>
               </div>
               <div className="flex items-center flex-col justify-center">
-                <span className="text-primary-600 text-xl font-semibold">
-                  2
+                <span className="text-primary-500 text-xl font-semibold">
+                  0
                 </span>
                 <span className="text-light-2">Following</span>
               </div>
