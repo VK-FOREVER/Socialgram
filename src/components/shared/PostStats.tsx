@@ -85,7 +85,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
       <div className="flex gap-2 items-center justify-center">
         {savingPost || deletingPost ? (
           <span className="w-4 h-4">
-            <Loader />
+            <Loader showTxt={false} />
           </span>
         ) : (
           <div className="flex gap-2 mr-5 items-center justify-center">

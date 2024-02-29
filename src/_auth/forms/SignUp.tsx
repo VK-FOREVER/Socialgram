@@ -180,7 +180,7 @@ const SignUp = () => {
             />
             <Button type="submit" className="shad-button_primary">
               {isCreatingAccount || isUserLoading || isSigningInUser ? (
-                <Loader />
+                <Loader showTxt={false} />
               ) : (
                 "Sign up"
               )}

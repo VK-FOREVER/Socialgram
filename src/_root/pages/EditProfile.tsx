@@ -179,7 +179,11 @@ const EditProfile = () => {
                 type="submit"
                 disabled={updatingUser}
               >
-                {updatingUser || loading ? <Loader /> : `Update User`}
+                {updatingUser || loading ? (
+                  <Loader showTxt={false} />
+                ) : (
+                  `Update User`
+                )}
               </Button>
             </div>
           </form>
