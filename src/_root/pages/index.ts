@@ -9,3 +9,4 @@ export { default as People } from "./People";
 export { default as Explore } from "./Explore";
 export { default as LikedPosts } from "./LikedPosts";
 export { default as EditProfile } from "./EditProfile";
+export { default as Chats } from "./Chats";

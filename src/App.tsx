@@ -3,6 +3,7 @@ import SignIn from "./_auth/forms/SignIn";
 import SignUp from "./_auth/forms/SignUp";
 import RootLayout from "./_root/RootLayout";
 import {
+  Chats,
   CreatePost,
   EditPost,
   EditProfile,
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/update-profile/:id" element={<UpdateProfile />} />
           <Route path="/liked-posts" element={<LikedPosts likedPosts={[]} />} />
           <Route path="/edit-profile/:id" element={<EditProfile />} />
+          <Route path="/chats" element={<Chats />} />
         </Route>
       </Routes>
       <Toaster />
