@@ -18,8 +18,16 @@ const Save = () => {
   if (isFetching) {
     return <Loader />;
   }
-  // console.log(savePosts);
 
+  if (savePosts) {
+    return (
+      <div className="flex items-center justify-center mx-auto ">
+        <span className="text-base text-light-3">
+          You don't have saved Posts.
+        </span>
+      </div>
+    );
+  }
   return (
     <div className="saved-container">
       <div className="w-full flex items-center justify-start">
