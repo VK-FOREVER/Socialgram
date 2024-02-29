@@ -5,12 +5,13 @@ import { Models } from "appwrite";
 
 const Save = () => {
   const { data: currentUser, isFetching } = useGetCurrentUser();
+  const savedPost = currentUser?.save;
 
-  const savePosts = currentUser?.save
+  const savePosts = savedPost
     .map((savePost: Models.Document) => ({
       ...savePost.post,
       creator: {
-        imageUrl: currentUser.imageUrl,
+        imageUrl: currentUser?.imageUrl,
       },
     }))
     .reverse();
@@ -19,7 +20,7 @@ const Save = () => {
     return <Loader />;
   }
 
-  if (savePosts) {
+  if (!savedPost.length) {
     return (
       <div className="flex items-center justify-center mx-auto ">
         <span className="text-base text-light-3">
