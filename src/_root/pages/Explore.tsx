@@ -94,7 +94,7 @@ const Explore = () => {
         {showResults ? (
           <SearchResults searching={searching} searchedPosts={searchedPosts} />
         ) : showPosts ? (
-          <p className="text-light-4 mt-10 text-center w-full">
+          <p className="text-light-3 mt-10 text-center w-full">
             End of the Posts.
           </p>
         ) : (
@@ -108,7 +108,7 @@ const Explore = () => {
           <Loader />
         </div>
       ) : (
-        <p className="text-light-2 text-base text-center">End of the Posts</p>
+        <p className="text-light-3 text-base text-center">End of the Posts</p>
       )}
     </div>
   );
