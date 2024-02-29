@@ -30,14 +30,14 @@ const Explore = () => {
     if (inView && !searchTerm) {
       fetchNextPage();
     }
-    console.log({
-      hasNextPage,
-      showResults,
-      showPosts,
-      searchTerm,
-      inView,
-      ref,
-    });
+    // console.log({
+    //   hasNextPage,
+    //   showResults,
+    //   showPosts,
+    //   searchTerm,
+    //   inView,
+    //   ref,
+    // });
   }, [inView, searchTerm]);
 
   if (!posts) {
