@@ -1,3 +1,4 @@
+import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
 import PostStats from "@/components/shared/PostStats";
 import { Button } from "@/components/ui/button";
@@ -5,16 +6,19 @@ import { useUserContext } from "@/context/AuthContext";
 import {
   useDeletePost,
   useGetPostById,
+  useGetUserPosts,
 } from "@/lib/react-query/queriesAndMutations";
 import { timeAgo } from "@/lib/utils";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
-  const { user } = useUserContext();
+  const navigate = useNavigate();
   const { data: post, isPending } = useGetPostById(id || "");
   const { mutate: deletePost } = useDeletePost();
+  const currentUser = post?.creator.$id;
+  const { data: relatedPosts, isFetching } = useGetUserPosts(currentUser);
+  const { user } = useUserContext();
 
   const handleDeletePost = () => {
     if (post) {
@@ -106,6 +110,20 @@ const PostDetails = () => {
           <div className="w-full">
             <PostStats post={post} userId={user.id} />
           </div>
+        </div>
+      </div>
+      <div className="bg-slate-800 w-full p-[0.4px]" />
+      <div className="w-full py-4">
+        <h1 className="text-2xl font-semibold items-start mb-6">
+          Related Posts
+        </h1>
+
+        <div className="w-full flex flex-col items-center justify-center ">
+          {isFetching ? (
+            <Loader showTxt={false} />
+          ) : (
+            <GridPost posts={relatedPosts?.documents} />
+          )}
         </div>
       </div>
     </div>
