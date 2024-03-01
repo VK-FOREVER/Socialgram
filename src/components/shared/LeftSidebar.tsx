@@ -5,6 +5,7 @@ import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
 import { useUserContext } from "@/context/AuthContext";
 import { sidebarLinks } from "@/constants";
 import { INavLink } from "@/types";
+import Loader from "./Loader";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ const LeftSidebar = () => {
     if (isSuccess) {
       navigate(0);
     }
-    // console.log(pathname);
   }, [isSuccess]);
 
   return (
@@ -29,17 +29,24 @@ const LeftSidebar = () => {
             width={170}
           />
         </Link>
-        <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
-          <img
-            src={user.imageUrl || "/assets/images/profile-placeholder.svg"}
-            alt={user.name}
-            className="h-14 w-14 rounded-full"
-          />
-          <div className="flex flex-col">
-            <p className="body-bold"> {user.name}</p>
-            <p className="small-regular text-light-3 mt-2">@{user.username}</p>
-          </div>
-        </Link>
+        {user.imageUrl ? (
+          <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
+            <img
+              src={user.imageUrl}
+              alt={user.name}
+              className="h-14 w-14 rounded-full"
+            />
+
+            <div className="flex flex-col">
+              <p className="body-bold"> {user.name}</p>
+              <p className="small-regular text-light-3 mt-2">
+                @{user.username}
+              </p>
+            </div>
+          </Link>
+        ) : (
+          <Loader showTxt={false} />
+        )}
         <ul className="flex flex-col gap-6">
           {sidebarLinks.map((link: INavLink, idx) => {
             const active = pathname === link.route;
