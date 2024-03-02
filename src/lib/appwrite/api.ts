@@ -233,7 +233,7 @@ export async function searchPosts(searchTerm: string) {
 // To get infinite Posts
 export const getInfinitePosts: QueryFunction<LastPageParam, string[]> = async ({
   pageParam,
-}) => {
+}: LastPageParam) => {
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
 
   if (pageParam) {
