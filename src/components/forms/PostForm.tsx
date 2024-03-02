@@ -112,7 +112,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
             name="file"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Add Images</FormLabel>
+                <FormLabel className="shad-form_label">Add Image</FormLabel>
                 <FormControl>
                   <FileUploader
                     fieldChange={field.onChange}
@@ -147,7 +147,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="shad-form_label">
-                  Add Tags(separated by comma " , ")
+                  Add Tags (separated by comma " , ")
                 </FormLabel>
                 <FormControl>
                   <Input
