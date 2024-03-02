@@ -5,7 +5,6 @@ import {
   INewPost,
   INewUser,
   IUpdateUser,
-  FetchPostsParams,
   LastPageParam,
 } from "@/types";
 import { QueryFunction } from "@tanstack/react-query";
@@ -232,9 +231,10 @@ export async function searchPosts(searchTerm: string) {
 }
 
 // To get infinite Posts
-export async function getInfinitePosts({ pageParam }: FetchPostsParams) {
+export const getInfinitePosts: QueryFunction<LastPageParam, string[]> = async ({
+  pageParam,
+}) => {
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
-  // console.log("pageParam", pageParam);
 
   if (pageParam) {
     queries.push(Query.cursorAfter(pageParam.toString()));
@@ -242,19 +242,18 @@ export async function getInfinitePosts({ pageParam }: FetchPostsParams) {
 
   try {
     const posts = await databases.listDocuments(
-      appwriteConfig.databasesId,
-      appwriteConfig.postsCollectionId,
+      appwriteConfig?.databasesId,
+      appwriteConfig?.postsCollectionId,
       queries
     );
 
     if (!posts) throw Error;
-    // console.log("posts", posts);
 
     return posts;
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 // ============================== GET POST BY ID
 export async function getPostById(postId?: string) {

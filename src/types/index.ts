@@ -60,10 +60,6 @@ export type IContextType = {
 };
 
 export type LastPageParam = {
-  total: number;
-  documents: Models.Document[];
-};
-
-export type FetchPostsParams = {
-  pageParam?: string; // Adjust the type according to your requirements
+  lastPage: Models.Document[];
+  pageParam?: string;
 };
