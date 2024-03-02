@@ -1,6 +1,15 @@
 import { ID, Query } from "appwrite";
 import { appwriteConfig, account, databases, storage, avatars } from "./config";
-import { IUpdatePost, INewPost, INewUser, IUpdateUser } from "@/types";
+import {
+  IUpdatePost,
+  INewPost,
+  INewUser,
+  IUpdateUser,
+  FetchPostsParams,
+  LastPageParam,
+} from "@/types";
+import { QueryFunction } from "@tanstack/react-query";
+import { QUERY_KEYS } from "../react-query/queryKeys";
 
 // ============================================================
 // AUTH
@@ -223,7 +232,7 @@ export async function searchPosts(searchTerm: string) {
 }
 
 // To get infinite Posts
-export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
+export async function getInfinitePosts({ pageParam }: FetchPostsParams) {
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
   // console.log("pageParam", pageParam);
 

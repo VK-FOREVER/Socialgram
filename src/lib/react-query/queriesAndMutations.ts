@@ -26,7 +26,14 @@ import {
   savePost,
   deleteSavedPost,
 } from "@/lib/appwrite/api";
-import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
+import {
+  INewPost,
+  INewUser,
+  IUpdatePost,
+  IUpdateUser,
+  LastPageParam,
+} from "@/types";
+import { any, number } from "zod";
 
 // ============================================================
 // AUTH QUERIES
@@ -59,16 +66,17 @@ export const useGetPosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
     queryFn: getInfinitePosts,
-    getNextPageParam: (lastPage) => {
+    getNextPageParam: (lastPage: LastPageParam) => {
       // If there's no data, there are no more pages.
+
       if (lastPage && lastPage.documents.length === 0) {
         return null;
       }
 
-      // Use the $id of the last document as the cursor.
       const lastId = lastPage?.documents[lastPage.documents.length - 1].$id;
-      console.log(lastId);
-      return lastId;
+
+      console.log({ lastId, lastPage });
+      return lastId as string;
     },
   });
 };

@@ -1,3 +1,6 @@
+import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
+import { Models } from "appwrite";
+
 export type INavLink = {
   imgURL: string;
   route: string;
@@ -54,4 +57,13 @@ export type IContextType = {
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   checkAuthUser: () => Promise<boolean>;
+};
+
+export type LastPageParam = {
+  total: number;
+  documents: Models.Document[];
+};
+
+export type FetchPostsParams = {
+  pageParam?: string; // Adjust the type according to your requirements
 };
