@@ -14,7 +14,6 @@ import {
   PostDetails,
   Profile,
   Save,
-  UpdateProfile,
 } from "./_root/pages";
 import { Toaster } from "./components/ui/toaster";
 import "./globals.css";
@@ -40,7 +39,6 @@ const App = () => {
           <Route path="/update-post/:id" element={<EditPost />} />
           <Route path="/posts/:id" element={<PostDetails />} />
           <Route path="/profile/:id/*" element={<Profile />} />
-          <Route path="/update-profile/:id" element={<UpdateProfile />} />
           <Route path="/liked-posts" element={<LikedPosts likedPosts={[]} />} />
           <Route path="/edit-profile/:id" element={<EditProfile />} />
           <Route path="/chats" element={<Chats />} />
