@@ -49,8 +49,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
     },
   });
 
-  // console.log(post);
-
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     if (post && action === "Update") {
       const updatedPost = await updatePost({
@@ -66,7 +64,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
           description: "please try again...",
         });
       }
-
       return navigate(`/posts/${post.$id}`);
     }
 
@@ -82,6 +79,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
     }
     navigate("/");
   }
+
+  const cancleForm = () => {
+    form.reset();
+    navigate(-1);
+  };
 
   return (
     <div className="w-full capitalize ">
@@ -162,7 +164,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
             )}
           />
           <div className="flex gap-4 items-center justify-end">
-            <Button type="button" className="shad-button_dark_4 ">
+            <Button
+              type="button"
+              className="shad-button_dark_4 "
+              onClick={cancleForm}
+            >
               Cancel
             </Button>
             <Button
