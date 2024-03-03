@@ -193,7 +193,7 @@
 
   /* File uploader */
   .file_uploader-img {
-    @apply object-contain h-40 lg:h-96 w-full rounded-[24px]  object-top;
+    @apply object-contain h-40 lg:h-60 w-full rounded-[24px]  object-top;
   }
 
   .file_uploader-label {
