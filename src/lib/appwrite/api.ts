@@ -231,9 +231,7 @@ export async function searchPosts(searchTerm: string) {
 }
 
 // To get infinite Posts
-export const getInfinitePosts: QueryFunction<LastPageParam, string[]> = async ({
-  pageParam,
-}: LastPageParam) => {
+export async function getInfinitePosts({ pageParam }: LastPageParam) {
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
 
   if (pageParam) {
@@ -242,8 +240,8 @@ export const getInfinitePosts: QueryFunction<LastPageParam, string[]> = async ({
 
   try {
     const posts = await databases.listDocuments(
-      appwriteConfig?.databasesId,
-      appwriteConfig?.postsCollectionId,
+      appwriteConfig.databasesId,
+      appwriteConfig.postsCollectionId,
       queries
     );
 
@@ -253,7 +251,7 @@ export const getInfinitePosts: QueryFunction<LastPageParam, string[]> = async ({
   } catch (error) {
     console.log(error);
   }
-};
+}
 
 // ============================== GET POST BY ID
 export async function getPostById(postId?: string) {

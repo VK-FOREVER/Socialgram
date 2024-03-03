@@ -4,41 +4,41 @@ import SearchResults from "@/components/shared/SearchResults";
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
 import {
-  useGetPosts,
+  // useGetPosts,
   useSearchPosts,
 } from "@/lib/react-query/queriesAndMutations";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Explore = () => {
-  const { ref, inView } = useInView();
+  // const { ref, inView } = useInView();
   const [searchTerm, setSearchTerm] = useState("");
   const debounceValue = useDebounce(searchTerm, 888);
   // Mutations
-  const { data: posts, fetchNextPage, hasNextPage } = useGetPosts();
+  // const { data: posts, hasNextPage } = useGetPosts();
   const { data: searchedPosts, isFetching: searching } =
     useSearchPosts(debounceValue);
 
   // Show the Results when user searched something
   const showResults = searchTerm !== "";
   // Show the Posts when user searched and post is true
-  const showPosts = Boolean(
-    !showResults && posts?.pages.every((post) => post?.documents.length === 0)
-  );
+  // const showPosts = Boolean(
+  //   !showResults && posts?.pages.every((post) => post?.documents.length === 0)
+  // );
 
-  useEffect(() => {
-    if (inView && !searchTerm) {
-      fetchNextPage();
-    }
-  }, [inView, searchTerm]);
+  // useEffect(() => {
+  //   if (inView && !searchTerm) {
+  //     fetchNextPage();
+  //   }
+  // }, [inView, searchTerm]);
 
-  if (!posts) {
-    return (
-      <div className="flex-center w-full h-full">
-        <Loader />
-      </div>
-    );
-  }
+  // if (!posts) {
+  //   return (
+  //     <div className="flex-center w-full h-full">
+  //       <Loader />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="explore-container">
@@ -83,7 +83,11 @@ const Explore = () => {
       </div>
 
       <div className="flex flex-wrap gap-9 w-full max-w-5xl">
-        {showResults ? (
+        {showResults && (
+          <SearchResults searching={searching} searchedPosts={searchedPosts} />
+        )}
+
+        {/* {showResults ? (
           <SearchResults searching={searching} searchedPosts={searchedPosts} />
         ) : showPosts ? (
           <p className="text-light-3 mt-10 text-center w-full">
@@ -93,15 +97,15 @@ const Explore = () => {
           posts?.pages.map((item, index) => (
             <GridPost key={`page-${index}`} posts={item?.documents} />
           ))
-        )}
+        )} */}
       </div>
-      {hasNextPage && !searchTerm ? (
+      {/* {hasNextPage && !searchTerm ? (
         <div ref={ref} className="mt-10">
           <Loader />
         </div>
       ) : (
         <p className="text-light-3 text-base text-center">End of the Posts</p>
-      )}
+      )} */}
     </div>
   );
 };
