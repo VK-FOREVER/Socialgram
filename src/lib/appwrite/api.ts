@@ -1,14 +1,8 @@
 import { ID, Query } from "appwrite";
 import { appwriteConfig, account, databases, storage, avatars } from "./config";
-import {
-  IUpdatePost,
-  INewPost,
-  INewUser,
-  IUpdateUser,
-  LastPageParam,
-} from "@/types";
-import { QueryFunction } from "@tanstack/react-query";
-import { QUERY_KEYS } from "../react-query/queryKeys";
+import { IUpdatePost, INewPost, INewUser, IUpdateUser } from "@/types";
+// import { QueryFunction } from "@tanstack/react-query";
+// import { QUERY_KEYS } from "../react-query/queryKeys";
 
 // ============================================================
 // AUTH
@@ -231,27 +225,27 @@ export async function searchPosts(searchTerm: string) {
 }
 
 // To get infinite Posts
-export async function getInfinitePosts({ pageParam }: LastPageParam) {
-  const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
+// export async function getInfinitePosts({ pageParam }: LastPageParam) {
+//   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
 
-  if (pageParam) {
-    queries.push(Query.cursorAfter(pageParam.toString()));
-  }
+//   if (pageParam) {
+//     queries.push(Query.cursorAfter(pageParam.toString()));
+//   }
 
-  try {
-    const posts = await databases.listDocuments(
-      appwriteConfig.databasesId,
-      appwriteConfig.postsCollectionId,
-      queries
-    );
+//   try {
+//     const posts = await databases.listDocuments(
+//       appwriteConfig.databasesId,
+//       appwriteConfig.postsCollectionId,
+//       queries
+//     );
 
-    if (!posts) throw Error;
+//     if (!posts) throw Error;
 
-    return posts;
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     return posts;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 // ============================== GET POST BY ID
 export async function getPostById(postId?: string) {

@@ -1,6 +1,3 @@
-import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
-import { Models } from "appwrite";
-
 export type INavLink = {
   imgURL: string;
   route: string;
@@ -59,8 +56,8 @@ export type IContextType = {
   checkAuthUser: () => Promise<boolean>;
 };
 
-export type LastPageParam = {
-  documents?: { $id: string }[];
-  pageParam?: string | number;
-  lastPage?: Models.Document[];
-};
+// export type LastPageParam = {
+//   documents?: { $id: string }[];
+//   pageParam?: string | number;
+//   lastPage?: Models.Document[];
+// };

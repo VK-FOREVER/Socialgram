@@ -21,19 +21,11 @@ import {
   getUserById,
   updateUser,
   getRecentPosts,
-  getInfinitePosts,
   searchPosts,
   savePost,
   deleteSavedPost,
 } from "@/lib/appwrite/api";
-import {
-  INewPost,
-  INewUser,
-  IUpdatePost,
-  IUpdateUser,
-  LastPageParam,
-} from "@/types";
-import { any, number } from "zod";
+import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 
 // ============================================================
 // AUTH QUERIES
