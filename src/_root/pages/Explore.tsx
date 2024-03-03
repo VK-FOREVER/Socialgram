@@ -1,5 +1,5 @@
-import GridPost from "@/components/shared/GridPost";
-import Loader from "@/components/shared/Loader";
+// import GridPost from "@/components/shared/GridPost";
+// import Loader from "@/components/shared/Loader";
 import SearchResults from "@/components/shared/SearchResults";
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
@@ -7,8 +7,8 @@ import {
   // useGetPosts,
   useSearchPosts,
 } from "@/lib/react-query/queriesAndMutations";
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import { useState } from "react";
+// import { useInView } from "react-intersection-observer";
 
 const Explore = () => {
   // const { ref, inView } = useInView();
