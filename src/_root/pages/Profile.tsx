@@ -53,37 +53,38 @@ const Profile = () => {
           src={currentUser?.imageUrl}
           alt={currentUser?.username}
         />
-      </div>
-      {!unAuthorized ? (
-        <div className="flex items-end justify-end hover:hover-shadow absolute right-[35px] my-[2px]">
-          <Link to={`/edit-profile/${user?.id}`}>
+        {!unAuthorized ? (
+          <div className="flex items-end justify-end hover:hover-shadow absolute right-[0px] top-[350px] my-[2px]">
+            <Link to={`/edit-profile/${user?.id}`}>
+              <Button className="px-4 py-2 gap-2" variant="outline">
+                <img
+                  className="w-5 flex items-start justify-center  "
+                  src="/assets/icons/edit.svg"
+                  alt="edit-profile"
+                />
+                Edit Profile
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <div className="flex items-end justify-center hover:hover-shadow absolute right-[0px] top-[350px] my-[2px]">
             <Button className="px-4 py-2 gap-2" variant="outline">
               <img
                 className="w-5 flex items-start justify-center  "
-                src="/assets/icons/edit.svg"
-                alt="edit-profile"
+                src="/assets/icons/follow.svg"
+                alt="follow"
               />
-              Edit Profile
+              Follow
             </Button>
-          </Link>
-        </div>
-      ) : (
-        <div className="flex items-end justify-center hover:hover-shadow absolute right-[35px] my-[2px]">
-          <Button className="px-4 py-2 gap-2" variant="outline">
-            <img
-              className="w-5 flex items-start justify-center  "
-              src="/assets/icons/follow.svg"
-              alt="follow"
-            />
-            Follow
-          </Button>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
+
       <div className="profile-container z-10">
         <div className="flex items-center justify-center flex-col w-full">
           <div className="flex flex-col w-full items-center justify-center gap-4">
             <div className="flex items-center justify-center flex-col my-2">
-              <p className="text-2xl text-light-2">{currentUser?.name}</p>
+              <p className="text-3xl text-light-2">{currentUser?.name}</p>
               <span className="text-light-3 text-base">
                 @{currentUser?.username}
               </span>
