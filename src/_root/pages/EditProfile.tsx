@@ -62,6 +62,12 @@ const EditProfile = () => {
     return navigate(`/profile/${currentUser?.$id}`);
   }
 
+  // Cancle the Form
+  const cancleForm = () => {
+    form.reset();
+    navigate(-1);
+  };
+
   return (
     <div className="edit-form_container">
       <div className="w-full flex items-center justify-start">
@@ -171,7 +177,11 @@ const EditProfile = () => {
               )}
             />
             <div className="flex gap-4 items-center justify-end">
-              <Button type="button" className="shad-button_dark_4 ">
+              <Button
+                type="button"
+                className="shad-button_dark_4 "
+                onClick={cancleForm}
+              >
                 Cancel
               </Button>
               <Button

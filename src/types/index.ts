@@ -1,5 +1,3 @@
-import { Models } from "appwrite";
-
 export type INavLink = {
   imgURL: string;
   route: string;
