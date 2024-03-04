@@ -62,37 +62,17 @@ export const useSignOutAccount = () => {
 // // POST QUERIES
 // // ============================================================
 
-export const useGetPosts = () => {
-  return useInfiniteQuery({
-    queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
-    queryFn: getInfinitePosts,
-    getNextPageParam: (lastPage: LastPageParam) => {
-      if (lastPage && lastPage.documents) {
-        return null;
-      }
-
-      const lastId = lastPage.documents[lastPage?.documents.length - 1].$id;
-
-      return lastId;
-    },
-  });
-};
-
 // export const useGetPosts = () => {
 //   return useInfiniteQuery({
 //     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
-//     queryFn: async ({ pageParam }) => {
-//       const response = await getInfinitePosts(pageParam as any);
-//       return response;
-//     },
+//     queryFn: getInfinitePosts,
 //     getNextPageParam: (lastPage: LastPageParam) => {
-//       // If there's no data, there are no more pages.
-//       if (!lastPage || lastPage.documents.length === 0) {
+//       if (!lastPage || !lastPage.documents) {
 //         return null;
 //       }
 
-//       // Use the $id of the last document as the cursor.
-//       const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
+//       const lastId = lastPage.documents[lastPage?.documents.length - 1].$id;
+
 //       return lastId;
 //     },
 //   });

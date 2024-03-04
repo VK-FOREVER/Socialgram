@@ -59,7 +59,8 @@ export type IContextType = {
 };
 
 export type LastPageParam = {
-  // documents?: { $id: string }[];
+  documents?: { $id: string }[];
   // pageParam?: string | number;
-  lastPage?: Models.Document[] | any;
+  // lastPage?: Models.Document[] | any;
+  lastPage?: any;
 };
