@@ -227,6 +227,7 @@ export async function searchPosts(searchTerm: string) {
 // To get infinite Posts
 export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
+  console.log(pageParam);
 
   if (pageParam) {
     queries.push(Query.cursorAfter(pageParam.toString()));
@@ -241,6 +242,7 @@ export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
       if (!posts) {
         return null;
       }
+      console.log(posts);
 
       return posts;
     } catch (error) {
