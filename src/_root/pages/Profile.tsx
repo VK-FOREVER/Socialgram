@@ -29,7 +29,7 @@ const Profile = () => {
     return <Loader />;
   }
   const randomImage =
-    "https://source.unsplash.com/1600x900/?nature,photography,technology,space";
+    "https://source.unsplash.com/1600x900/?nature,space,coding,programing";
   const unAuthorized = currentUser?.$id !== user.id;
 
   if (gotError) {
