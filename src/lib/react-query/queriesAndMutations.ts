@@ -26,14 +26,7 @@ import {
   deleteSavedPost,
   getInfinitePosts,
 } from "@/lib/appwrite/api";
-import {
-  INewPost,
-  INewUser,
-  IUpdatePost,
-  IUpdateUser,
-  LastPageParam,
-} from "@/types";
-import { Models } from "appwrite";
+import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 
 // ============================================================
 // AUTH QUERIES
