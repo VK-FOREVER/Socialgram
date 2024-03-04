@@ -28,6 +28,8 @@ const Profile = () => {
   if (loading) {
     return <Loader />;
   }
+  const randomImage =
+    "https://source.unsplash.com/1600x900/?nature,photography,technology,space";
   const unAuthorized = currentUser?.$id !== user.id;
 
   if (gotError) {
@@ -38,10 +40,16 @@ const Profile = () => {
       </div>
     );
   }
-
   return (
     <div className="w-full p-8">
-      <div className="profile-container">
+      <div className="z-0  ">
+        <img
+          className="w-full h-[350px] object-cover"
+          src={randomImage}
+          alt="Banner"
+        />
+      </div>
+      <div className="profile-container z-10">
         <div className="profile-inner_container w-full">
           <img
             className="w-24 h-24 rounded-full"
