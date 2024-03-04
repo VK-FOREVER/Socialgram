@@ -1,8 +1,6 @@
 import { ID, Query } from "appwrite";
 import { appwriteConfig, account, databases, storage, avatars } from "./config";
 import { IUpdatePost, INewPost, INewUser, IUpdateUser } from "@/types";
-// import { QueryFunction } from "@tanstack/react-query";
-// import { QUERY_KEYS } from "../react-query/queryKeys";
 
 // ============================================================
 // AUTH
@@ -105,9 +103,13 @@ export async function getCurrentUser() {
 // ============================== SIGN OUT
 export async function signOutAccount() {
   try {
-    const session = await account.deleteSession("current");
-
-    return session;
+    const areYou = confirm("Are you sure you want to sign out?");
+    if (areYou) {
+      const session = await account.deleteSession("current");
+      return session;
+    } else {
+      null;
+    }
   } catch (error) {
     console.log(error);
   }
