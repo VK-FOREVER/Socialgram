@@ -227,27 +227,23 @@ export async function searchPosts(searchTerm: string) {
 // To get infinite Posts
 export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
-  console.log(pageParam);
 
   if (pageParam) {
     queries.push(Query.cursorAfter(pageParam.toString()));
+  }
 
-    try {
-      const posts = await databases.listDocuments(
-        appwriteConfig.databasesId,
-        appwriteConfig.postsCollectionId,
-        queries
-      );
+  try {
+    const posts = await databases.listDocuments(
+      appwriteConfig.databasesId,
+      appwriteConfig.postsCollectionId,
+      queries
+    );
 
-      if (!posts) {
-        return null;
-      }
-      console.log(posts);
+    if (!posts) throw Error;
 
-      return posts;
-    } catch (error) {
-      console.log(error);
-    }
+    return posts;
+  } catch (error) {
+    console.log(error);
   }
 }
 
