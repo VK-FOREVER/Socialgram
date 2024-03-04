@@ -239,9 +239,13 @@ export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
       );
 
       if (!posts) {
-        null;
+        return null;
       }
-    } catch (error) {}
+
+      return posts;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
