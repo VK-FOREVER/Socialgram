@@ -44,7 +44,7 @@ const Profile = () => {
     <div className="w-full p-4">
       <div className="z-0 flex items-center justify-center flex-col relative ">
         <img
-          className="w-full h-[350px] object-cover"
+          className="w-full h-[350px] object-cover rounded-t-lg"
           src={randomImage}
           alt="Banner"
         />
