@@ -11,6 +11,7 @@ const TopCreators = () => {
   if (loading) {
     return <Loader />;
   }
+
   return (
     <div className="home-creators">
       <div className="w-full flex items-center justify-start">
