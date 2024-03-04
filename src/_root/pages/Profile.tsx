@@ -88,8 +88,8 @@ const Profile = () => {
               <span className="text-light-3 text-base">
                 @{currentUser?.username}
               </span>
-              <div className="w-full text-justify text-base leading-6 tracking-tighter">
-                <span className="text-light-2 ">
+              <div className="w-full text-justify text-base leading-6 tracking-tighter mt-2">
+                <span className="text-light-2">
                   {currentUser?.bio ? (
                     currentUser.bio
                   ) : (
