@@ -41,23 +41,48 @@ const Profile = () => {
     );
   }
   return (
-    <div className="w-full p-8">
-      <div className="z-0  ">
+    <div className="w-full p-4">
+      <div className="z-0 flex items-center justify-center flex-col relative ">
         <img
           className="w-full h-[350px] object-cover"
           src={randomImage}
           alt="Banner"
         />
+        <img
+          className="w-32 h-w-32 rounded-full absolute top-[80%]"
+          src={currentUser?.imageUrl}
+          alt={currentUser?.username}
+        />
       </div>
+      {!unAuthorized ? (
+        <div className="flex items-end justify-end hover:hover-shadow absolute right-[35px] my-[2px]">
+          <Link to={`/edit-profile/${user?.id}`}>
+            <Button className="px-4 py-2 gap-2" variant="outline">
+              <img
+                className="w-5 flex items-start justify-center  "
+                src="/assets/icons/edit.svg"
+                alt="edit-profile"
+              />
+              Edit Profile
+            </Button>
+          </Link>
+        </div>
+      ) : (
+        <div className="flex items-end justify-center hover:hover-shadow absolute right-[35px] my-[2px]">
+          <Button className="px-4 py-2 gap-2" variant="outline">
+            <img
+              className="w-5 flex items-start justify-center  "
+              src="/assets/icons/follow.svg"
+              alt="follow"
+            />
+            Follow
+          </Button>
+        </div>
+      )}
       <div className="profile-container z-10">
-        <div className="profile-inner_container w-full">
-          <img
-            className="w-24 h-24 rounded-full"
-            src={currentUser?.imageUrl}
-            alt={currentUser?.username}
-          />
-          <div className="flex flex-col w-full items-start justify-start gap-4">
-            <div className="flex items-start justify-center flex-col">
+        <div className="flex items-center justify-center flex-col w-full">
+          <div className="flex flex-col w-full items-center justify-center gap-4">
+            <div className="flex items-center justify-center flex-col my-2">
               <p className="text-2xl text-light-2">{currentUser?.name}</p>
               <span className="text-light-3 text-base">
                 @{currentUser?.username}
@@ -74,11 +99,9 @@ const Profile = () => {
                 </span>
               </div>
             </div>
-            <div className="w-full flex items-start justify-start gap-10">
-              <div
-                className="flex items-center  flex-col j
-              ustify-start"
-              >
+
+            <div className="w-full flex items-center justify-center gap-10">
+              <div className="flex items-center  flex-col justify-center">
                 <img src="assets/icons" alt="" />
                 <span className="text-primary-500 text-xl font-semibold">
                   {currentUser?.posts.length}
@@ -99,31 +122,6 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {!unAuthorized ? (
-            <div className="flex items-end justify-center hover:hover-shadow ">
-              <Link to={`/edit-profile/${user?.id}`}>
-                <Button className="px-4 py-2 gap-2" variant="outline">
-                  <img
-                    className="w-5 flex items-start justify-center  "
-                    src="/assets/icons/edit.svg"
-                    alt="edit-profile"
-                  />
-                  Edit Profile
-                </Button>
-              </Link>
-            </div>
-          ) : (
-            <div className="flex items-end justify-center hover:hover-shadow ">
-              <Button className="px-4 py-2 gap-2" variant="outline">
-                <img
-                  className="w-5 flex items-start justify-center  "
-                  src="/assets/icons/follow.svg"
-                  alt="follow"
-                />
-                Follow
-              </Button>
-            </div>
-          )}
         </div>
         {/* Tabs */}
         <div className="w-full  flex items-center justify-evenly ">
