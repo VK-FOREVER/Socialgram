@@ -225,29 +225,53 @@ export async function searchPosts(searchTerm: string) {
 }
 
 // To get infinite Posts
-export const getInfinitePosts = async (pageParam: any) => {
-  const queries = [Query.orderDesc("$updatedAt"), Query.limit(9)];
+export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
+  const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
 
   if (pageParam) {
     queries.push(Query.cursorAfter(pageParam.toString()));
+
+    try {
+      const posts = await databases.listDocuments(
+        appwriteConfig.databasesId,
+        appwriteConfig.postsCollectionId,
+        queries
+      );
+
+      if (!posts) {
+        null;
+      }
+    } catch (error) {}
   }
+}
 
-  try {
-    const posts = await databases.listDocuments(
-      appwriteConfig.databasesId,
-      appwriteConfig.postsCollectionId,
-      queries
-    );
+// export const getInfinitePosts = async (pageParam: any) => {
+//   const queries = [Query.orderDesc("$updatedAt"), Query.limit(9)];
 
-    if (!posts) {
-      throw Error;
-    }
+//   if (pageParam) {
+//     queries.push(Query.cursorAfter(pageParam.toString()));
+//   }
 
-    return posts;
-  } catch (e) {
-    console.log(e);
-  }
-};
+//   try {
+//     const posts = await databases.listDocuments(
+//       appwriteConfig.databasesId,
+//       appwriteConfig.postsCollectionId,
+//       queries
+//     );
+
+//     if (!posts) {
+//       throw Error;
+//     }
+
+//     return {
+//       posts,
+//       nextPageParam: null
+
+//     }
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
 
 // ============================== GET POST BY ID
 export async function getPostById(postId?: string) {
