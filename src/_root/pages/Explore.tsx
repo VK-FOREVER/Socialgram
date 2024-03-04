@@ -19,6 +19,8 @@ const Explore = () => {
   const { data: searchedPosts, isFetching: searching } =
     useSearchPosts(debounceValue);
 
+  console.log(posts);
+
   // Show the Results when user searched something
   const showResults = searchTerm !== "";
   // Show the Posts when user searched and post is true
