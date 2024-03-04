@@ -57,10 +57,3 @@ export type IContextType = {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   checkAuthUser: () => Promise<boolean>;
 };
-
-export type LastPageParam = {
-  documents?: { $id: string }[];
-  // pageParam?: string | number;
-  // lastPage?: Models.Document[] | any;
-  lastPage?: any;
-};
