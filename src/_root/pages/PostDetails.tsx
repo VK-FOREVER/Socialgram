@@ -123,7 +123,7 @@ const PostDetails = () => {
                   <div className="w-full leading-5 ">
                     <p className="text-base text-light-1">
                       Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur
-                      adipisicing elit. Perspiciatis!
+                      adipisicing elit.
                     </p>
                   </div>
                 </div>
