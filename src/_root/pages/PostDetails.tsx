@@ -105,19 +105,25 @@ const PostDetails = () => {
               {comments.map((_, i) => (
                 <div
                   key={i}
-                  className="w-full flex items-center justify-evenly flex-row gap-4 bg-slate-900 p-2 rounded-lg my-2"
+                  className="w-full flex items-start justify-items-start flex-row  p-2 rounded-lg my-2"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-1 ">
                     <img
                       src={post?.creator?.imageUrl}
                       alt="user"
                       className="w-10  object-cover rounded-full"
                     />
+                    <div className="flex items-start justify-center flex-col">
+                      <span className="text-light-1 text-base">
+                        {post?.creator.name}
+                      </span>
+                      <span className="text-sm text-light-3">2 M</span>
+                    </div>
                   </div>
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Magni quia in repellendus{" "}
+                  <div className="w-full leading-5 ">
+                    <p className="text-base text-light-1">
+                      Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur
+                      adipisicing elit. Perspiciatis!
                     </p>
                   </div>
                 </div>
