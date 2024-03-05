@@ -101,13 +101,25 @@ const PostDetails = () => {
           <hr className="border w-full border-dark-4/80" />
           <div className="justify-between flex flex-col flex-1 w-full small-medium lg:base-regular">
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
-            <div>
+            <div className="w-full py-1 px-4 rounded-lg bg-dark-4 overflow-y-scroll h-[309px] custom-scrollbar">
               {comments.map((_, i) => (
                 <div
                   key={i}
-                  className="w-full flex items-center justify-evenly flex-row"
+                  className="w-full flex items-center justify-evenly flex-row gap-4 bg-slate-900 p-2 rounded-lg my-2"
                 >
-                  <p>Hello</p>
+                  <div className="flex items-center justify-between">
+                    <img
+                      src={post?.creator?.imageUrl}
+                      alt="user"
+                      className="w-10  object-cover rounded-full"
+                    />
+                  </div>
+                  <div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Magni quia in repellendus{" "}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
