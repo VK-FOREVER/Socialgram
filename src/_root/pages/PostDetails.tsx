@@ -120,11 +120,14 @@ const PostDetails = () => {
                       <span className="text-[10px] text-light-3">2 M</span>
                     </div>
                   </div>
-                  <div className="w-full leading-5 ">
+                  <div className="w-3/4 leading-5 ">
                     <p className="text-base text-light-1">
                       Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur
                       adipisicing elit.
                     </p>
+                  </div>
+                  <div>
+                    <img src="/assets/icons/like.svg" alt="" />
                   </div>
                 </div>
               ))}
