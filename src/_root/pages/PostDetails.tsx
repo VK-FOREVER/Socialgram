@@ -101,7 +101,7 @@ const PostDetails = () => {
           <hr className="border w-full border-dark-4/80" />
           <div className="justify-between flex flex-col flex-1 w-full small-medium lg:base-regular">
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
-            <div className="w-full py-1 px-4 rounded-lg bg-dark-4 overflow-y-scroll h-[309px] custom-scrollbar">
+            <div className="w-full py-1 px-4 rounded-lg overflow-y-scroll h-[309px] custom-scrollbar">
               {comments.map((_, i) => (
                 <div
                   key={i}
