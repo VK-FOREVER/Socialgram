@@ -31,6 +31,8 @@ const PostDetails = () => {
     return <Loader />;
   }
 
+  const comments = Array.from({ length: 20 });
+
   return (
     <div className="post_details-container">
       <div className="post_details-card">
@@ -99,6 +101,16 @@ const PostDetails = () => {
           <hr className="border w-full border-dark-4/80" />
           <div className="justify-between flex flex-col flex-1 w-full small-medium lg:base-regular">
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
+            <div>
+              {comments.map((_, i) => (
+                <div
+                  key={i}
+                  className="w-full flex items-center justify-evenly flex-row"
+                >
+                  <p>Hello</p>
+                </div>
+              ))}
+            </div>
             <ul className="flex gap-1 mt-2">
               {post?.tag.map((t: string) => (
                 <li key={t} className="text-light-3">
