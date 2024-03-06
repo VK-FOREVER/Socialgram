@@ -4,21 +4,25 @@ import PostStats from "@/components/shared/PostStats";
 import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import {
+  useAddComment,
   useDeletePost,
   useGetPostById,
   useGetUserPosts,
 } from "@/lib/react-query/queriesAndMutations";
 import { timeAgo } from "@/lib/utils";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
+  const [commentValue, setCommentValue] = useState<string>("");
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: post, isPending } = useGetPostById(id || "");
   const { mutate: deletePost } = useDeletePost();
   const currentUserId = post?.creator.$id;
-  const { data: relatedPosts, isFetching } = useGetUserPosts(currentUserId);
   const { user } = useUserContext();
+  const { data: relatedPosts, isFetching } = useGetUserPosts(currentUserId);
+  const { mutateAsync: addComment, isPending: addingComment } = useAddComment();
 
   const handleDeletePost = () => {
     if (post) {
@@ -27,11 +31,20 @@ const PostDetails = () => {
     }
   };
 
+  const handleAddComment = async () => {
+    if (post && commentValue) {
+      await addComment({ postId: post.$id, comment: commentValue });
+      setCommentValue("");
+    } else {
+      return null;
+    }
+  };
+
   if (isPending) {
     return <Loader />;
   }
 
-  console.log({ post });
+  console.log({ post, user });
   const comments = post?.comment.length
     ? post?.comment
     : Array.from({ length: 20 });
@@ -105,7 +118,7 @@ const PostDetails = () => {
           <div className="justify-between flex flex-col flex-1 w-full small-medium lg:base-regular">
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
             <div className="w-full py-1 px-4 rounded-lg overflow-y-scroll h-[309px] custom-scrollbar">
-              {comments.map((_, i) => (
+              {/* {comments.map((_, i) => (
                 <div
                   key={i}
                   className="w-full flex items-start justify-items-start flex-row gap-4  p-2 rounded-lg my-2"
@@ -133,7 +146,17 @@ const PostDetails = () => {
                     <img src="/assets/icons/like.svg" alt="" />
                   </div>
                 </div>
-              ))}
+              ))} */}
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                className="w-full p-2 rounded-lg text-dark-1 border border-dark-4/80"
+                value={commentValue}
+                onChange={(e) => setCommentValue(e.target.value)}
+              />
+              <button onClick={handleAddComment}>Go</button>
             </div>
             <ul className="flex gap-1 mt-2">
               {post?.tag.map((t: string) => (
