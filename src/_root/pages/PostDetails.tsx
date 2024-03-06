@@ -16,8 +16,8 @@ const PostDetails = () => {
   const navigate = useNavigate();
   const { data: post, isPending } = useGetPostById(id || "");
   const { mutate: deletePost } = useDeletePost();
-  const currentUser = post?.creator.$id;
-  const { data: relatedPosts, isFetching } = useGetUserPosts(currentUser);
+  const currentUserId = post?.creator.$id;
+  const { data: relatedPosts, isFetching } = useGetUserPosts(currentUserId);
   const { user } = useUserContext();
 
   const handleDeletePost = () => {
@@ -31,7 +31,8 @@ const PostDetails = () => {
     return <Loader />;
   }
 
-  const comments = Array.from({ length: 20 });
+  console.log({ post });
+  const comments = post?.comment ? post?.comment : Array.from({ length: 20 });
 
   return (
     <div className="post_details-container">
@@ -117,7 +118,7 @@ const PostDetails = () => {
                       <span className="text-light-1 text-base">
                         {post?.creator.name}
                       </span>
-                      <span className="text-[10px] text-light-3">2 M</span>
+                      <span className="text-[10px] text-light-3">2M</span>
                     </div>
                   </div>
                   <div className="w-3/4 leading-5 ">
