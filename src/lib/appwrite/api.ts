@@ -422,13 +422,22 @@ export async function savePost(userId: string, postId: string) {
   }
 }
 
-export async function commentPost(postId: string, comment: string[]) {
+export async function commentPost(postId: string, comment: string) {
   try {
-    const addComment = await databases.createDocument(
+    const addComment = await databases.updateDocument(
       appwriteConfig.databasesId,
-      appwriteConfig.postsCollectionId
+      appwriteConfig.postsCollectionId,
+      postId,
+      {
+        comment: [...comment],
+      }
     );
-  } catch (error) {}
+
+    if (!addComment) throw Error;
+    return addComment;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // ============================== DELETE SAVED POST

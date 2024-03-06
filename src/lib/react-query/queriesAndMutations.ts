@@ -25,6 +25,7 @@ import {
   savePost,
   deleteSavedPost,
   getInfinitePosts,
+  commentPost,
 } from "@/lib/appwrite/api";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 
@@ -238,6 +239,19 @@ export const useUpdateUser = () => {
       });
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_USER_BY_ID, data?.$id],
+      });
+    },
+  });
+};
+
+export const useAddComment = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ postId, comment }: { postId: string; comment: string }) =>
+      commentPost(postId, comment),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.POST_COMMENT],
       });
     },
   });
