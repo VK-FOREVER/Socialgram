@@ -103,6 +103,19 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
           </div>
         )}
       </div>
+      <div className="flex gap-2 items-center justify-center">
+        <div className="flex gap-2 mr-5 items-center justify-center">
+          <img
+            src="/assets/icons/save.svg"
+            alt="like"
+            width={20}
+            height={20}
+            onClick={handleSavePosts}
+            className="cursor-pointer"
+          />
+          <p className="small-medium lg:base-medium">{savePostLength}</p>
+        </div>
+      </div>
     </div>
   );
 };
