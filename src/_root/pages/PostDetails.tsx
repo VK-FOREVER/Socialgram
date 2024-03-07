@@ -146,7 +146,7 @@ const PostDetails = () => {
                 </div>
               ))}
             </div>
-            <div>
+            <div className="w-full flex items-start  justify-center flex-row gap-4  p-2 rounded-lg my-2">
               <div className="flex w-full max-w-sm justify-center items-center space-x-2">
                 <Input
                   type="text"
@@ -158,10 +158,18 @@ const PostDetails = () => {
                 <Button
                   type="submit"
                   variant="ghost"
-                  className="bg-light-2 text-dark-1"
+                  className="bg-light-2 text-dark-1 hover:opacity-85 transition-all duration-300"
                   onClick={handleAddComment}
                 >
-                  Go
+                  {addingComment ? (
+                    <Loader showTxt={false} />
+                  ) : (
+                    <img
+                      src="/assets/icons/share.svg"
+                      className="w-6 text-primary-600 "
+                      alt="share"
+                    />
+                  )}
                 </Button>
               </div>
             </div>
