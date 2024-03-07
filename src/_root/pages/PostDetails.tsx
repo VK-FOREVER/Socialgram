@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/input";
 import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
 import PostStats from "@/components/shared/PostStats";
@@ -146,14 +147,17 @@ const PostDetails = () => {
               ))}
             </div>
             <div>
-              <input
-                type="text"
-                placeholder="Add a comment..."
-                className="w-full p-2 rounded-lg text-dark-1 border border-dark-4/80"
-                value={commentValue}
-                onChange={(e) => setCommentValue(e.target.value)}
-              />
-              <button onClick={handleAddComment}>Go</button>
+              <div className="flex w-full max-w-sm items-center space-x-2">
+                <Input
+                  type="text"
+                  placeholder="Add a comment..."
+                  value={commentValue}
+                  onChange={(e) => setCommentValue(e.target.value)}
+                />
+                <Button type="submit" onClick={handleAddComment}>
+                  Go
+                </Button>
+              </div>
             </div>
             <ul className="flex gap-1 mt-2">
               {post?.tag.map((t: string) => (
