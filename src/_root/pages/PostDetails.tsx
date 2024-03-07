@@ -7,6 +7,7 @@ import { useUserContext } from "@/context/AuthContext";
 import {
   useAddComment,
   useDeletePost,
+  useGetCurrentUser,
   useGetPostById,
   useGetUserPosts,
 } from "@/lib/react-query/queriesAndMutations";
@@ -20,10 +21,11 @@ const PostDetails = () => {
   const navigate = useNavigate();
   const { data: post, isPending } = useGetPostById(id || "");
   const { mutate: deletePost } = useDeletePost();
-  const currentUserId = post?.creator.$id;
+  const postUser = post?.creator.$id;
   const { user } = useUserContext();
-  const { data: relatedPosts, isFetching } = useGetUserPosts(currentUserId);
+  const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
   const { mutateAsync: addComment, isPending: addingComment } = useAddComment();
+  const { data: currentUser } = useGetCurrentUser();
 
   const handleDeletePost = () => {
     if (post) {
@@ -45,10 +47,7 @@ const PostDetails = () => {
     return <Loader />;
   }
 
-  // console.log({ post, user });
-  // const comments = post?.comment.length
-  //   ? post?.comment
-  //   : Array.from({ length: 20 });
+  console.log({ currentUser, post });
 
   return (
     <div className="post_details-container">
@@ -115,39 +114,47 @@ const PostDetails = () => {
               )}
             </div>
           </div>
-          <hr className="border w-full border-dark-4/80" />
           <div className="justify-between flex flex-col flex-1 w-full small-medium lg:base-regular">
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
+            <hr className="border w-full border-dark-4/80 my-2" />
             <div className="w-full py-1 px-4 rounded-lg overflow-y-scroll h-[309px] custom-scrollbar">
               {post?.postComments.map((comment: string, i: number) => (
                 <div
                   key={i}
-                  className="w-full flex items-start justify-items-start flex-row gap-4  p-2 rounded-lg my-2"
+                  className="w-full flex items-start justify-items-start flex-row gap-4 p-2 rounded-lg my-2"
                 >
                   <div className="flex items-center justify-between gap-2 ">
                     <img
-                      src={post?.creator?.imageUrl}
+                      src={currentUser?.imageUrl}
                       alt="user"
                       className="w-10  object-cover rounded-full"
                     />
                     <div className="flex items-start justify-center flex-col">
-                      <span className="text-light-1 text-base">
-                        {post?.creator.name}
+                      <span className="text-light-2 text-base">
+                        {currentUser?.name.length >= 11
+                          ? `${currentUser?.name.slice(0, 8)}..`
+                          : currentUser?.name}
                       </span>
-                      <span className="text-[10px] text-light-3">2M</span>
+                      <span className="text-[14px] text-light-3">
+                        @{currentUser?.username}
+                      </span>
                     </div>
                   </div>
-                  <div className="w-3/4 leading-5 ">
-                    <p className="text-base text-light-3">{comment}</p>
-                  </div>
-                  <div>
-                    <img src="/assets/icons/like.svg" alt="" />
+                  <div className="w-3/4 leading-5  ">
+                    <p className="text-base text-light-1">{comment}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="w-full flex items-start  justify-center flex-row gap-4  p-2 rounded-lg my-2">
               <div className="flex w-full max-w-sm justify-center items-center space-x-2">
+                <div className="flex items-center justify-center">
+                  <img
+                    src={currentUser?.imageUrl}
+                    alt="user"
+                    className="w-12  object-cover rounded-full"
+                  />
+                </div>
                 <Input
                   type="text"
                   placeholder="Add a comment..."
@@ -160,6 +167,7 @@ const PostDetails = () => {
                   variant="outline"
                   className="bg-dark-3 hover:opacity-85 transition-all duration-300"
                   onClick={handleAddComment}
+                  disabled={commentValue.length > 35 || addingComment}
                 >
                   {addingComment ? (
                     <Loader showTxt={false} />
