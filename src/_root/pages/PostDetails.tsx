@@ -118,7 +118,7 @@ const PostDetails = () => {
           <div className="justify-between flex flex-col flex-1 w-full small-medium lg:base-regular">
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
             <div className="w-full py-1 px-4 rounded-lg overflow-y-scroll h-[309px] custom-scrollbar">
-              {/* {comments.map((_, i) => (
+              {post?.postComments.map((comment: string, i: number) => (
                 <div
                   key={i}
                   className="w-full flex items-start justify-items-start flex-row gap-4  p-2 rounded-lg my-2"
@@ -137,16 +137,13 @@ const PostDetails = () => {
                     </div>
                   </div>
                   <div className="w-3/4 leading-5 ">
-                    <p className="text-base text-light-1">
-                      Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur
-                      adipisicing elit.
-                    </p>
+                    <p className="text-base text-light-1">{comment}</p>
                   </div>
                   <div>
                     <img src="/assets/icons/like.svg" alt="" />
                   </div>
                 </div>
-              ))} */}
+              ))}
             </div>
             <div>
               <input
