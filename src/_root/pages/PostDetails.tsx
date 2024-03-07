@@ -45,7 +45,7 @@ const PostDetails = () => {
     return <Loader />;
   }
 
-  console.log({ post, user });
+  // console.log({ post, user });
   // const comments = post?.comment.length
   //   ? post?.comment
   //   : Array.from({ length: 20 });
