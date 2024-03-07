@@ -429,7 +429,7 @@ export async function commentPost(postId: string, comment: string) {
       appwriteConfig.postsCollectionId,
       postId,
       {
-        comment: [...comment],
+        postComments: [comment],
       }
     );
 
