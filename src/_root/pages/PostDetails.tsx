@@ -47,7 +47,7 @@ const PostDetails = () => {
     return <Loader />;
   }
 
-  console.log({ currentUser, post });
+  // console.log({ currentUser, post });
 
   return (
     <div className="post_details-container">
@@ -124,11 +124,13 @@ const PostDetails = () => {
                   className="w-full flex items-start justify-items-start flex-row gap-4 p-2 rounded-lg my-2"
                 >
                   <div className="flex items-center justify-between gap-2 ">
-                    <img
-                      src={currentUser?.imageUrl}
-                      alt="user"
-                      className="w-10  object-cover rounded-full"
-                    />
+                    <Link to={`/profile/${user.id}`}>
+                      <img
+                        src={currentUser?.imageUrl}
+                        alt="user"
+                        className="w-10  object-cover rounded-full"
+                      />
+                    </Link>
                     <div className="flex items-start justify-center flex-col">
                       <span className="text-light-2 text-base">
                         {currentUser?.name.length >= 11
