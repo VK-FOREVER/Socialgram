@@ -138,7 +138,7 @@ const PostDetails = () => {
                     </div>
                   </div>
                   <div className="w-3/4 leading-5 ">
-                    <p className="text-base text-light-1">{comment}</p>
+                    <p className="text-base text-light-3">{comment}</p>
                   </div>
                   <div>
                     <img src="/assets/icons/like.svg" alt="" />
@@ -153,12 +153,12 @@ const PostDetails = () => {
                   placeholder="Add a comment..."
                   value={commentValue}
                   onChange={(e) => setCommentValue(e.target.value)}
-                  className="bg-dark-3 text-light-2 rounded-lg focus:outline-none active:outline-none border-0 w-full"
+                  className="bg-dark-3 text-light-2 rounded-lg w-full"
                 />
                 <Button
                   type="submit"
-                  variant="ghost"
-                  className="bg-light-2 text-dark-1 hover:opacity-85 transition-all duration-300"
+                  variant="outline"
+                  className="bg-dark-3 hover:opacity-85 transition-all duration-300"
                   onClick={handleAddComment}
                 >
                   {addingComment ? (
