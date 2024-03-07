@@ -147,14 +147,20 @@ const PostDetails = () => {
               ))}
             </div>
             <div>
-              <div className="flex w-full max-w-sm items-center space-x-2">
+              <div className="flex w-full max-w-sm justify-center items-center space-x-2">
                 <Input
                   type="text"
                   placeholder="Add a comment..."
                   value={commentValue}
                   onChange={(e) => setCommentValue(e.target.value)}
+                  className="bg-dark-3 text-light-2 rounded-lg focus:outline-none active:outline-none border-0 w-full"
                 />
-                <Button type="submit" onClick={handleAddComment}>
+                <Button
+                  type="submit"
+                  variant="ghost"
+                  className="bg-light-2 text-dark-1"
+                  onClick={handleAddComment}
+                >
                   Go
                 </Button>
               </div>
