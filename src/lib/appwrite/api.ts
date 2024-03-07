@@ -422,7 +422,7 @@ export async function savePost(userId: string, postId: string) {
   }
 }
 
-export async function commentPost(postId: string, comment: string) {
+export async function commentPost(postId: string, comment: string[]) {
   try {
     const addComment = await databases.updateDocument(
       appwriteConfig.databasesId,

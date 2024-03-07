@@ -45,9 +45,9 @@ const PostDetails = () => {
   }
 
   console.log({ post, user });
-  const comments = post?.comment.length
-    ? post?.comment
-    : Array.from({ length: 20 });
+  // const comments = post?.comment.length
+  //   ? post?.comment
+  //   : Array.from({ length: 20 });
 
   return (
     <div className="post_details-container">
