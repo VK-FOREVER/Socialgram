@@ -124,27 +124,28 @@ const PostDetails = () => {
                   key={i}
                   className="w-full flex items-start justify-items-start flex-row gap-4 p-4 rounded-lg   border-dark-4/80 border my-2"
                 >
-                  <div className="flex items-center justify-between gap-2 ">
-                    <Link to={`/profile/${user.id}`}>
-                      <img
-                        src={currentUser?.imageUrl}
-                        alt="user"
-                        className="w-10  object-cover rounded-full"
-                      />
-                    </Link>
-                    <div className="flex items-start justify-center flex-col">
-                      <span className="text-light-2 text-base">
+                  <Link to={`/profile/${user.id}`}>
+                    <img
+                      src={currentUser?.imageUrl}
+                      alt="user"
+                      className="w-10  object-cover rounded-full"
+                    />
+                  </Link>
+
+                  <div className="flex items-start justify-center flex-col w-full">
+                    <div className="flex items-center justify-start gap-2 flex-row w-full">
+                      <span className="text-light-2 text-sm">
                         {currentUser?.name.length >= 11
                           ? `${currentUser?.name.slice(0, 8)}..`
                           : currentUser?.name}
                       </span>
-                      <span className="text-[14px] text-light-3">
+                      <span className="text-[12px] text-light-3">
                         @{currentUser?.username}
                       </span>
                     </div>
-                  </div>
-                  <div className="w-3/4 leading-5  ">
-                    <p className="text-base text-light-1">{comment}</p>
+                    <div className="w-full leading-5  ">
+                      <p className="text-base text-light-1">{comment}</p>
+                    </div>
                   </div>
                 </div>
               ))}
