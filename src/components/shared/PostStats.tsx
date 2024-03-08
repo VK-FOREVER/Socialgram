@@ -90,7 +90,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
             className="cursor-pointer"
           />
           <p className="small-medium lg:base-medium">
-            {post?.postComments.length}
+            {post?.postComments?.length}
           </p>
         </div>
       </div>

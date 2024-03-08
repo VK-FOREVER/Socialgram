@@ -34,7 +34,7 @@ const PostDetails = () => {
     }
   };
 
-  // console.log(currentUser);
+  console.log(currentUser);
 
   const handleAddComment = async () => {
     if (post && commentValue) {
@@ -120,7 +120,7 @@ const PostDetails = () => {
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
             <hr className="border w-full border-dark-4/80 my-2" />
             <div className="w-full py-1 px-4 rounded-lg overflow-y-scroll h-[309px] custom-scrollbar">
-              {post?.postComments.map((comment: string, i: number) => (
+              {post?.postComments?.map((comment: string, i: number) => (
                 <div
                   key={i}
                   className="w-full flex items-start justify-items-start flex-row gap-4 p-4 rounded-lg   border-dark-4/80 border my-2"
