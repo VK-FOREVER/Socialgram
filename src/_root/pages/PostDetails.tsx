@@ -12,14 +12,14 @@ import {
   useGetUserPosts,
 } from "@/lib/react-query/queriesAndMutations";
 import { timeAgo } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { JSXElementConstructor, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
   const [commentValue, setCommentValue] = useState<string>("");
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: post, isPending } = useGetPostById(id || "");
+  const { data: post, isPending: isLoading } = useGetPostById(id || "");
   const { mutate: deletePost } = useDeletePost();
   const postUser = post?.creator.$id;
   const { user } = useUserContext();
@@ -44,7 +44,7 @@ const PostDetails = () => {
     }
   };
 
-  if (isPending) {
+  if (isLoading) {
     return <Loader />;
   }
 
@@ -122,7 +122,7 @@ const PostDetails = () => {
               {post?.postComments.map((comment: string, i: number) => (
                 <div
                   key={i}
-                  className="w-full flex items-start justify-items-start flex-row gap-4 p-2 rounded-lg my-2"
+                  className="w-full flex items-start justify-items-start flex-row gap-4 p-2 rounded-lg   border-dark-4/80 border-b my-4"
                 >
                   <div className="flex items-center justify-between gap-2 ">
                     <Link to={`/profile/${user.id}`}>
