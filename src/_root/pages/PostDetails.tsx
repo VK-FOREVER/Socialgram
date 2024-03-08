@@ -26,7 +26,6 @@ const PostDetails = () => {
   const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
   const { mutateAsync: addComment, isPending: addingComment } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
-  // const [commentOnPost, setcommentOnPost] = useState(post?.postComments);
 
   const handleDeletePost = () => {
     if (post) {
@@ -34,6 +33,8 @@ const PostDetails = () => {
       navigate(-1);
     }
   };
+
+  // console.log(currentUser);
 
   const handleAddComment = async () => {
     if (post && commentValue) {
