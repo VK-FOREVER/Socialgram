@@ -26,7 +26,7 @@ const PostDetails = () => {
   const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
   const { mutateAsync: addComment, isPending: addingComment } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
-  const [commentOnPost, setcommentOnPost] = useState(post?.postComments);
+  // const [commentOnPost, setcommentOnPost] = useState(post?.postComments);
 
   const handleDeletePost = () => {
     if (post) {
@@ -48,7 +48,7 @@ const PostDetails = () => {
     return <Loader />;
   }
 
-  // console.log({ currentUser, post });
+  console.log({ currentUser, post });
 
   return (
     <div className="post_details-container">
@@ -119,7 +119,7 @@ const PostDetails = () => {
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
             <hr className="border w-full border-dark-4/80 my-2" />
             <div className="w-full py-1 px-4 rounded-lg overflow-y-scroll h-[309px] custom-scrollbar">
-              {commentOnPost?.map((comment: string, i: number) => (
+              {post?.postComments.map((comment: string, i: number) => (
                 <div
                   key={i}
                   className="w-full flex items-start justify-items-start flex-row gap-4 p-2 rounded-lg my-2"
