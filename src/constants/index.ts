@@ -25,7 +25,7 @@ export const sidebarLinks = [
     label: "Create Post",
   },
   {
-    imgURL: "/assets/icons/chat.svg",
+    imgURL: "/assets/icons/message.svg",
     route: "/chats",
     label: "Chats",
   },

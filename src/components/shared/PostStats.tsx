@@ -23,8 +23,6 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
     (record: Models.Document) => record.post.$id === post?.$id
   );
 
-  // console.log(savePostsz);
-
   useEffect(() => {
     setIsSaved(hasSaved ? true : false);
   }, [currentUser]);
