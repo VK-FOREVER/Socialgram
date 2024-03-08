@@ -122,7 +122,7 @@ const PostDetails = () => {
               {post?.postComments.map((comment: string, i: number) => (
                 <div
                   key={i}
-                  className="w-full flex items-start justify-items-start flex-row gap-4 p-2 rounded-lg   border-dark-4/80 border-b my-4"
+                  className="w-full flex items-start justify-items-start flex-row gap-4 p-4 rounded-lg   border-dark-4/80 border my-2"
                 >
                   <div className="flex items-center justify-between gap-2 ">
                     <Link to={`/profile/${user.id}`}>
