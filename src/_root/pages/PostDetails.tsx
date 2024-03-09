@@ -34,7 +34,7 @@ const PostDetails = () => {
     }
   };
 
-  console.log(currentUser);
+  // console.log();
 
   const handleAddComment = async () => {
     if (post && commentValue) {
