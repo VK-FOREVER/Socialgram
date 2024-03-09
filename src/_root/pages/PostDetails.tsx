@@ -37,12 +37,12 @@ const PostDetails = () => {
   console.log(currentUser);
 
   const handleAddComment = async () => {
-    // if (post && commentValue) {
-    //   await addComment({ postId: post.$id, comment: commentValue });
-    //   setCommentValue("");
-    // } else {
-    //   return null;
-    // }
+    if (post && commentValue) {
+      await addComment({ postId: post.$id, comment: commentValue });
+      setCommentValue([""]);
+    } else {
+      return null;
+    }
 
     console.log(commentValue);
   };
@@ -50,6 +50,12 @@ const PostDetails = () => {
   if (isLoading) {
     return <Loader />;
   }
+
+  // const setComment = (e: any): void => {
+  //   const value = e?.target?.value;
+  //   const str = value?.toString();
+
+  // };
 
   console.log({ currentUser, post });
 
@@ -166,7 +172,7 @@ const PostDetails = () => {
                   type="text"
                   placeholder="Add a comment..."
                   value={commentValue}
-                  onChange={(e) => setCommentValue(e.target.value)}
+                  onChange={(e) => setCommentValue([e.target.value.toString()])}
                   className="bg-dark-3 text-light-2 rounded-lg w-full"
                 />
                 <Button
@@ -174,7 +180,7 @@ const PostDetails = () => {
                   variant="outline"
                   className="bg-dark-3 hover:opacity-85 transition-all duration-300"
                   onClick={handleAddComment}
-                  disabled={commentValue.length > 35 || addingComment}
+                  disabled={commentValue?.length > 35 || addingComment}
                 >
                   {addingComment ? (
                     <Loader showTxt={false} />

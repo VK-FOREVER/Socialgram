@@ -432,7 +432,7 @@ export async function commentPost(postId: string, comment: string[]) {
       appwriteConfig.postsCollectionId,
       postId,
       {
-        // postOnComment: prevComments ? [...prevComments, comment] : [comment],
+        // postOnComment: prevComments ? [...prevComments, comment] : comment,
         postOnComment: comment,
       }
     );
