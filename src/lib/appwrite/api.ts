@@ -422,27 +422,27 @@ export async function savePost(userId: string, postId: string) {
   }
 }
 
-export async function commentPost(postId: string, comment: string[]) {
-  try {
-    // const post = await getPostById(postId);
-    // const prevComments = post?.postOnComment;
+// export async function commentPost(postId: string, comment: string[]) {
+//   try {
+//     // const post = await getPostById(postId);
+//     // const prevComments = post?.postOnComment;
 
-    const addComment = await databases.updateDocument(
-      appwriteConfig.databasesId,
-      appwriteConfig.postsCollectionId,
-      postId,
-      {
-        // postOnComment: prevComments ? [...prevComments, comment] : comment,
-        postOnComment: comment,
-      }
-    );
+//     const addComment = await databases.updateDocument(
+//       appwriteConfig.databasesId,
+//       appwriteConfig.postsCollectionId,
+//       postId,
+//       {
+//         // postOnComment: prevComments ? [...prevComments, comment] : comment,
+//         postOnComment: comment,
+//       }
+//     );
 
-    if (!addComment) throw Error;
-    return addComment;
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     if (!addComment) throw Error;
+//     return addComment;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 // ============================== DELETE SAVED POST
 export async function deleteSavedPost(savedRecordId: string) {
