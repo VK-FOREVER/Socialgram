@@ -599,3 +599,23 @@ export async function updateUser(user: IUpdateUser) {
     console.log(error);
   }
 }
+
+// ============================== FOLLOW USER
+export async function followingUser(userId: string) {
+  try {
+    const updateFollowing = await databases.createDocument(
+      appwriteConfig.databasesId,
+      appwriteConfig.followingCollectionId,
+      ID.unique(),
+      {
+        following: userId,
+      }
+    );
+    if (!updateFollowing) {
+      return Error;
+    }
+    return updateFollowing;
+  } catch (error) {
+    console.log(error);
+  }
+}
