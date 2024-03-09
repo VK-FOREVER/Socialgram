@@ -602,6 +602,8 @@ export async function updateUser(user: IUpdateUser) {
 
 // ============================== FOLLOW USER
 export async function followingUser(userId: string) {
+  console.log(userId);
+
   try {
     const updateFollowing = await databases.createDocument(
       appwriteConfig.databasesId,
@@ -614,6 +616,8 @@ export async function followingUser(userId: string) {
     if (!updateFollowing) {
       return Error;
     }
+    console.log(updateFollowing);
+
     return updateFollowing;
   } catch (error) {
     console.log(error);

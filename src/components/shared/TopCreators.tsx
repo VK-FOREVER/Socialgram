@@ -10,7 +10,7 @@ import { useUserContext } from "@/context/AuthContext";
 
 const TopCreators = () => {
   const { data: creators, isFetching: loading } = useGetUsers(10);
-  const { mutateAsync: followIt } = useGetFollowings();
+  const { mutate: followIt } = useGetFollowings();
   const { user } = useUserContext();
   const { data: currentUser } = useGetCurrentUser();
 
@@ -18,13 +18,22 @@ const TopCreators = () => {
     return <Loader />;
   }
 
-  const handleFollow = async (id: string | any) => {
+  // if (hasSaved) {
+  //   setIsSaved(false);
+  //   deleteSavePost(hasSaved.$id);
+  // } else {
+  //   savePost({ postId: post?.$id || "", userId });
+  //   setIsSaved(true);
+  // }
+  const handleFollow = (id: string | any) => {
     // const isFollowing = currentUser?.followings.includes(userId);
     // if (!isFollowing) {
-    const res = await followIt(id);
+
+    followIt({ userId: id });
+
     // }
-    return res;
-    // console.log(id);
+    // return res;
+    console.log(id);
   };
   console.log(currentUser);
 
