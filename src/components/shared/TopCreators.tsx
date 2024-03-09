@@ -25,7 +25,7 @@ const TopCreators = () => {
   //   savePost({ postId: post?.$id || "", userId });
   //   setIsSaved(true);
   // }
-  const handleFollow = (id: string | any) => {
+  const handleFollow = (id: string) => {
     // const isFollowing = currentUser?.followings.includes(userId);
     // if (!isFollowing) {
 
@@ -33,7 +33,7 @@ const TopCreators = () => {
 
     // }
     // return res;
-    console.log(id);
+    console.log(typeof id);
   };
   console.log(currentUser);
 
