@@ -16,7 +16,7 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
-  const [commentValue, setCommentValue] = useState<string>("");
+  const [commentValue, setCommentValue] = useState<string[]>([""]);
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: post, isPending: isLoading } = useGetPostById(id || "");
@@ -37,12 +37,14 @@ const PostDetails = () => {
   console.log(currentUser);
 
   const handleAddComment = async () => {
-    if (post && commentValue) {
-      await addComment({ postId: post.$id, comment: commentValue });
-      setCommentValue("");
-    } else {
-      return null;
-    }
+    // if (post && commentValue) {
+    //   await addComment({ postId: post.$id, comment: commentValue });
+    //   setCommentValue("");
+    // } else {
+    //   return null;
+    // }
+
+    console.log(commentValue);
   };
 
   if (isLoading) {
