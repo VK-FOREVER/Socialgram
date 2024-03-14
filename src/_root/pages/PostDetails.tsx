@@ -24,7 +24,7 @@ const PostDetails = () => {
   const postUser = post?.creator.$id;
   const { user } = useUserContext();
   const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
-  const { mutate: addComment, isPending: addingComment } = useAddComment();
+  const { mutate: addComment } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
 
   const handleDeletePost = () => {
@@ -36,7 +36,7 @@ const PostDetails = () => {
 
   const handleAddComment = () => {
     if (post && commentValue) {
-      console.log({ commentValue, addingComment });
+      console.log({ commentValue });
 
       addComment({ postId: post.$id, comment: commentValue });
       setCommentValue([""]);
@@ -180,17 +180,15 @@ const PostDetails = () => {
                   variant="outline"
                   className="bg-dark-3 hover:opacity-85 transition-all duration-300"
                   onClick={handleAddComment}
-                  disabled={commentValue?.length > 35 || addingComment}
+                  disabled={commentValue?.length > 35}
                 >
-                  {addingComment ? (
-                    <Loader showTxt={false} />
-                  ) : (
-                    <img
-                      src="/assets/icons/share.svg"
-                      className="w-6 text-primary-600 "
-                      alt="share"
-                    />
-                  )}
+                  {/* <Loader showTxt={false} /> */}
+
+                  <img
+                    src="/assets/icons/share.svg"
+                    className="w-6 text-primary-600 "
+                    alt="share"
+                  />
                 </Button>
               </div>
             </div>
