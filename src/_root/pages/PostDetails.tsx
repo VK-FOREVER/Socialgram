@@ -34,11 +34,11 @@ const PostDetails = () => {
     }
   };
 
-  const handleAddComment = async () => {
+  const handleAddComment = () => {
     if (post && commentValue) {
       console.log(commentValue);
 
-      await addComment({ postId: post.$id, comment: commentValue });
+      addComment({ postId: post.$id, comment: commentValue });
       setCommentValue([""]);
     } else {
       return null;
