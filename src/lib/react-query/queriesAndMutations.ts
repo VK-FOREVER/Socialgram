@@ -252,6 +252,8 @@ export const useAddComment = () => {
     mutationFn: ({ postId, comment }: { postId: string; comment: string[] }) =>
       commentPost(postId, comment),
     onSuccess: (data) => {
+      console.log(`The data from query ${data}`);
+
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id],
       });

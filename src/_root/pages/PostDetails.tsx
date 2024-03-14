@@ -24,7 +24,7 @@ const PostDetails = () => {
   const postUser = post?.creator.$id;
   const { user } = useUserContext();
   const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
-  const { mutateAsync: addComment, isPending: addingComment } = useAddComment();
+  const { mutate: addComment, isPending: addingComment } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
 
   const handleDeletePost = () => {
@@ -36,7 +36,7 @@ const PostDetails = () => {
 
   const handleAddComment = () => {
     if (post && commentValue) {
-      console.log(commentValue);
+      console.log({ commentValue, addingComment });
 
       addComment({ postId: post.$id, comment: commentValue });
       setCommentValue([""]);
