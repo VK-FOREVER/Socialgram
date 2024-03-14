@@ -1,22 +1,22 @@
-// import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 import GridPost from "@/components/shared/GridPost";
 import Loader from "@/components/shared/Loader";
 import PostStats from "@/components/shared/PostStats";
 import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import {
-  // useAddComment,
+  useAddComment,
   useDeletePost,
   useGetCurrentUser,
   useGetPostById,
   useGetUserPosts,
 } from "@/lib/react-query/queriesAndMutations";
 import { timeAgo } from "@/lib/utils";
-// import { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
-  // const [commentValue, setCommentValue] = useState<string[]>([""]);
+  const [commentValue, setCommentValue] = useState<string[]>([""]);
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: post, isPending: isLoading } = useGetPostById(id || "");
@@ -24,7 +24,7 @@ const PostDetails = () => {
   const postUser = post?.creator.$id;
   const { user } = useUserContext();
   const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
-  // const { mutateAsync: addComment, isPending: addingComment } = useAddComment();
+  const { mutateAsync: addComment, isPending: addingComment } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
 
   const handleDeletePost = () => {
@@ -36,16 +36,16 @@ const PostDetails = () => {
 
   // console.log();
 
-  // const handleAddComment = async () => {
-  //   if (post && commentValue) {
-  //     await addComment({ postId: post.$id, comment: commentValue });
-  //     setCommentValue([""]);
-  //   } else {
-  //     return null;
-  //   }
+  const handleAddComment = async () => {
+    if (post && commentValue) {
+      await addComment({ postId: post.$id, comment: commentValue });
+      setCommentValue([""]);
+    } else {
+      return null;
+    }
 
-  //   console.log(commentValue);
-  // };
+    console.log(commentValue);
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -128,7 +128,7 @@ const PostDetails = () => {
             <p className="text-light-1 w-full leading-5 ">{post?.caption}</p>
             <hr className="border w-full border-dark-4/80 my-2" />
             <div className="w-full py-1 px-4 rounded-lg overflow-y-scroll h-[309px] custom-scrollbar">
-              {/* {post?.postComments?.map((comment: string, i: number) => (
+              {post?.cmnts?.map((comment: string, i: number) => (
                 <div
                   key={i}
                   className="w-full flex items-start justify-items-start flex-row gap-4 p-4 rounded-lg   border-dark-4/80 border my-2"
@@ -157,9 +157,9 @@ const PostDetails = () => {
                     </div>
                   </div>
                 </div>
-              ))} */}
+              ))}
             </div>
-            {/* <div className="w-full flex items-start  justify-center flex-row gap-4  p-2 rounded-lg my-2">
+            <div className="w-full flex items-start  justify-center flex-row gap-4  p-2 rounded-lg my-2">
               <div className="flex w-full max-w-sm justify-center items-center space-x-2">
                 <div className="flex items-center justify-center">
                   <img
@@ -193,7 +193,7 @@ const PostDetails = () => {
                   )}
                 </Button>
               </div>
-            </div> */}
+            </div>
             <ul className="flex gap-1 mt-2">
               {post?.tag.map((t: string) => (
                 <li key={t} className="text-light-3">
