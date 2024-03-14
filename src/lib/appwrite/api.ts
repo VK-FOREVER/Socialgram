@@ -426,6 +426,7 @@ export async function commentPost(postId: string, comment: string[]) {
   try {
     // const post = await getPostById(postId);
     // const prevComments = post?.postOnComment;
+    console.log(`log from api ${comment}`);
 
     const addComment = await databases.updateDocument(
       appwriteConfig.databasesId,
