@@ -424,8 +424,8 @@ export async function savePost(userId: string, postId: string) {
 
 export async function commentPost(postId: string, comment: string[]) {
   try {
-    const post = await getPostById(postId);
-    const prevComments = post?.cmnts;
+    // const post = await getPostById(postId);
+    // const prevComments = post?.cmnts;
     console.log(`log from api ${comment}`);
 
     const addComment = await databases.updateDocument(
@@ -433,8 +433,8 @@ export async function commentPost(postId: string, comment: string[]) {
       appwriteConfig.postsCollectionId,
       postId,
       {
-        cmnts: prevComments ? [...prevComments, comment] : comment,
-        // cmnts: comment,
+        // cmnts: prevComments ? [...prevComments, comment] : comment,
+        cmnts: comment,
       }
     );
 
