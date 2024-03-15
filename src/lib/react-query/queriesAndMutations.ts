@@ -249,7 +249,7 @@ export const useUpdateUser = () => {
 export const useAddComment = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ postId, comment }: { postId: string; comment: string[] }) =>
+    mutationFn: ({ postId, comment }: { postId: string; comment: string }) =>
       commentPost(postId, comment),
     onSuccess: (data) => {
       console.log(`The data from query ${data}`);

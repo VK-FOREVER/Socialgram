@@ -16,7 +16,7 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
-  const [commentValue, setCommentValue] = useState<string[]>([""]);
+  const [commentValue, setCommentValue] = useState<string>("");
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: post, isPending: isLoading } = useGetPostById(id || "");
@@ -24,7 +24,7 @@ const PostDetails = () => {
   const postUser = post?.creator.$id;
   const { user } = useUserContext();
   const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
-  const { mutate: addComment } = useAddComment();
+  const { mutate: addComment, isPending } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
 
   const handleDeletePost = () => {
@@ -39,7 +39,7 @@ const PostDetails = () => {
       console.log({ commentValue });
 
       addComment({ postId: post.$id, comment: commentValue });
-      setCommentValue([""]);
+      setCommentValue("");
     } else {
       return null;
     }
@@ -172,9 +172,10 @@ const PostDetails = () => {
                   type="text"
                   placeholder="Add a comment..."
                   value={commentValue}
-                  onChange={(e) => setCommentValue([e.target.value.toString()])}
+                  onChange={(e) => setCommentValue(e.target.value.toString())}
                   className="bg-dark-3 text-light-2 rounded-lg w-full"
                 />
+
                 <Button
                   type="submit"
                   variant="outline"
@@ -182,11 +183,15 @@ const PostDetails = () => {
                   onClick={handleAddComment}
                   disabled={commentValue?.length > 35}
                 >
-                  <img
-                    src="/assets/icons/share.svg"
-                    className="w-6 text-primary-600 "
-                    alt="share"
-                  />
+                  {isPending ? (
+                    <Loader showTxt={false} />
+                  ) : (
+                    <img
+                      src="/assets/icons/share.svg"
+                      className="w-6 text-primary-600 "
+                      alt="share"
+                    />
+                  )}
                 </Button>
               </div>
             </div>
