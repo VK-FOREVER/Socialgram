@@ -43,8 +43,6 @@ const PostDetails = () => {
     } else {
       return null;
     }
-
-    console.log(commentValue);
   };
 
   if (isLoading) {
