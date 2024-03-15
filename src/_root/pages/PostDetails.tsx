@@ -182,8 +182,6 @@ const PostDetails = () => {
                   onClick={handleAddComment}
                   disabled={commentValue?.length > 35}
                 >
-                  {/* <Loader showTxt={false} /> */}
-
                   <img
                     src="/assets/icons/share.svg"
                     className="w-6 text-primary-600 "
