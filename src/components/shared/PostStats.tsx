@@ -26,7 +26,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   useEffect(() => {
     setIsSaved(hasSaved ? true : false);
   }, [currentUser]);
-  // console.log(likeList);
+  // console.log(post?.likes);
 
   const [likes, setLikes] = useState(likeList);
   const [isSaved, setIsSaved] = useState(false);

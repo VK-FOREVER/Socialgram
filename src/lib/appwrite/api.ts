@@ -434,7 +434,7 @@ export async function commentPost(postId: string, comment: string[]) {
       postId,
       {
         // cmnts: prevComments ? [...prevComments, comment] : comment,
-        cmnts: comment,
+        userComment: comment,
       }
     );
 
