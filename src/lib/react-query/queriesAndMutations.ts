@@ -249,14 +249,14 @@ export const useUpdateUser = () => {
 export const useAddComment = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ postId, comment }: { postId: string; comment: string }) =>
+    mutationFn: ({ postId, comment }: { postId: string; comment: string[] }) =>
       commentPost(postId, comment),
     onSuccess: (data) => {
       console.log(`The data from query ${data}`);
 
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id],
-      });
+      // queryClient.invalidateQueries({
+      //   queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id],
+      // });
 
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_CURRENT_USER],

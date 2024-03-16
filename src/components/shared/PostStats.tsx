@@ -38,7 +38,6 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
   const handleLikePosts = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // console.log(e);
     let newLikes = [...likes];
     const hasLiked = newLikes.includes(userId);
 

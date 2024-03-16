@@ -14,9 +14,10 @@ import {
 import { timeAgo } from "@/lib/utils";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { Models } from "appwrite";
 
 const PostDetails = () => {
-  const [commentValue, setCommentValue] = useState<string>("");
+  const [commentValue, setCommentValue] = useState<string[]>([""]);
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: post, isPending: isLoading } = useGetPostById(id || "");
@@ -27,6 +28,8 @@ const PostDetails = () => {
   const { mutate: addComment, isPending } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
 
+  const prevComments = post?.userComment.map((c: Models.Document) => c.$id);
+
   const handleDeletePost = () => {
     if (post) {
       deletePost({ postId: post?.$id, imageId: post?.imageId });
@@ -36,10 +39,12 @@ const PostDetails = () => {
 
   const handleAddComment = () => {
     if (post && commentValue) {
-      console.log({ commentValue });
+      let newComments = [...prevComments];
+      newComments.push(commentValue);
 
-      addComment({ postId: post.$id, comment: commentValue });
-      setCommentValue("");
+      addComment({ postId: post.$id, comment: newComments });
+      setCommentValue([""]);
+      console.log({ commentValue, newComments, prevComments });
     } else {
       return null;
     }
@@ -170,7 +175,7 @@ const PostDetails = () => {
                   type="text"
                   placeholder="Add a comment..."
                   value={commentValue}
-                  onChange={(e) => setCommentValue(e.target.value.toString())}
+                  onChange={(e) => setCommentValue([e.target.value.toString()])}
                   className="bg-dark-3 text-light-2 rounded-lg w-full"
                 />
 
