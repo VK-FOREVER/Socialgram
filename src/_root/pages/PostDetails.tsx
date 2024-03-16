@@ -25,7 +25,7 @@ const PostDetails = () => {
   const postUser = post?.creator.$id;
   const { user } = useUserContext();
   const { data: relatedPosts, isFetching } = useGetUserPosts(postUser);
-  const { mutate: addComment, isPending } = useAddComment();
+  const { mutate: addComment, isPending: addingComment } = useAddComment();
   const { data: currentUser } = useGetCurrentUser();
 
   const prevComments = post?.userComment.map((c: Models.Document) => c.$id);
@@ -53,12 +53,6 @@ const PostDetails = () => {
   if (isLoading) {
     return <Loader />;
   }
-
-  // const setComment = (e: any): void => {
-  //   const value = e?.target?.value;
-  //   const str = value?.toString();
-
-  // };
 
   console.log({ currentUser, post });
 
@@ -186,7 +180,7 @@ const PostDetails = () => {
                   onClick={handleAddComment}
                   disabled={commentValue?.length > 35}
                 >
-                  {isPending ? (
+                  {addingComment ? (
                     <Loader showTxt={false} />
                   ) : (
                     <img
