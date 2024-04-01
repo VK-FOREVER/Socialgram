@@ -617,7 +617,6 @@ export async function followingUser(userId: string) {
     if (!updateFollowing) {
       return Error;
     }
-    // console.log(userId);
 
     return updateFollowing;
   } catch (error) {
