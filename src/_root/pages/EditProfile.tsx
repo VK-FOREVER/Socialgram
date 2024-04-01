@@ -38,11 +38,8 @@ const EditProfile = () => {
     },
   });
 
-  // 2. Define a submit handler.
+  // Define a submit handler.
   async function onSubmit(values: z.infer<typeof EditPostValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-
     // update the user
     const updatedUser = await updateUser({
       ...values,
