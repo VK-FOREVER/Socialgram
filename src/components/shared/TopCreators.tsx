@@ -33,9 +33,9 @@ const TopCreators = () => {
 
     // }
     // return res;
-    console.log(typeof id);
+    // console.log(typeof id);
   };
-  console.log(currentUser);
+  // console.log(currentUser);
 
   return (
     <div className="home-creators">
