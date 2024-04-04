@@ -30,6 +30,7 @@ const PostDetails = () => {
 
   const prevComments = post?.userComment.map((c: Models.Document) => c.$id);
 
+  // Delete Posts
   const handleDeletePost = () => {
     if (post) {
       deletePost({ postId: post?.$id, imageId: post?.imageId });
@@ -37,6 +38,7 @@ const PostDetails = () => {
     }
   };
 
+  // Add Comment
   const handleAddComment = () => {
     if (post && commentValue) {
       let newComments = [...prevComments];
@@ -54,7 +56,7 @@ const PostDetails = () => {
     return <Loader />;
   }
 
-  console.log({ currentUser, post });
+  // console.log({ currentUser, post });
 
   return (
     <div className="post_details-container">
