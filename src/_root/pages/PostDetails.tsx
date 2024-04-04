@@ -54,7 +54,7 @@ const PostDetails = () => {
     return <Loader />;
   }
 
-  // console.log({ currentUser, post });
+  console.log({ currentUser, post });
 
   return (
     <div className="post_details-container">
