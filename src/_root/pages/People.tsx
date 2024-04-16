@@ -45,7 +45,7 @@ const People = () => {
                   variant="outline"
                   className="w-20 h-8 hover-shadow-light"
                 >
-                  Follow
+                  View
                 </Button>
               ) : (
                 <Link to={`/edit-profile/${user?.id}`}>

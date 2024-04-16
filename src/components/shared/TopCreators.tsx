@@ -1,6 +1,6 @@
 import {
   useGetCurrentUser,
-  useGetFollowings,
+  // useGetFollowings,
   useGetUsers,
 } from "@/lib/react-query/queriesAndMutations";
 import Loader from "./Loader";
@@ -10,7 +10,7 @@ import { useUserContext } from "@/context/AuthContext";
 
 const TopCreators = () => {
   const { data: creators, isFetching: loading } = useGetUsers(10);
-  const { mutate: followIt } = useGetFollowings();
+  // const { mutate: followIt } = useGetFollowings();
   const { user } = useUserContext();
   const { data: currentUser } = useGetCurrentUser();
 
@@ -25,16 +25,16 @@ const TopCreators = () => {
   //   savePost({ postId: post?.$id || "", userId });
   //   setIsSaved(true);
   // }
-  const handleFollow = (id: string) => {
-    // const isFollowing = currentUser?.followings.includes(userId);
-    // if (!isFollowing) {
+  // const handleFollow = (id: string) => {
+  // const isFollowing = currentUser?.followings.includes(userId);
+  // if (!isFollowing) {
 
-    followIt({ userId: id });
+  // followIt({ userId: id });
 
-    // }
-    // return res;
-    // console.log(typeof id);
-  };
+  // }
+  // return res;
+  // console.log(typeof id);
+  // };
   // console.log(currentUser);
 
   return (

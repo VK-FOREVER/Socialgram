@@ -72,9 +72,9 @@ const Profile = () => {
               <img
                 className="w-5 flex items-start justify-center  "
                 src="/assets/icons/follow.svg"
-                alt="follow"
+                alt="view"
               />
-              Follow
+              view
             </Button>
           </div>
         )}

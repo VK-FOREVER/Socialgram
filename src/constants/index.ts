@@ -24,11 +24,11 @@ export const sidebarLinks = [
     route: "/create-post",
     label: "Create Post",
   },
-  {
-    imgURL: "/assets/icons/message.svg",
-    route: "/chats",
-    label: "Chats",
-  },
+  // {
+  //   imgURL: "/assets/icons/message.svg",
+  //   route: "/chats",
+  //   label: "Chats",
+  // },
 ];
 
 export const bottombarLinks = [
