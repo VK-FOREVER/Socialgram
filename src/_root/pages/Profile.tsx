@@ -95,6 +95,10 @@ const Profile = () => {
                 <span className="text-light-2">
                   {currentUser?.bio ? (
                     currentUser.bio
+                  ) : unAuthorized ? (
+                    <span className="text-sm text-light-3 italic">
+                      "User bio is empty"
+                    </span>
                   ) : (
                     <span className="text-sm text-light-3 italic">
                       "Add your bio by editing profile"
