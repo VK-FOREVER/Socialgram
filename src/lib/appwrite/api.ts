@@ -1,6 +1,10 @@
 import { ID, Query } from "appwrite";
 import { appwriteConfig, account, databases, storage, avatars } from "./config";
 import { IUpdatePost, INewPost, INewUser, IUpdateUser } from "@/types";
+import { useToast } from "@/components/ui/use-toast";
+
+// Some Variables
+const { toast } = useToast();
 
 // ============================================================
 // AUTH
