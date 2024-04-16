@@ -1,5 +1,5 @@
 import {
-  useGetCurrentUser,
+  // useGetCurrentUser,
   // useGetFollowings,
   useGetUsers,
 } from "@/lib/react-query/queriesAndMutations";
@@ -12,7 +12,7 @@ const TopCreators = () => {
   const { data: creators, isFetching: loading } = useGetUsers(10);
   // const { mutate: followIt } = useGetFollowings();
   const { user } = useUserContext();
-  const { data: currentUser } = useGetCurrentUser();
+  // const { data: currentUser } = useGetCurrentUser();
 
   if (loading) {
     return <Loader />;
