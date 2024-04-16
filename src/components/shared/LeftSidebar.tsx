@@ -1,27 +1,21 @@
-import { useCallback, useEffect } from "react";
+// import { useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Button } from "../ui/button";
-import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
+// import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
 import { useUserContext } from "@/context/AuthContext";
 import { sidebarLinks } from "@/constants";
 import { INavLink } from "@/types";
 import Loader from "./Loader";
+import LogOutButton from "./LogOutButton";
 
 const LeftSidebar = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { mutate: signOut, isSuccess } = useSignOutAccount();
+  // const { mutate: signOut, isSuccess } = useSignOutAccount();
   const { user } = useUserContext();
 
-  useEffect(() => {
-    if (isSuccess) {
-      navigate(0);
-    }
-  }, [isSuccess]);
-
-  const handleSignOut = useCallback(() => {
-    signOut();
-  }, [signOut]);
+  // const handleSignOut = useCallback(() => {
+  //   signOut();
+  // }, [signOut]);
 
   return (
     <nav className="leftsidebar">
@@ -79,14 +73,7 @@ const LeftSidebar = () => {
           })}
         </ul>
       </div>
-      <Button
-        className="shad-button_ghost"
-        variant="ghost"
-        onClick={handleSignOut}
-      >
-        <img src="/assets/icons/logout.svg" alt="logout" />
-        <p className="small-medium lg:base-medium">Logout</p>
-      </Button>
+      <LogOutButton />
     </nav>
   );
 };
