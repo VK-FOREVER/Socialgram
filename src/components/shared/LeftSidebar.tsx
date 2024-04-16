@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
@@ -18,6 +18,10 @@ const LeftSidebar = () => {
       navigate(0);
     }
   }, [isSuccess]);
+
+  const handleSignOut = useCallback(() => {
+    signOut();
+  }, [signOut]);
 
   return (
     <nav className="leftsidebar">
@@ -78,7 +82,7 @@ const LeftSidebar = () => {
       <Button
         className="shad-button_ghost"
         variant="ghost"
-        onClick={() => signOut()}
+        onClick={handleSignOut}
       >
         <img src="/assets/icons/logout.svg" alt="logout" />
         <p className="small-medium lg:base-medium">Logout</p>
