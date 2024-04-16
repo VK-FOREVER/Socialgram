@@ -73,13 +73,15 @@ const TopCreators = () => {
                 </div>
               </Link>
               {$id !== user.id ? (
-                <Button
-                  variant="outline"
-                  className="w-18 h-8 hover-shadow-light"
-                  onClick={() => handleFollow($id)}
-                >
-                  Follow
-                </Button>
+                <Link to={`/profile/${$id}`}>
+                  <Button
+                    variant="outline"
+                    className="w-18 h-8 hover-shadow-light"
+                    // onClick={() => handleFollow($id)}
+                  >
+                    View
+                  </Button>
+                </Link>
               ) : (
                 <Link to={`/edit-profile/${user?.id}`}>
                   <Button
