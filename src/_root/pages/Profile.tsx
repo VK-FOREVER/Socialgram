@@ -53,31 +53,34 @@ const Profile = () => {
           src={currentUser?.imageUrl}
           alt={currentUser?.username}
         />
-        {!unAuthorized ? (
-          <div className="flex items-end justify-end hover:hover-shadow absolute right-[0px] top-[350px] my-[2px]">
-            <Link to={`/edit-profile/${user?.id}`}>
-              <Button className="px-4 py-2 gap-2" variant="outline">
-                <img
-                  className="w-5 flex items-start justify-center  "
-                  src="/assets/icons/edit.svg"
-                  alt="edit-profile"
-                />
-                Edit Profile
-              </Button>
-            </Link>
-          </div>
-        ) : (
-          <div className="flex items-end justify-center hover:hover-shadow absolute right-[0px] top-[350px] my-[2px]">
-            <Button className="px-4 py-2 gap-2" variant="outline">
-              <img
-                className="w-5 flex items-start justify-center  "
-                src="/assets/icons/follow.svg"
-                alt="view"
-              />
-              view
-            </Button>
-          </div>
-        )}
+        {
+          !unAuthorized ? (
+            <div className="flex items-end justify-end hover:hover-shadow absolute right-[0px] top-[350px] my-[2px]">
+              <Link to={`/edit-profile/${user?.id}`}>
+                <Button className="px-4 py-2 gap-2" variant="outline">
+                  <img
+                    className="w-5 flex items-start justify-center  "
+                    src="/assets/icons/edit.svg"
+                    alt="edit-profile"
+                  />
+                  Edit Profile
+                </Button>
+              </Link>
+            </div>
+          ) : null
+          //  (
+          //   <div className="flex items-end justify-center hover:hover-shadow absolute right-[0px] top-[350px] my-[2px]">
+          //     <Button className="px-4 py-2 gap-2" variant="outline">
+          //       <img
+          //         className="w-5 flex items-start justify-center  "
+          //         src="/assets/icons/follow.svg"
+          //         alt="view"
+          //       />
+          //       view
+          //     </Button>
+          //   </div>
+          // )
+        }
       </div>
 
       <div className="profile-container z-10">
