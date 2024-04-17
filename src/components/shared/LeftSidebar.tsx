@@ -5,7 +5,6 @@ import { useUserContext } from "@/context/AuthContext";
 import { sidebarLinks } from "@/constants";
 import { INavLink } from "@/types";
 import Loader from "./Loader";
-import LogOutButton from "./LogOutButton";
 
 const LeftSidebar = () => {
   // const navigate = useNavigate();
@@ -73,7 +72,6 @@ const LeftSidebar = () => {
           })}
         </ul>
       </div>
-      <LogOutButton />
     </nav>
   );
 };
