@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
-import FileUploader from "../shared/FileUploader";
+// import FileUploader from "../shared/FileUploader";
 import { Models } from "appwrite";
 import { PostValidation } from "@/lib/validation";
 import {
@@ -116,10 +116,10 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Image</FormLabel>
                 <FormControl>
-                  <FileUploader
+                  {/* <FileUploader
                     fieldChange={field.onChange}
                     mediaUrl={post?.imageUrl}
-                  />
+                  /> */}
                 </FormControl>
                 <FormMessage className="shad-form_message" />
               </FormItem>
