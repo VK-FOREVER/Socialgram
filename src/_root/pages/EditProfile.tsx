@@ -1,4 +1,4 @@
-import FileUploader from "@/components/shared/FileUploader";
+// import FileUploader from "@/components/shared/FileUploader";
 import Loader from "@/components/shared/Loader";
 import { Button } from "@/components/ui/button";
 import {
@@ -65,6 +65,9 @@ const EditProfile = () => {
     navigate(-1);
   };
 
+  // This damn Error occuring
+  // VM3007:1 [hmr] Failed to reload /src/_root/pages/EditProfile.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
   return (
     <div className="edit-form_container">
       <div className="w-full flex items-center justify-start">
@@ -91,11 +94,11 @@ const EditProfile = () => {
                     Add Profile Pic
                   </FormLabel>
                   <FormControl>
-                    <FileUploader
-                      fieldChange={field.onChange}
-                      mediaUrl={currentUser?.imageUrl}
-                      rounded={true}
-                    />
+                    {/* <FileUploader */}
+                    {/* fieldChange={field.onChange} */}
+                    {/* mediaUrl={currentUser?.imageUrl} */}
+                    {/* // rounded={true} */}
+                    {/* /> */}
                   </FormControl>
                   <FormMessage className="shad-form_message" />
                 </FormItem>
