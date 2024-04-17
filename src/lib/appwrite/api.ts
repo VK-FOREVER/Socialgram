@@ -2,8 +2,6 @@ import { ID, Query } from "appwrite";
 import { appwriteConfig, account, databases, storage, avatars } from "./config";
 import { IUpdatePost, INewPost, INewUser, IUpdateUser } from "@/types";
 
-// Some Variables
-
 // ============================================================
 // AUTH
 // ============================================================
@@ -103,19 +101,7 @@ export async function getCurrentUser() {
 }
 
 // ============================== SIGN OUT
-export async function signOutAccount() {
-  try {
-    const areYou = confirm("Are you sure you want to sign out?");
-    if (areYou) {
-      const session = await account.deleteSession("current");
-      return session;
-    } else {
-      null;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
+// ---------------------------------------
 
 // ============================================================
 // POSTS
