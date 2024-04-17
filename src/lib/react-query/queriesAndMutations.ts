@@ -10,7 +10,7 @@ import {
   createUserAccount,
   signInAccount,
   getCurrentUser,
-  signOutAccount,
+  // signOutAccount,
   getUsers,
   createPost,
   getPostById,
@@ -48,11 +48,11 @@ export const useSignInAccount = () => {
   });
 };
 
-export const useSignOutAccount = () => {
-  return useMutation({
-    mutationFn: signOutAccount,
-  });
-};
+// export const useSignOutAccount = () => {
+//   return useMutation({
+//     mutationFn: signOutAccount,
+//   });
+// };
 
 // // ============================================================
 // // POST QUERIES
