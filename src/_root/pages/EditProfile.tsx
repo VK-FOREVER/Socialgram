@@ -1,4 +1,4 @@
-// import FileUploader from "@/components/shared/FileUploader";
+import FileUploader from "@/components/shared/FileUploader";
 import Loader from "@/components/shared/Loader";
 import { Button } from "@/components/ui/button";
 import {
@@ -94,11 +94,11 @@ const EditProfile = () => {
                     Add Profile Pic
                   </FormLabel>
                   <FormControl>
-                    {/* <FileUploader */}
-                    {/* fieldChange={field.onChange} */}
-                    {/* mediaUrl={currentUser?.imageUrl} */}
-                    {/* // rounded={true} */}
-                    {/* /> */}
+                    <FileUploader
+                      fieldChange={field.onChange}
+                      mediaUrl={currentUser?.imageUrl}
+                      rounded={true}
+                    />
                   </FormControl>
                   <FormMessage className="shad-form_message" />
                 </FormItem>
