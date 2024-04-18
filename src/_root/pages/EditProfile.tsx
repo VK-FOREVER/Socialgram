@@ -27,14 +27,15 @@ const EditProfile = () => {
   const { mutateAsync: updateUser, isPending: updatingUser } = useUpdateUser();
 
   const { data: currentUser, isFetching: loading } = useGetCurrentUser();
+
   const form = useForm<z.infer<typeof EditPostValidation>>({
     resolver: zodResolver(EditPostValidation),
     defaultValues: {
-      file: currentUser ? currentUser?.imageUrl : [],
+      file: [],
       name: currentUser ? currentUser?.name : "",
       username: currentUser ? currentUser?.username : "",
       email: currentUser ? currentUser?.email : "",
-      bio: "",
+      bio: currentUser?.bio || "",
     },
   });
 
@@ -96,7 +97,7 @@ const EditProfile = () => {
                   <FormControl>
                     <FileUploader
                       fieldChange={field.onChange}
-                      mediaUrl={currentUser?.imageUrl}
+                      mediaUrl={""}
                       rounded={true}
                     />
                   </FormControl>
