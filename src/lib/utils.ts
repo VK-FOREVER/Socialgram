@@ -5,6 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
+
 // Simplify the Date Format
 export function timeAgo(dateString: string): string {
   const currentDate = new Date();

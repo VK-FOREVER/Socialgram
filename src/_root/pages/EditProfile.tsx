@@ -97,7 +97,7 @@ const EditProfile = () => {
                   <FormControl>
                     <FileUploader
                       fieldChange={field.onChange}
-                      mediaUrl={""}
+                      mediaUrl={currentUser?.imageUrl}
                       rounded={true}
                     />
                   </FormControl>
