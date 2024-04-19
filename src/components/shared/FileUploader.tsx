@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
-import { FileWithPath, useDropzone } from "react-dropzone";
+// import { FileWithPath, useDropzone } from "react-dropzone";
+import { FileUploader } from "react-drag-drop-files";
 import { Button } from "../ui/button";
 import { convertFileToUrl } from "@/lib/utils";
 
@@ -9,7 +10,7 @@ type FileUploaderProps = {
   rounded?: boolean;
 };
 
-const FileUploader = ({
+const FileUploaderComponent = ({
   fieldChange,
   mediaUrl,
   rounded,
@@ -18,7 +19,7 @@ const FileUploader = ({
   const [dropFile, setDropFile] = useState<File[]>([]);
 
   const onDrop = useCallback(
-    (file: FileWithPath[]) => {
+    (file: any) => {
       setDropFile(file);
       fieldChange(file);
       setFileUrl(convertFileToUrl(file[0]));
@@ -110,4 +111,4 @@ const FileUploader = ({
   );
 };
 
-export default FileUploader;
+export default FileUploaderComponent;
