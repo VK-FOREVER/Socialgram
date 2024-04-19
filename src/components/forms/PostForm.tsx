@@ -1,3 +1,5 @@
+import { FileUploader } from "react-drag-drop-files";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -12,7 +14,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
-// import FileUploader from "../shared/FileUploader";
 import { Models } from "appwrite";
 import { PostValidation } from "@/lib/validation";
 import {
@@ -23,7 +24,7 @@ import { useUserContext } from "@/context/AuthContext";
 import { toast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import Loader from "../shared/Loader";
-import FileUploaderComponent from "../shared/FileUploaderComponent";
+// import FileUploaderComponent from "../shared/FileUploaderComponent";
 
 // PostFrom type
 type PostFormProps = {
@@ -86,107 +87,119 @@ const PostForm = ({ post, action }: PostFormProps) => {
     navigate(-1);
   };
 
+  const fileTypes = ["JPG", "PNG", "GIF"];
+
+  const handleChange = (file: any) => {
+    console.log(file);
+  };
   return (
-    <div className="w-full capitalize ">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-9 w-full max-w-5xl "
-        >
-          <FormField
-            control={form.control}
-            name="caption"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="shad-form_label">Caption</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Enter your Caption"
-                    className="shad-textarea custom-scrollbar"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage className="shad-form_message" />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="file"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="shad-form_label">Add Image</FormLabel>
-                <FormControl>
-                  <FileUploaderComponent
-                    fieldChange={field.onChange}
-                    mediaUrl={post?.imageUrl}
-                  />
-                </FormControl>
-                <FormMessage className="shad-form_message" />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="location"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="shad-form_label">Add Location</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Enter Location"
-                    className="shad-input"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage className="shad-form_message" />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="tag"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="shad-form_label">
-                  Add Tags (separated by comma " , ")
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="shad-input"
-                    placeholder="Coding, Entertainment, Learinig"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage className="shad-form_message" />
-              </FormItem>
-            )}
-          />
-          <div className="flex gap-4 items-center justify-end">
-            <Button
-              type="button"
-              className="shad-button_dark_4 "
-              onClick={cancleForm}
-            >
-              Cancel
-            </Button>
-            <Button
-              className="shad-button_primary whitespace-nowrap "
-              type="submit"
-              disabled={updatingPost || creatingPost}
-            >
-              {updatingPost || creatingPost ? (
-                <Loader showTxt={false} />
-              ) : (
-                `${action} Post`
-              )}
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </div>
+    // <div className="w-full capitalize ">
+    //   <Form {...form}>
+    //     <form
+    //       onSubmit={form.handleSubmit(onSubmit)}
+    //       className="flex flex-col gap-9 w-full max-w-5xl "
+    //     >
+    //       <FormField
+    //         control={form.control}
+    //         name="caption"
+    //         render={({ field }) => (
+    //           <FormItem>
+    //             <FormLabel className="shad-form_label">Caption</FormLabel>
+    //             <FormControl>
+    //               <Textarea
+    //                 placeholder="Enter your Caption"
+    //                 className="shad-textarea custom-scrollbar"
+    //                 {...field}
+    //               />
+    //             </FormControl>
+    //             <FormMessage className="shad-form_message" />
+    //           </FormItem>
+    //         )}
+    //       />
+    //       <FormField
+    //         control={form.control}
+    //         name="file"
+    //         render={({ field }) => (
+    //           <FormItem>
+    //             <FormLabel className="shad-form_label">Add Image</FormLabel>
+    //             <FormControl>
+    //               {/* <FileUploaderComponent
+    //                 fieldChange={field.onChange}
+    //                 mediaUrl={post?.imageUrl}
+    //               /> */}
+
+    //             </FormControl>
+    //             <FormMessage className="shad-form_message" />
+    //           </FormItem>
+    //         )}
+    //       />
+    //       <FormField
+    //         control={form.control}
+    //         name="location"
+    //         render={({ field }) => (
+    //           <FormItem>
+    //             <FormLabel className="shad-form_label">Add Location</FormLabel>
+    //             <FormControl>
+    //               <Input
+    //                 type="text"
+    //                 placeholder="Enter Location"
+    //                 className="shad-input"
+    //                 {...field}
+    //               />
+    //             </FormControl>
+    //             <FormMessage className="shad-form_message" />
+    //           </FormItem>
+    //         )}
+    //       />
+    //       <FormField
+    //         control={form.control}
+    //         name="tag"
+    //         render={({ field }) => (
+    //           <FormItem>
+    //             <FormLabel className="shad-form_label">
+    //               Add Tags (separated by comma " , ")
+    //             </FormLabel>
+    //             <FormControl>
+    //               <Input
+    //                 type="text"
+    //                 className="shad-input"
+    //                 placeholder="Coding, Entertainment, Learinig"
+    //                 {...field}
+    //               />
+    //             </FormControl>
+    //             <FormMessage className="shad-form_message" />
+    //           </FormItem>
+    //         )}
+    //       />
+    //       <div className="flex gap-4 items-center justify-end">
+    //         <Button
+    //           type="button"
+    //           className="shad-button_dark_4 "
+    //           onClick={cancleForm}
+    //         >
+    //           Cancel
+    //         </Button>
+    //         <Button
+    //           className="shad-button_primary whitespace-nowrap "
+    //           type="submit"
+    //           disabled={updatingPost || creatingPost}
+    //         >
+    //           {updatingPost || creatingPost ? (
+    //             <Loader showTxt={false} />
+    //           ) : (
+    //             `${action} Post`
+    //           )}
+    //         </Button>
+    //       </div>
+    //     </form>
+    //   </Form>
+    // </div>
+    <FileUploader
+      multiple={true}
+      handleChange={handleChange}
+      name="file"
+      types={fileTypes}
+    />
   );
 };
 

@@ -1,123 +1,123 @@
-import { useCallback, useState } from "react";
-// import { FileWithPath, useDropzone } from "react-dropzone";
-import { FileUploader } from "react-drag-drop-files";
-import { Button } from "../ui/button";
-import { convertFileToUrl } from "@/lib/utils";
+// import { useCallback, useState } from "react";
+// // import { FileWithPath, useDropzone } from "react-dropzone";
+// import { FileUploader } from "react-drag-drop-files";
+// import { Button } from "../ui/button";
+// import { convertFileToUrl } from "@/lib/utils";
 
-type FileUploaderProps = {
-  fieldChange: (files: File[]) => void;
-  mediaUrl: string;
-  rounded?: boolean;
-};
+// type FileUploaderProps = {
+//   fieldChange: (files: File[]) => void;
+//   mediaUrl: string;
+//   rounded?: boolean;
+// };
 
-const FileUploaderComponent = ({
-  fieldChange,
-  mediaUrl,
-  rounded,
-}: FileUploaderProps) => {
-  const [fileUrl, setFileUrl] = useState(mediaUrl); // Post Image URL
-  const [dropFile, setDropFile] = useState<File[]>([]);
+// const FileUploaderComponent = ({
+//   fieldChange,
+//   mediaUrl,
+//   rounded,
+// }: FileUploaderProps) => {
+//   const [fileUrl, setFileUrl] = useState(mediaUrl); // Post Image URL
+//   const [dropFile, setDropFile] = useState<File[]>([]);
 
-  // const onDrop = useCallback(
-  //   (file: any) => {
-  //     setDropFile(file);
-  //     fieldChange(file);
-  //     console.log(file);
+//   // const onDrop = useCallback(
+//   //   (file: any) => {
+//   //     setDropFile(file);
+//   //     fieldChange(file);
+//   //     console.log(file);
 
-  //     // setFileUrl(convertFileToUrl(file[0]));
-  //   },
+//   //     // setFileUrl(convertFileToUrl(file[0]));
+//   //   },
 
-  //   [dropFile]
-  // );
+//   //   [dropFile]
+//   // );
 
-  const handleDrop = (file: any) => {
-    console.log(file);
-  };
+//   const handleDrop = (file: any) => {
+//     console.log(file);
+//   };
 
-  // const { getRootProps, getInputProps, isDragActive } = useDropzone({
-  //   onDrop,
-  //   accept: {
-  //     "image/*": [".png", ".jpeg", ".jpg", ".svg", ".gif"],
-  //   },
-  // });
+//   // const { getRootProps, getInputProps, isDragActive } = useDropzone({
+//   //   onDrop,
+//   //   accept: {
+//   //     "image/*": [".png", ".jpeg", ".jpg", ".svg", ".gif"],
+//   //   },
+//   // });
 
-  const fileTypes = [".png", ".jpeg", ".jpg", ".svg", ".gif"];
+//   const fileTypes = [".png", ".jpeg", ".jpg", ".svg", ".gif"];
 
-  return (
-    // <div
-    //   {...getRootProps()}
-    //   className={`flex flex-center flex-col bg-dark-1  cursor-pointer  ${
-    //     isDragActive && " border-2 shadow-md shadow-blue-400 border-blue-800"
-    //   } ${rounded ? "rounded-xl " : "rounded-xl"}`}
-    // >
-    //   <input {...getInputProps()} className="cursor-pointer " />
-    //   {fileUrl ? (
-    //     <>
-    //       <div className="flex flex-1 justify-center w-full p-5 lg:p-5">
-    //         <img
-    //           src={fileUrl}
-    //           alt="Image"
-    //           className={`${
-    //             rounded
-    //               ? "h-60 w-60 rounded-full object-cover"
-    //               : "file_uploader-img"
-    //           }`}
-    //         />
-    //       </div>
-    //       <p
-    //         className={`${
-    //           rounded ? "text-base text-light-3 mb-2" : "file_uploader-label"
-    //         }`}
-    //       >
-    //         Click or drag Photo to replace.
-    //       </p>
-    //     </>
-    //   ) : (
-    //     <div
-    //       className={`${
-    //         rounded
-    //           ? " flex-center flex-col p-2 h-10 lg:h-[250px]"
-    //           : "file_uploader-box"
-    //       }`}
-    //     >
-    //       {rounded ? (
-    //         <img
-    //           src="/assets/icons/user.svg"
-    //           className=" w-28 h-28 object-contain"
-    //           alt="Upload Profile Pic here"
-    //         />
-    //       ) : (
-    //         <img
-    //           src="/assets/icons/file-upload.svg"
-    //           className="file_uploader-img"
-    //           alt="Upload Files Here"
-    //         />
-    //       )}
+//   return (
+//     // <div
+//     //   {...getRootProps()}
+//     //   className={`flex flex-center flex-col bg-dark-1  cursor-pointer  ${
+//     //     isDragActive && " border-2 shadow-md shadow-blue-400 border-blue-800"
+//     //   } ${rounded ? "rounded-xl " : "rounded-xl"}`}
+//     // >
+//     //   <input {...getInputProps()} className="cursor-pointer " />
+//     //   {fileUrl ? (
+//     //     <>
+//     //       <div className="flex flex-1 justify-center w-full p-5 lg:p-5">
+//     //         <img
+//     //           src={fileUrl}
+//     //           alt="Image"
+//     //           className={`${
+//     //             rounded
+//     //               ? "h-60 w-60 rounded-full object-cover"
+//     //               : "file_uploader-img"
+//     //           }`}
+//     //         />
+//     //       </div>
+//     //       <p
+//     //         className={`${
+//     //           rounded ? "text-base text-light-3 mb-2" : "file_uploader-label"
+//     //         }`}
+//     //       >
+//     //         Click or drag Photo to replace.
+//     //       </p>
+//     //     </>
+//     //   ) : (
+//     //     <div
+//     //       className={`${
+//     //         rounded
+//     //           ? " flex-center flex-col p-2 h-10 lg:h-[250px]"
+//     //           : "file_uploader-box"
+//     //       }`}
+//     //     >
+//     //       {rounded ? (
+//     //         <img
+//     //           src="/assets/icons/user.svg"
+//     //           className=" w-28 h-28 object-contain"
+//     //           alt="Upload Profile Pic here"
+//     //         />
+//     //       ) : (
+//     //         <img
+//     //           src="/assets/icons/file-upload.svg"
+//     //           className="file_uploader-img"
+//     //           alt="Upload Files Here"
+//     //         />
+//     //       )}
 
-    //       <h3
-    //         className={`${
-    //           rounded
-    //             ? "text-lg text-light-4"
-    //             : "base-medium text-light-2 mb-2 mt-6 "
-    //         }`}
-    //       >
-    //         Drag/Click to add your Image.
-    //       </h3>
+//     //       <h3
+//     //         className={`${
+//     //           rounded
+//     //             ? "text-lg text-light-4"
+//     //             : "base-medium text-light-2 mb-2 mt-6 "
+//     //         }`}
+//     //       >
+//     //         Drag/Click to add your Image.
+//     //       </h3>
 
-    //       {!rounded && (
-    //         <>
-    //           <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
+//     //       {!rounded && (
+//     //         <>
+//     //           <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
 
-    //           <Button className="shad-button_dark_4">
-    //             Select file form computer
-    //           </Button>
-    //         </>
-    //       )}
-    //     </div>
-    //   )}
-    // </div>
-    <FileUploader handleChange={handleDrop} name="file" types={fileTypes} />
-  );
-};
+//     //           <Button className="shad-button_dark_4">
+//     //             Select file form computer
+//     //           </Button>
+//     //         </>
+//     //       )}
+//     //     </div>
+//     //   )}
+//     // </div>
+//     <FileUploader handleChange={handleDrop} name="file" types={fileTypes} />
+//   );
+// };
 
-export default FileUploaderComponent;
+// export default FileUploaderComponent;
