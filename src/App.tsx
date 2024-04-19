@@ -1,3 +1,10 @@
+// TODO = {
+// "SAVE.TSX": "fix error current user not found",
+// "UPLOADFILE": "Create new file uploader",
+// "LOGOUT": "Implements logout functionality",
+
+// }
+
 import Authlayout from "./_auth/AuthLayout";
 import SignIn from "./_auth/forms/SignIn";
 import SignUp from "./_auth/forms/SignUp";
