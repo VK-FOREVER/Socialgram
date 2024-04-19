@@ -23,6 +23,7 @@ import { useUserContext } from "@/context/AuthContext";
 import { toast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import Loader from "../shared/Loader";
+import FileUploaderComponent from "../shared/FileUploaderComponent";
 
 // PostFrom type
 type PostFormProps = {
@@ -116,10 +117,10 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Image</FormLabel>
                 <FormControl>
-                  {/* <FileUploader
+                  <FileUploaderComponent
                     fieldChange={field.onChange}
                     mediaUrl={post?.imageUrl}
-                  /> */}
+                  />
                 </FormControl>
                 <FormMessage className="shad-form_message" />
               </FormItem>
