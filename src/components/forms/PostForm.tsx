@@ -116,7 +116,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Image</FormLabel>
                 <FormControl>
-                  <FileUpload fileUrl={""} />
+                  <FileUpload fileUrl={post?.imageUrl} />
                 </FormControl>
                 <FormMessage className="shad-form_message" />
               </FormItem>
