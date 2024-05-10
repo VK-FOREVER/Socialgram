@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 
 const FileUpload = () => {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<Array<any>>([]);
   const options = {
     apiKey: "free",
 
