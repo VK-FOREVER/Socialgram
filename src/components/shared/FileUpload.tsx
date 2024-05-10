@@ -65,6 +65,7 @@ const FileUpload = () => {
       ) : (
         <MyDropzone setFiles={setFiles} />
       )}
+      <img src={files[0].fileUrl} alt="file" />
       <a
         className="developed_by"
         href="https://www.bytescale.com/docs/upload-widget/react"
