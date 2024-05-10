@@ -2,8 +2,9 @@ import { UploadDropzone } from "@bytescale/upload-widget-react";
 import { useState, useEffect } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 
-const FileUpload = () => {
-  const [files, setFiles] = useState<Array<any>>([]);
+const FileUpload = ({ fileUrl }: { fileUrl: string }) => {
+  const [file, setFile] = useState<Array<any>>([]);
+  const [url, setUrl] = useState<string>(fileUrl);
   const options = {
     apiKey: "free",
 
@@ -17,7 +18,7 @@ const FileUpload = () => {
     },
   };
 
-  const MyDropzone = ({ setFiles }: any) => (
+  const MyDropzone = ({ setFile }: any) => (
     <UploadDropzone
       options={options}
       onUpdate={({ uploadedFiles }: any) =>
@@ -25,7 +26,7 @@ const FileUpload = () => {
           `Files: ${uploadedFiles.map((x: any) => x.fileUrl).join("\n")}`
         )
       }
-      onComplete={setFiles}
+      onComplete={setFile}
       width="600px"
       height="375px"
     />
@@ -49,6 +50,7 @@ const FileUpload = () => {
           transformationPreset: "thumbnail",
         },
       });
+      setUrl(fileUrl);
       return (
         <p key={fileUrl}>
           <a href={fileUrl} target="_blank">
@@ -60,15 +62,15 @@ const FileUpload = () => {
 
   return (
     <>
-      {files.length ? (
-        <MyUploadedFiles files={files} />
+      {file.length ? (
+        <MyUploadedFiles files={file} />
       ) : (
-        <MyDropzone setFiles={setFiles} />
+        <MyDropzone setFiles={setFile} />
       )}
       <div className="w-full flex justify-center items-center p-4 flex-col">
         <img
           className="w-2/3 h-2/4 rounded-lg bg-cover"
-          src={files[0].fileUrl}
+          src={file.length > 0 ? file[0].fileUrl : ""}
           alt="file"
         />
         <a
