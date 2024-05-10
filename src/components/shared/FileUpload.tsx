@@ -65,14 +65,20 @@ const FileUpload = () => {
       ) : (
         <MyDropzone setFiles={setFiles} />
       )}
-      <img src={files[0].fileUrl} alt="file" />
-      <a
-        className="developed_by"
-        href="https://www.bytescale.com/docs/upload-widget/react"
-        target="_blank"
-      >
-        Powered by Bytescale
-      </a>
+      <div className="w-full flex justify-center items-center p-4 flex-col">
+        <img
+          className="w-2/3 h-2/4 rounded-lg bg-cover"
+          src={files[0].fileUrl}
+          alt="file"
+        />
+        <a
+          className="developed_by  flex justify-start w-full my-2 text-sm"
+          href="https://www.bytescale.com/docs/upload-widget/react"
+          target="_blank"
+        >
+          Powered by Bytescale
+        </a>
+      </div>
     </>
   );
 };
