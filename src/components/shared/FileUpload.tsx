@@ -1,5 +1,5 @@
 import { UploadDropzone } from "@bytescale/upload-widget-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 
 const FileUpload = ({ fileUrl }: { fileUrl: string }) => {
