@@ -63,9 +63,9 @@ const FileUpload = ({ fileUrl }: { fileUrl: string }) => {
   return (
     <>
       {file.length ? (
-        <MyUploadedFiles files={file} />
+        <MyUploadedFiles className="w-full" files={file} />
       ) : (
-        <MyDropzone setFiles={setFile} />
+        <MyDropzone className="w-full" setFiles={setFile} />
       )}
       <div className="w-full flex justify-center items-center p-4 flex-col">
         <img
