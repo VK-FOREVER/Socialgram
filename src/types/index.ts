@@ -55,3 +55,8 @@ export type IContextType = {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   checkAuthUser: () => Promise<boolean>;
 };
+
+export type FileUploaderProps = {
+  fileUrl: string;
+  fieldChange: (file: File[]) => void;
+};

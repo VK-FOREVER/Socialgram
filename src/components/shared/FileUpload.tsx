@@ -1,11 +1,7 @@
 import { UploadDropzone } from "@bytescale/upload-widget-react";
 import { useState } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
-
-type FileUploaderProps = {
-  fileUrl: string;
-  fieldChange: (file: File[]) => void;
-};
+import { FileUploaderProps } from "@/types";
 
 const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
   const [file, setFile] = useState<Array<any>>([]);
