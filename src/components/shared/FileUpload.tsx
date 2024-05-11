@@ -4,11 +4,11 @@ import { UrlBuilder } from "@bytescale/sdk";
 import { FileUploaderProps } from "@/types";
 
 const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
-  const [file, setFile] = useState<Array<any>>([]);
+  const [file, setFile] = useState<Array<string>>([]);
   const [url, setUrl] = useState<string>(fileUrl);
+
   const options = {
     apiKey: "free",
-
     maxFileCount: 1,
     showFinishButton: true,
 
@@ -69,11 +69,11 @@ const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
         <MyDropzone className="w-full" setFiles={setFile} />
       )}
       <div className="w-full flex justify-center items-center p-4 flex-col">
-        <img
+        {/* <img
           className="w-2/3 h-2/4 rounded-lg bg-cover"
-          src={file.length > 0 ? file[0].fileUrl : ""}
+          src={file[0]?.fileUrl}
           alt="file"
-        />
+        /> */}
         <a
           className="developed_by  flex justify-start w-full my-2 text-sm"
           href="https://www.bytescale.com/docs/upload-widget/react"
