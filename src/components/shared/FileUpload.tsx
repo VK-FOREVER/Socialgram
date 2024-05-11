@@ -3,9 +3,10 @@ import { useState } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 import { FileUploaderProps } from "@/types";
 
+//Fix it
 const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
   const [file, setFile] = useState<Array<string>>([]);
-  const [url, setUrl] = useState<string>(fileUrl);
+  const [url, setUrl] = useState<string>(fileUrl || "");
 
   const options = {
     apiKey: "free",
@@ -52,10 +53,13 @@ const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
         },
       });
       setUrl(fileUrl);
+      {
+        console.log(fileUrl);
+      }
       return (
         <p key={fileUrl}>
           <a href={fileUrl} target="_blank">
-            {fileUrl}
+            The file URL{fileUrl}
           </a>
         </p>
       );
@@ -63,7 +67,7 @@ const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
 
   return (
     <>
-      {file.length ? (
+      {file.length > 0 ? (
         <MyUploadedFiles className="w-full" files={file} />
       ) : (
         <MyDropzone className="w-full" setFiles={setFile} />
