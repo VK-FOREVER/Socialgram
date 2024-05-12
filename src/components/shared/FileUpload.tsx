@@ -23,11 +23,7 @@ const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
   const MyDropzone = ({ setFile }: any) => (
     <UploadDropzone
       options={options}
-      onUpdate={({ uploadedFiles }: any) =>
-        console.log(
-          `Files: ${uploadedFiles.map((x: any) => x.fileUrl).join("\n")}`
-        )
-      }
+      onUpdate={({ uploadedFiles }: any) => setFile(uploadedFiles[0].fileUrl)}
       onComplete={setFile}
       width="600px"
       height="375px"
@@ -64,6 +60,20 @@ const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
         </p>
       );
     });
+
+  // const options = {
+  //   apiKey: "free", // Get API keys from: www.bytescale.com
+  //   maxFileCount: 1
+  // };
+
+  // function uploadFiles() {
+  //   Bytescale.UploadWidget.open(options).then(
+  //     files => alert(files.length === 0
+  //                    ? "No files selected."
+  //                    : `Files uploaded:\n\n${files.map(x => x.fileUrl).join("\n")}`),
+  //     error => alert(error)
+  //   );
+  // }
 
   return (
     <>
