@@ -61,6 +61,7 @@ const FileUpload = ({ fileUrl, fieldChange }: FileUploaderProps) => {
       );
     });
 
+  // Code
   // const options = {
   //   apiKey: "free", // Get API keys from: www.bytescale.com
   //   maxFileCount: 1
