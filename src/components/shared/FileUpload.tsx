@@ -5,7 +5,7 @@ import { FileUploaderProps } from "@/types";
 
 //Fix it
 const FileUpload = () => {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<string>("");
   const options = {
     apiKey: "free", // Get API keys from: www.bytescale.com
     maxFileCount: 1,
@@ -25,7 +25,8 @@ const FileUpload = () => {
   <UploadDropzone
     options={options}
     onUpdate={({ uploadedFiles }) =>
-      console.log(uploadedFiles.map((x) => x.fileUrl).join("\n"))
+      // console.log()
+      setFiles(uploadedFiles[0].fileUrl)
     }
     onComplete={(files) => alert(files.map((x) => x.fileUrl).join("\n"))}
     width="600px"
