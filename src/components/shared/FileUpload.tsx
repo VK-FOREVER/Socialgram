@@ -16,11 +16,21 @@ const FileUpload = () => {
     },
   };
 
-  const MyUploadButton = ({ setFiles }: any) => (
-    <UploadButton options={options} onComplete={setFiles}>
-      {({ onClick }) => <button onClick={onClick}>Upload a file...</button>}
-    </UploadButton>
-  );
+  // const MyUploadButton = ({ setFiles }: any) => (
+  //   <UploadButton options={options} onComplete={setFiles}>
+  //     {({ onClick }) => <button onClick={onClick}>Upload a file...</button>}
+  //   </UploadButton>
+  // );
+
+  <UploadDropzone
+    options={options}
+    onUpdate={({ uploadedFiles }) =>
+      console.log(uploadedFiles.map((x) => x.fileUrl).join("\n"))
+    }
+    onComplete={(files) => alert(files.map((x) => x.fileUrl).join("\n"))}
+    width="600px"
+    height="375px"
+  />;
 
   const MyUploadedFiles = ({ files }: any) =>
     files.map((file: any) => {
@@ -50,7 +60,7 @@ const FileUpload = () => {
       {files.length ? (
         <MyUploadedFiles files={files} />
       ) : (
-        <MyUploadButton setFiles={setFiles} />
+        <UploadDropzone options={options} />
       )}
       <a
         className="developed_by"
