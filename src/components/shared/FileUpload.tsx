@@ -28,7 +28,7 @@ const FileUpload = () => {
       // console.log()
       setFiles(uploadedFiles[0].fileUrl)
     }
-    onComplete={(files) => setFiles(files[0].fileUrl)}
+    onComplete={(files) => console.log(files)}
     width="600px"
     height="375px"
   />;
