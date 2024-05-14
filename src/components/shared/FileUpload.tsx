@@ -4,7 +4,7 @@ import { UrlBuilder } from "@bytescale/sdk";
 import { FileUploaderProps } from "@/types";
 
 //Fix it
-const FileUpload = () => {
+const FileUpload = ({ fieldChange, fileUrl }: FileUploaderProps) => {
   const [files, setFiles] = useState<string>("");
   const options = {
     apiKey: "free", // Get API keys from: www.bytescale.com
@@ -15,6 +15,8 @@ const FileUpload = () => {
       },
     },
   };
+
+  console.log({ fieldChange, fileUrl });
 
   <UploadDropzone
     options={options}

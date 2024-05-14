@@ -116,7 +116,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Image</FormLabel>
                 <FormControl className="w-full flex justify-center items-center">
-                  <FileUpload />
+                  <FileUpload fileUrl={""} fieldChange={field.onChange} />
                 </FormControl>
                 <FormMessage className="shad-form_message" />
               </FormItem>
