@@ -1,8 +1,5 @@
 // TODO = {
-// "SAVE.TSX": "fix error current user not found",
-// "UPLOADFILE": "Create new file uploader",
 // "LOGOUT": "Implements logout functionality",
-
 // }
 
 import Authlayout from "./_auth/AuthLayout";

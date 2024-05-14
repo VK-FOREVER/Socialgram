@@ -1,4 +1,4 @@
-import { UploadButton, UploadDropzone } from "@bytescale/upload-widget-react";
+import { UploadDropzone } from "@bytescale/upload-widget-react";
 import { useState } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 import { FileUploaderProps } from "@/types";
