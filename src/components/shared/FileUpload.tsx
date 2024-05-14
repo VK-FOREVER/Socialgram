@@ -59,9 +59,9 @@ const FileUpload = () => {
   return (
     <>
       {files.length ? (
-        <MyUploadedFiles files={files} />
+        <MyUploadedFiles className="myUploadFiles" files={files} />
       ) : (
-        <UploadDropzone options={options} />
+        <UploadDropzone className="uploadDropzone" options={options} />
       )}
       <a
         className="developed_by"
