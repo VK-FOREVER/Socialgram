@@ -16,12 +16,6 @@ const FileUpload = () => {
     },
   };
 
-  // const MyUploadButton = ({ setFiles }: any) => (
-  //   <UploadButton options={options} onComplete={setFiles}>
-  //     {({ onClick }) => <button onClick={onClick}>Upload a file...</button>}
-  //   </UploadButton>
-  // );
-
   <UploadDropzone
     options={options}
     onUpdate={({ uploadedFiles }) =>
