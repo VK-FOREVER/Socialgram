@@ -5,9 +5,9 @@ import { FileUploaderProps } from "@/types";
 
 //Fix it
 const FileUpload = ({ fieldChange, fileUrl }: FileUploaderProps) => {
-  const [files, setFiles] = useState<string>("");
+  const [files, setFiles] = useState<string>("" || fileUrl);
   const options = {
-    apiKey: "free", // Get API keys from: www.bytescale.com
+    apiKey: "free",
     maxFileCount: 1,
     styles: {
       colors: {
