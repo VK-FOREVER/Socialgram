@@ -20,10 +20,7 @@ const FileUpload = ({ fieldChange, fileUrl }: FileUploaderProps) => {
 
   <UploadDropzone
     options={options}
-    onUpdate={({ uploadedFiles }) =>
-      // console.log()
-      setFiles(uploadedFiles[0].fileUrl)
-    }
+    onUpdate={({ uploadedFiles }) => setFiles(uploadedFiles[0].fileUrl)}
     onComplete={(files) => console.log(files)}
     width="600px"
     height="375px"
