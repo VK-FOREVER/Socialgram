@@ -3,7 +3,6 @@ import { useState } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 import { FileUploaderProps } from "@/types";
 
-//Fix it
 const FileUpload = ({ fieldChange, fileUrl }: FileUploaderProps) => {
   const [files, setFiles] = useState<string>("" || fileUrl);
   const options = {
