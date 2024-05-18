@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 import { UploadButton } from "@bytescale/upload-widget-react";
+import { FileUploaderProps } from "@/types";
 
 // ---------------------------
 // Configuration
@@ -60,7 +61,9 @@ const MyUploadedFiles = ({ files }: any) =>
 // Run the application...
 // ----------------------
 
-const FileUploader = () => {
+const FileUploader = ({ fileUrl, fieldChange }: FileUploaderProps) => {
+  console.log({ fileUrl, fieldChange });
+
   const [files, setFiles] = useState([]);
   return (
     <>
