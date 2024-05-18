@@ -53,20 +53,20 @@ const FileUploader = ({ fileUrl, fieldChange }: FileUploaderProps) => {
       const fileUrl = UrlBuilder.url({
         filePath,
         accountId,
-        options: {
-          transformation: "preset",
-          transformationPreset: "thumbnail",
-        },
+        // options: {
+        //   transformation: "preset",
+        //   transformationPreset: "thumbnail",
+        // },
       });
       return (
-        <>
+        <div key={accountId}>
           <img src={fileUrl} alt="Image" />
           <p key={fileUrl}>
             <a href={fileUrl} target="_blank">
               {fileUrl}
             </a>
           </p>
-        </>
+        </div>
       );
     });
 
