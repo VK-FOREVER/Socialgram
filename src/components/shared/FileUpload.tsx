@@ -4,9 +4,9 @@ import { UploadButton } from "@bytescale/upload-widget-react";
 import { FileUploaderProps } from "@/types";
 
 const FileUploader = ({ fileUrl, fieldChange }: FileUploaderProps) => {
+  const [files, setFiles] = useState([]);
   console.log({ fileUrl, fieldChange });
 
-  const [files, setFiles] = useState([]);
   // ---------------------------
   // Configuration
   // See: https://www.bytescale.com/docs/upload-widget#configuration
@@ -26,9 +26,18 @@ const FileUploader = ({ fileUrl, fieldChange }: FileUploaderProps) => {
   // --------------------------
 
   const MyUploadButton = ({ setFiles }: any) => (
-    <UploadButton options={options} onComplete={setFiles}>
-      {({ onClick }) => <button onClick={onClick}>Upload a file...</button>}
-    </UploadButton>
+    <div className="w-full flex items-center p-4 border-primary-400 border-dashed border rounded-lg my-2 h-[250px] justify-center">
+      <UploadButton options={options} onComplete={setFiles}>
+        {({ onClick }) => (
+          <button
+            className="border border-dashed py-3 px-3 rounded-lg"
+            onClick={onClick}
+          >
+            Upload a file...
+          </button>
+        )}
+      </UploadButton>
+    </div>
   );
 
   // -----------------------------
