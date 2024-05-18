@@ -23,6 +23,7 @@ import { toast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import Loader from "../shared/Loader";
 import FileUpload from "../shared/FileUpload";
+import { useState } from "react";
 
 // PostFrom type
 type PostFormProps = {
@@ -31,6 +32,8 @@ type PostFormProps = {
 };
 
 const PostForm = ({ post, action }: PostFormProps) => {
+  const [fileUrl, setFileUrl] = useState<string>("");
+
   const navigate = useNavigate();
   const { user } = useUserContext();
 
@@ -116,7 +119,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Image</FormLabel>
                 <FormControl className="w-full flex justify-center items-center">
-                  <FileUpload fileUrl={""} fieldChange={field.onChange} />
+                  <FileUpload
+                    fileUrl={fileUrl}
+                    setFileUrl={setFileUrl}
+                    fieldChange={field.onChange}
+                  />
                 </FormControl>
                 <FormMessage className="shad-form_message" />
               </FormItem>

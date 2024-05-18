@@ -59,4 +59,5 @@ export type IContextType = {
 export type FileUploaderProps = {
   fileUrl: string;
   fieldChange: (file: File[]) => void;
+  setFileUrl: React.Dispatch<React.SetStateAction<string>>;
 };

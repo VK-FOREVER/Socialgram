@@ -3,7 +3,11 @@ import { UrlBuilder } from "@bytescale/sdk";
 import { UploadButton } from "@bytescale/upload-widget-react";
 import { FileUploaderProps } from "@/types";
 
-const FileUploader = ({ fileUrl, fieldChange }: FileUploaderProps) => {
+const FileUploader = ({
+  fileUrl,
+  fieldChange,
+  setFileUrl,
+}: FileUploaderProps) => {
   const [files, setFiles] = useState([]);
   console.log({ fileUrl, fieldChange });
 
@@ -12,7 +16,7 @@ const FileUploader = ({ fileUrl, fieldChange }: FileUploaderProps) => {
   // See: https://www.bytescale.com/docs/upload-widget#configuration
   // ---------------------------
   const options = {
-    apiKey: "free", // Get API keys from: www.bytescale.com
+    apiKey: "free",
     maxFileCount: 1,
     styles: {
       colors: {
@@ -20,6 +24,8 @@ const FileUploader = ({ fileUrl, fieldChange }: FileUploaderProps) => {
       },
     },
   };
+
+  console.log(fileUrl);
 
   // --------------------------
   // Create an upload button...
