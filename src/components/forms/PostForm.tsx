@@ -32,10 +32,9 @@ type PostFormProps = {
 };
 
 const PostForm = ({ post, action }: PostFormProps) => {
-  const [fileUrl, setFileUrl] = useState<string>("");
-
   const navigate = useNavigate();
   const { user } = useUserContext();
+  const [fileUrl, setFileUrl] = useState<string>(post?.imageUrl || "");
 
   // Queries and mutations
   const { mutateAsync: createPost, isPending: creatingPost } = useCreatePost();
@@ -60,7 +59,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
         ...values,
         postId: post?.$id,
         imageId: post?.imageId,
-        imageUrl: post?.imageUrl,
+        imageUrl: post?.imageUrl || fileUrl,
       });
 
       if (!updatedPost) {
