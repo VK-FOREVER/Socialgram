@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UrlBuilder } from "@bytescale/sdk";
 import { UploadButton } from "@bytescale/upload-widget-react";
 import { FileUploaderProps } from "@/types";
@@ -8,7 +8,7 @@ const FileUploader = ({
   fieldChange,
   setFileUrl,
 }: FileUploaderProps) => {
-  const [files, setFiles] = useState<Array<string>>([]);
+  const [files, setFiles] = useState<Array<object>>([]);
   console.log({ fileUrl, fieldChange });
 
   // ---------------------------
@@ -24,6 +24,12 @@ const FileUploader = ({
       },
     },
   };
+
+  useEffect(() => {
+    if (files.length) {
+      setFileUrl(files[0]);
+    }
+  }, [files, fileUrl]);
 
   console.log(fileUrl);
 
