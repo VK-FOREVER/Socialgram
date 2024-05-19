@@ -8,7 +8,7 @@ const FileUploader = ({
   fieldChange,
   setFileUrl,
 }: FileUploaderProps) => {
-  const [files, setFiles] = useState<Array<object>>([]);
+  const [files, setFiles] = useState<Array<string>>([]);
   console.log({ fileUrl, fieldChange });
 
   // ---------------------------
