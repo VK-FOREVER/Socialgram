@@ -29,6 +29,7 @@ const FileUploader = ({
   useEffect(() => {
     if (files.length) {
       setFileUrl(files[0].fileUrl);
+      fieldChange(files[0].fileUrl);
     }
   }, [files, fileUrl]);
 
