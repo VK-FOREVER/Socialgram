@@ -8,7 +8,7 @@ const FileUploader = ({
   fieldChange,
   setFileUrl,
 }: FileUploaderProps) => {
-  const [files, setFiles] = useState<Array<string>>([]);
+  const [files, setFiles] = useState<Array<any>>([]);
   console.log({ fileUrl, fieldChange });
 
   // ---------------------------
@@ -28,7 +28,7 @@ const FileUploader = ({
   // Set file url to fileUrl state
   useEffect(() => {
     if (files.length) {
-      setFileUrl(files[0]);
+      setFileUrl(files[0].fileUrl);
     }
   }, [files, fileUrl]);
 

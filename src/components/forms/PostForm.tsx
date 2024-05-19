@@ -54,6 +54,8 @@ const PostForm = ({ post, action }: PostFormProps) => {
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     if (post && action === "Update") {
+      console.log(values);
+
       const updatedPost = await updatePost({
         ...values,
         postId: post?.$id,
@@ -87,6 +89,8 @@ const PostForm = ({ post, action }: PostFormProps) => {
     form.reset();
     navigate(-1);
   };
+
+  console.log(fileUrl);
 
   return (
     <div className="w-full capitalize">
