@@ -25,6 +25,7 @@ const FileUploader = ({
     },
   };
 
+  // Set file url to fileUrl state
   useEffect(() => {
     if (files.length) {
       setFileUrl(files[0]);
