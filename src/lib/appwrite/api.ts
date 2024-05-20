@@ -151,6 +151,9 @@ export async function createPost(post: INewPost) {
   }
 }
 
+
+
+
 // ============================== UPLOAD FILE
 export async function uploadFile(file: File) {
   try {
