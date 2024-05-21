@@ -55,6 +55,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
     if (post && action === "Update") {
       console.log(values);
 
+      // Update Posts
       const updatedPost = await updatePost({
         ...values,
         postId: post?.$id,
