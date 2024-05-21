@@ -84,7 +84,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
     // }
     // navigate("/");
 
-    console.log("Form values" + values);
+    console.log(values);
   }
 
   const cancleForm = () => {
