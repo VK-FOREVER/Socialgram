@@ -92,6 +92,25 @@ const PostForm = ({ post, action }: PostFormProps) => {
     navigate(-1);
   };
 
+  // Example type of File
+{
+  "file" : [ 
+
+    "File" = { 
+  "path" : "sacha-verheij-5bwgW8_9OPs-unsplash.jpg",
+  "lastModified"
+  : 
+  1709120137376,
+  "lastModifiedDate"
+  : 
+  "Wed Feb 28 2024 17:05:37 GMT+0530 (India Standard Time)" ,
+  "name": "sacha-verheij-5bwgW8_9OPs-unsplash.jpg",
+  "size": 2753778,
+  "type": "image/jpeg",
+  "webkitRelativePath" : "",
+  }
+]
+}
   console.log(fileUrl);
 
   return (
