@@ -29,11 +29,12 @@ const FileUploader = ({
   useEffect(() => {
     if (files.length) {
       setFileUrl(files[0].fileUrl);
-      fieldChange(files[0].fileUrl);
+      fieldChange(files);
+      console.log(files);
     }
   }, [files, fileUrl]);
 
-  console.log(fileUrl);
+  // console.log(fileUrl);
 
   // --------------------------
   // Create an upload button...
