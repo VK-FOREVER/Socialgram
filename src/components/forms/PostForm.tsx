@@ -52,37 +52,37 @@ const PostForm = ({ post, action }: PostFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
-    // if (post && action === "Update") {
-    //   console.log(values);
+    if (post && action === "Update") {
+      console.log(values);
 
-    //   // Update Posts
-    //   const updatedPost = await updatePost({
-    //     ...values,
-    //     postId: post?.$id,
-    //     imageId: post?.imageId,
-    //     imageUrl: post?.imageUrl || fileUrl,
-    //   });
+      // Update Posts
+      const updatedPost = await updatePost({
+        ...values,
+        postId: post?.$id,
+        imageId: post?.imageId,
+        imageUrl: post?.imageUrl || fileUrl,
+      });
 
-    //   if (!updatedPost) {
-    //     toast({
-    //       title: "Can't update the Post",
-    //       description: "please try again...",
-    //     });
-    //   }
-    //   return navigate(`/posts/${post.$id}`);
-    // }
+      if (!updatedPost) {
+        toast({
+          title: "Can't update the Post",
+          description: "please try again...",
+        });
+      }
+      return navigate(`/posts/${post.$id}`);
+    }
 
-    // const newPost = await createPost({
-    //   ...values,
-    //   userId: user.id,
-    // });
+    const newPost = await createPost({
+      ...values,
+      userId: user.id,
+    });
 
-    // if (!newPost) {
-    //   toast({
-    //     title: "Unable to submit form, Please try again.",
-    //   });
-    // }
-    // navigate("/");
+    if (!newPost) {
+      toast({
+        title: "Unable to submit form, Please try again.",
+      });
+    }
+    navigate("/");
 
     console.log(values);
   }
