@@ -95,7 +95,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
   // Example type of File
 {
   "file" : [ 
-
     "File" = { 
   "path" : "sacha-verheij-5bwgW8_9OPs-unsplash.jpg",
   "lastModified"
