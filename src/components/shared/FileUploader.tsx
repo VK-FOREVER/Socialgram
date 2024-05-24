@@ -5,7 +5,7 @@ import { convertFileToUrl } from "@/lib/utils";
 
 type FileUploaderProps = {
   fieldChange: (FILES: File[]) => void;
-  mediaUrl: string;
+  mediaUrl: string | any;
 };
 
 const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {

@@ -3,7 +3,7 @@ import { UrlBuilder } from "@bytescale/sdk";
 import { UploadButton } from "@bytescale/upload-widget-react";
 import { FileUploaderProps } from "@/types";
 
-const FileUploader = ({
+const FileUploade = ({
   fileUrl,
   fieldChange,
   setFileUrl,
@@ -107,4 +107,4 @@ const FileUploader = ({
   );
 };
 
-export default FileUploader;
+export default FileUploade;
