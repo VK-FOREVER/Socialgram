@@ -27,7 +27,7 @@ const Topbar = () => {
           />
         </Link>
         <div className="flex gap-4 items-center justify-center">
-          <Button className="w-10" variant="ghost" onClick={() => {}}>
+          <Button className="w-14" variant="ghost" onClick={() => {}}>
             <img src="/assets/icons/logout.svg" alt="logout" />
           </Button>
           <Link to={`/profile/${user.id}`} className="flex-center gap-3 ">
