@@ -8,7 +8,7 @@ const Save = () => {
   const savedPost = currentUser?.save;
 
   const savePosts = savedPost
-    .map((savePost: Models.Document) => ({
+    ?.map((savePost: Models.Document) => ({
       ...savePost.post,
       creator: {
         imageUrl: currentUser?.imageUrl,
