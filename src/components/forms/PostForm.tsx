@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../shared/Loader";
 import FileUpload from "../shared/FileUpload";
 import { useState } from "react";
+import FileUploader from "../shared/FileUpload";
 
 // PostFrom type
 type PostFormProps = {
@@ -34,7 +35,7 @@ type PostFormProps = {
 const PostForm = ({ post, action }: PostFormProps) => {
   const navigate = useNavigate();
   const { user } = useUserContext();
-  const [fileUrl, setFileUrl] = useState<string>(post?.imageUrl || "");
+  // const [fileUrl, setFileUrl] = useState<string>(post?.imageUrl || "");
 
   // Queries and mutations
   const { mutateAsync: createPost, isPending: creatingPost } = useCreatePost();
@@ -52,37 +53,37 @@ const PostForm = ({ post, action }: PostFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
-    //   if (post && action === "Update") {
-    //     console.log(values);
+      if (post && action === "Update") {
+        console.log(values);
 
-    //     // Update Posts
-    //     const updatedPost = await updatePost({
-    //       ...values,
-    //       postId: post?.$id,
-    //       imageId: post?.imageId,
-    //       imageUrl: post?.imageUrl || fileUrl,
-    //     });
+        // Update Posts
+        const updatedPost = await updatePost({
+          ...values,
+          postId: post?.$id,
+          imageId: post?.imageId,
+          imageUrl: post?.imageUrl,
+        });
 
-    //     if (!updatedPost) {
-    //       toast({
-    //         title: "Can't update the Post",
-    //         description: "please try again...",
-    //       });
-    //     }
-    //     return navigate(`/posts/${post.$id}`);
-    //   }
+        if (!updatedPost) {
+          toast({
+            title: "Can't update the Post",
+            description: "please try again...",
+          });
+        }
+        return navigate(`/posts/${post.$id}`);
+      }
 
-    //   const newPost = await createPost({
-    //     ...values,
-    //     userId: user.id,
-    //   });
+      const newPost = await createPost({
+        ...values,
+        userId: user.id,
+      });
 
-    //   if (!newPost) {
-    //     toast({
-    //       title: "Unable to submit form, Please try again.",
-    //     });
-    //   }
-    //   navigate("/");
+      if (!newPost) {
+        toast({
+          title: "Unable to submit form, Please try again.",
+        });
+      }
+      navigate("/");
 
     console.log(values);
   }
@@ -125,10 +126,9 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormItem>
                 <FormLabel className="shad-form_label">Add Image</FormLabel>
                 <FormControl className="w-full flex justify-center items-center">
-                  <FileUpload
-                    fileUrl={fileUrl}
-                    setFileUrl={setFileUrl}
-                    fieldChange={field.onChange}
+                  <FileUploader
+  fieldChange={field.onChange}
+  mediaUrl={post?.imageUrl}
                   />
                 </FormControl>
                 <FormMessage className="shad-form_message" />
