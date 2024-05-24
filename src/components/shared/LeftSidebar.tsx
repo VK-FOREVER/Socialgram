@@ -5,6 +5,7 @@ import { useUserContext } from "@/context/AuthContext";
 import { sidebarLinks } from "@/constants";
 import { INavLink } from "@/types";
 import Loader from "./Loader";
+import { Button } from "../ui/button";
 
 const LeftSidebar = () => {
   // const navigate = useNavigate();
@@ -70,6 +71,14 @@ const LeftSidebar = () => {
               </li>
             );
           })}
+          <Button
+            variant="ghost"
+            className="shad-button_ghost"
+            onClick={() => {}}
+          >
+            <img src="/assets/icons/logout.svg" alt="Logout" />
+            <p className="small-medium lg:base-medium">Logout</p>
+          </Button>
         </ul>
       </div>
     </nav>
