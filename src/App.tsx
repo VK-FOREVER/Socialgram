@@ -1,8 +1,3 @@
-// TODO = {
-//        "LOGOUT": "Implements logout functionality",
-//        "PRODUCTION" : "Share it to public"
-// }
-
 import Authlayout from "./_auth/AuthLayout";
 import SignIn from "./_auth/forms/SignIn";
 import SignUp from "./_auth/forms/SignUp";
