@@ -6,6 +6,7 @@ import { INavLink } from "@/types";
 import Loader from "./Loader";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
+import { useCallback } from "react";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ const LeftSidebar = () => {
   const { mutate: signOut, isSuccess } = useSignOutAccount();
   const { user } = useUserContext();
 
-  // const handleSignOut = useCallback(() => {
-  //   signOut();
-  // }, [signOut]);
+  const handleSignOut = useCallback(() => {
+    signOut();
+  }, [signOut]);
 
   return (
     <nav className="leftsidebar">
