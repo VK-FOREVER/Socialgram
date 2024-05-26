@@ -6,10 +6,12 @@ import { INavLink } from "@/types";
 import Loader from "./Loader";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import { useToast } from "../ui/use-toast";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const { pathname } = useLocation();
   const { mutate: signOut, isSuccess } = useSignOutAccount();
   const { user } = useUserContext();
@@ -18,9 +20,18 @@ const LeftSidebar = () => {
     signOut();
   }, [signOut]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      toast({
+        title: "Logged out",
+        description: "You have successfully signed out",
+      });
+    }
+  }, [isSuccess]);
+
   return (
     <nav className="leftsidebar">
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
         <Link to="/" className="flex gap-3 items-center">
           <img
             src="/assets/images/socialgram1.png"
