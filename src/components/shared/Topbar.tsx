@@ -1,20 +1,20 @@
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
-// import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
-import { useUserContext } from "@/context/AuthContext";
+
+import { INITIAL_USER, useUserContext } from "@/context/AuthContext";
+import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
 
 const Topbar = () => {
   const navigate = useNavigate();
-  // const { mutate: signOut, isSuccess } = useSignOutAccount();
+  const { mutate: signOut } = useSignOutAccount();
+  const { user, setUser, setIsAuthenticated } = useUserContext();
 
-  const { user } = useUserContext();
-
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     navigate(0);
-  //   }
-  // }, [isSuccess]);
+  const handleSignOut = () => {
+    signOut();
+    setIsAuthenticated(false);
+    setUser(INITIAL_USER);
+    navigate("/sign-in");
+  };
 
   return (
     <div className="topbar">
@@ -27,7 +27,11 @@ const Topbar = () => {
           />
         </Link>
         <div className="flex gap-4 items-center justify-center">
-          <Button className="w-14" variant="ghost" onClick={() => {}}>
+          <Button
+            className="w-14"
+            variant="ghost"
+            onClick={() => handleSignOut()}
+          >
             <img src="/assets/icons/logout.svg" alt="logout" />
           </Button>
           <Link to={`/profile/${user.id}`} className="flex-center gap-3 ">

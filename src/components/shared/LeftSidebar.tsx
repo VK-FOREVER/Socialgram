@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { INITIAL_USER, useUserContext } from "@/context/AuthContext";
 import { sidebarLinks } from "@/constants";
@@ -6,15 +5,12 @@ import { INavLink } from "@/types";
 import Loader from "./Loader";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
-import { useEffect } from "react";
-import { useToast } from "../ui/use-toast";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
   const { pathname } = useLocation();
-  const { mutate: signOut, isSuccess } = useSignOutAccount();
-  const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
+  const { mutate: signOut } = useSignOutAccount();
+  const { user, setUser, setIsAuthenticated } = useUserContext();
 
   const handleSignOut = () => {
     signOut();
@@ -22,13 +18,6 @@ const LeftSidebar = () => {
     setUser(INITIAL_USER);
     navigate("/sign-in");
   };
-
-  useEffect(() => {
-    toast({
-      title: "Logged out",
-      description: "You have successfully signed out",
-    });
-  }, [isSuccess]);
 
   return (
     <nav className="leftsidebar">
