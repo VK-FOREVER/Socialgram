@@ -10,7 +10,6 @@ import {
   createUserAccount,
   signInAccount,
   getCurrentUser,
-  // signOutAccount,
   getUsers,
   createPost,
   getPostById,
@@ -27,6 +26,7 @@ import {
   getInfinitePosts,
   followingUser,
   commentPost,
+  signOutAccount,
   // commentPost,
 } from "@/lib/appwrite/api";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
@@ -48,11 +48,11 @@ export const useSignInAccount = () => {
   });
 };
 
-// export const useSignOutAccount = () => {
-//   return useMutation({
-//     mutationFn: signOutAccount,
-//   });
-// };
+export const useSignOutAccount = () => {
+  return useMutation({
+    mutationFn: signOutAccount,
+  });
+};
 
 // // ============================================================
 // // POST QUERIES
