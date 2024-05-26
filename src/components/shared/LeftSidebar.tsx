@@ -1,12 +1,12 @@
 // import { useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useUserContext } from "@/context/AuthContext";
+import { INITIAL_USER, useUserContext } from "@/context/AuthContext";
 import { sidebarLinks } from "@/constants";
 import { INavLink } from "@/types";
 import Loader from "./Loader";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useToast } from "../ui/use-toast";
 
 const LeftSidebar = () => {
@@ -14,19 +14,20 @@ const LeftSidebar = () => {
   const { toast } = useToast();
   const { pathname } = useLocation();
   const { mutate: signOut, isSuccess } = useSignOutAccount();
-  const { user } = useUserContext();
+  const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
 
-  const handleSignOut = useCallback(() => {
+  const handleSignOut = () => {
     signOut();
-  }, [signOut]);
+    setIsAuthenticated(false);
+    setUser(INITIAL_USER);
+    navigate("/sign-in");
+  };
 
   useEffect(() => {
-    if (isSuccess) {
-      toast({
-        title: "Logged out",
-        description: "You have successfully signed out",
-      });
-    }
+    toast({
+      title: "Logged out",
+      description: "You have successfully signed out",
+    });
   }, [isSuccess]);
 
   return (
@@ -86,7 +87,7 @@ const LeftSidebar = () => {
           <Button
             variant="ghost"
             className="shad-button_ghost"
-            onClick={() => signOut()}
+            onClick={() => handleSignOut()}
           >
             <img src="/assets/icons/logout.svg" alt="Logout" />
             <p className="small-medium lg:base-medium">Logout</p>
