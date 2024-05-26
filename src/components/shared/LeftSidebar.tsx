@@ -21,7 +21,7 @@ const LeftSidebar = () => {
 
   return (
     <nav className="leftsidebar">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-8">
         <Link to="/" className="flex gap-3 items-center">
           <img
             src="/assets/images/socialgram1.png"
@@ -47,7 +47,7 @@ const LeftSidebar = () => {
         ) : (
           <Loader showTxt={false} />
         )}
-        <ul className="flex flex-col gap-6">
+        <ul className="flex flex-col gap-4">
           {sidebarLinks.map((link: INavLink, idx) => {
             const active = pathname === link.route;
             return (
@@ -79,7 +79,7 @@ const LeftSidebar = () => {
             onClick={() => handleSignOut()}
           >
             <img src="/assets/icons/logout.svg" alt="Logout" />
-            <p className="small-medium lg:base-medium">Logout</p>
+            <p className="small-medium text-red lg:base-medium">Logout</p>
           </Button>
         </ul>
       </div>

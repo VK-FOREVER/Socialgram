@@ -14,7 +14,7 @@ import {
 import { timeAgo } from "@/lib/utils";
 // import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Models } from "appwrite";
+// import { Models } from "appwrite";
 
 const PostDetails = () => {
   // const [commentValue, setCommentValue] = useState<string[]>([""]);
