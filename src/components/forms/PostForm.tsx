@@ -23,7 +23,7 @@ import { toast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import Loader from "../shared/Loader";
 import FileUploader from "../shared/FileUploader";
-import { useState } from "react";
+// import { useState } from "react";
 
 // PostFrom type
 type PostFormProps = {
