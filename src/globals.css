@@ -144,7 +144,7 @@
   }
 
   .home-creators {
-    @apply hidden xl:flex flex-col w-72 2xl:w-465 px-6 py-10 gap-5  overflow-scroll custom-scrollbar bg-dark-1;
+    @apply hidden xl:flex flex-col w-72  px-6 py-10 gap-5  overflow-scroll custom-scrollbar bg-dark-1;
   }
 
   /* Post Details */
