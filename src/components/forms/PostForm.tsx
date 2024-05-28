@@ -34,7 +34,6 @@ type PostFormProps = {
 const PostForm = ({ post, action }: PostFormProps) => {
   const navigate = useNavigate();
   const { user } = useUserContext();
-  // const [fileUrl, setFileUrl] = useState<string>(post?.imageUrl || "");
 
   // Queries and mutations
   const { mutateAsync: createPost, isPending: creatingPost } = useCreatePost();
