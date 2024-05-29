@@ -78,7 +78,7 @@ const EditProfile = () => {
         <h1 className="text-2xl font-semibold ">Edit Profile</h1>
       </div>
 
-      <div className="w-full capitalize ">
+      <div className="w-full capitalize mt-4">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -107,7 +107,7 @@ const EditProfile = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="shad-form_label">Name</FormLabel>
+                  <FormLabel className="shad-form_label">Your Name</FormLabel>
                   <FormControl>
                     <Input
                       type="text"
@@ -126,7 +126,9 @@ const EditProfile = () => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="shad-form_label">username</FormLabel>
+                  <FormLabel className="shad-form_label">
+                    Your Username
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="text"
@@ -144,7 +146,7 @@ const EditProfile = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="shad-form_label">email</FormLabel>
+                  <FormLabel className="shad-form_label">Your Email</FormLabel>
                   <FormControl>
                     <Input
                       type="text"
@@ -190,7 +192,7 @@ const EditProfile = () => {
                 {updatingUser || loading ? (
                   <Loader showTxt={false} />
                 ) : (
-                  `Update User`
+                  `Update Profile`
                 )}
               </Button>
             </div>
