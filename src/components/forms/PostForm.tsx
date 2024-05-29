@@ -50,6 +50,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
     },
   });
 
+  // Form submit function
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     if (post && action === "Update") {
       console.log(values);
@@ -86,6 +87,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
     console.log(values);
   }
 
+  // Cancle form
   const cancleForm = () => {
     form.reset();
     navigate(-1);
@@ -108,7 +110,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
                 <FormLabel className="shad-form_label">Caption</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Enter Post Caption"
+                    placeholder="About the Post or your thoughts"
                     className="shad-textarea custom-scrollbar"
                     {...field}
                   />
@@ -142,7 +144,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
                 <FormControl>
                   <Input
                     type="text"
-                    placeholder="Enter Location"
+                    placeholder="Your Location like: Dholakpur, Ohio and Nagaland"
                     className="shad-input"
                     {...field}
                   />
@@ -163,7 +165,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
                   <Input
                     type="text"
                     className="shad-input"
-                    placeholder="Coding, Entertainment, Learinig"
+                    placeholder="Coding, Entertainment, Learning"
                     {...field}
                   />
                 </FormControl>
