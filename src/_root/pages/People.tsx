@@ -27,7 +27,7 @@ const People = () => {
 
       <div className="user-grid">
         {users?.documents.map((creator, index) => (
-          <Link to={`/profile/${creator.$id}`} key={index}>
+          <div key={index}>
             <div className="px-2 flex items-center justify-center w-full rounded-xl  py-3 flex-col border-light-3 border-2 text-center gap-2">
               <img
                 src={creator.imageUrl}
@@ -41,12 +41,14 @@ const People = () => {
               </h4>
               <span className="text-light-3 text-xs">@{creator.username}</span>
               {creator.$id !== user.id ? (
-                <Button
-                  variant="outline"
-                  className="w-20 h-8 hover-shadow-light"
-                >
-                  View
-                </Button>
+                <Link to={`/profile/${creator.$id}`}>
+                  <Button
+                    variant="outline"
+                    className="w-20 h-8 hover-shadow-light"
+                  >
+                    Profile
+                  </Button>
+                </Link>
               ) : (
                 <Link to={`/edit-profile/${user?.id}`}>
                   <Button
@@ -58,7 +60,7 @@ const People = () => {
                 </Link>
               )}
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

@@ -1,4 +1,3 @@
-// import FileUploader from "@/components/shared/FileUploader";
 import FileUploader from "@/components/shared/FileUploader";
 import Loader from "@/components/shared/Loader";
 import { Button } from "@/components/ui/button";

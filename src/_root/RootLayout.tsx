@@ -15,7 +15,7 @@ const RootLayout = () => {
       <section className="flex flex-1 h-full overflow-y-scroll custom-scrollbar">
         <Outlet />
       </section>
-      {/* TopCreators Compo.. only on the Home page */}
+      {/* Show TopCreators Compo.. only on the Home page */}
       {location.pathname === "/" && <TopCreators />}
       <BottomSidebar />
     </div>

@@ -54,6 +54,7 @@ const SignUp = () => {
         return;
       }
 
+      // Sign in the user
       const session = await signInAccount({
         email: user.email,
         password: user.password,
@@ -67,6 +68,7 @@ const SignUp = () => {
         return;
       }
 
+      // Are you loggedIn or not?
       const isLoggedIn = await checkAuthUser();
 
       if (isLoggedIn) {

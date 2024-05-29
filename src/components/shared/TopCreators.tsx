@@ -55,23 +55,22 @@ const TopCreators = () => {
               key={index}
               className="px-2 flex items-center justify-center w-full rounded-xl  py-3 flex-col border-light-3 border-2 text-center gap-2"
             >
-              <Link to={`/profile/${$id}`}>
-                <div className="flex items-center justify-center flex-col">
-                  <img
-                    src={creator.imageUrl}
-                    className="w-14 h-14 object-contain rounded-full"
-                    alt={`${creator.name}'s post`}
-                  />
-                  <h4 className="text-light-1 text-base font-semibold max-w-[105px] w-[104px]">
-                    {creator.name.length >= 11
-                      ? `${creator.name.slice(0, 9)}..`
-                      : creator.name}
-                  </h4>
-                  <span className="text-light-3 text-xs">
-                    @{creator.username}
-                  </span>
-                </div>
-              </Link>
+              <div className="flex items-center justify-center flex-col">
+                <img
+                  src={creator.imageUrl}
+                  className="w-14 h-14 object-contain rounded-full"
+                  alt={`${creator.name}'s post`}
+                />
+                <h4 className="text-light-1 text-base font-semibold max-w-[105px] w-[104px]">
+                  {creator.name.length >= 11
+                    ? `${creator.name.slice(0, 9)}..`
+                    : creator.name}
+                </h4>
+                <span className="text-light-3 text-xs">
+                  @{creator.username}
+                </span>
+              </div>
+
               {$id !== user.id ? (
                 <Link to={`/profile/${$id}`}>
                   <Button
@@ -79,7 +78,7 @@ const TopCreators = () => {
                     className="w-18 h-8 hover-shadow-light"
                     // onClick={() => handleFollow($id)}
                   >
-                    View
+                    Profile
                   </Button>
                 </Link>
               ) : (

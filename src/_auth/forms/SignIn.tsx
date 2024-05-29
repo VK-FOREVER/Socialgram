@@ -39,6 +39,7 @@ const SignIn = () => {
   // SignUp Function
   const handleSignup = async (user: z.infer<typeof SignInValidation>) => {
     try {
+      // Sign in the user
       const session = await signInAccount({
         email: user.email,
         password: user.password,
@@ -52,6 +53,7 @@ const SignIn = () => {
         return;
       }
 
+      // Are you loggedIn or not?
       const isLoggedIn = await checkAuthUser();
 
       if (isLoggedIn) {
