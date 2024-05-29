@@ -267,7 +267,7 @@
   /* SHADCN COMPONENTS */
   /* Form */
   .shad-form_label {
-    @apply text-white !important;
+    @apply text-base text-white !important;
   }
 
   .shad-form_message {
