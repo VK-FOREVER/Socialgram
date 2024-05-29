@@ -118,13 +118,13 @@ const Profile = () => {
               </div>
               <div className="flex items-center flex-col justify-center">
                 <span className="text-primary-500 text-xl font-semibold">
-                  0
+                  69
                 </span>
                 <span className="text-light-2">Followers</span>
               </div>
               <div className="flex items-center flex-col justify-center">
                 <span className="text-primary-500 text-xl font-semibold">
-                  0
+                  111{" "}
                 </span>
                 <span className="text-light-2">Following</span>
               </div>
