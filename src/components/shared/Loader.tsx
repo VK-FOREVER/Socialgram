@@ -10,7 +10,7 @@ const Loader = ({ showTxt = true, simple = false }: LoaderProps) => {
         {simple ? (
           <>
             <img
-              className={`${simple ? "w-10" : " w-16"} `}
+              className={simple ? "w-10" : "w-16"}
               src="/assets/icons/loader.svg"
               alt="Loading..."
             />
