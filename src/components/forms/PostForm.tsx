@@ -53,7 +53,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
   // Form submit function
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     if (post && action === "Update") {
-      console.log(values);
+      // console.log(values);
 
       // Update Posts
       const updatedPost = await updatePost({
@@ -84,7 +84,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
     }
     navigate("/");
 
-    console.log(values);
+    // console.log(values);
   }
 
   // Cancle form
