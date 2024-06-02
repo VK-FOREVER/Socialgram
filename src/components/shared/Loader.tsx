@@ -6,7 +6,11 @@ const Loader = ({ showTxt = true }: LoaderProps) => {
   return (
     <>
       <div className="flex-center w-full flex-col gap-2">
-        <img src="/assets/icons/loader.svg" alt="Loading..." />
+        <img
+          className="w-16 "
+          src="/assets/images/spinner.gif"
+          alt="Loading..."
+        />
         {showTxt && <span className=" text-base text-white">Loading...</span>}
       </div>
     </>
