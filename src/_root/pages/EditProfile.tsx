@@ -188,8 +188,8 @@ const EditProfile = () => {
                 type="submit"
                 disabled={updatingUser}
               >
-                {updatingUser || loading ? (
-                  <Loader showTxt={false} />
+                {updatingUser ? (
+                  <Loader showTxt={false} simple />
                 ) : (
                   `Update Profile`
                 )}

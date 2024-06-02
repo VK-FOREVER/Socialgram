@@ -131,7 +131,7 @@ const SignIn = () => {
             />
             <Button type="submit" className="shad-button_primary">
               {isUserLoading || isSigningInUser ? (
-                <Loader showTxt={false} />
+                <Loader showTxt={false} simple />
               ) : (
                 "Sign In"
               )}
