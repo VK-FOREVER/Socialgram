@@ -66,6 +66,10 @@ const EditProfile = () => {
     navigate(-1);
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div className="edit-form_container">
       <div className="w-full flex items-center justify-start">

@@ -187,7 +187,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
               disabled={updatingPost || creatingPost}
             >
               {updatingPost || creatingPost ? (
-                <Loader showTxt={false} />
+                <Loader showTxt={false} simple />
               ) : (
                 `${action} Post`
               )}
