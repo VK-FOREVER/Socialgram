@@ -83,8 +83,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
       });
     }
     navigate("/");
-
-    // console.log(values);
   }
 
   // Cancle form
@@ -92,8 +90,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
     form.reset();
     navigate(-1);
   };
-
-  // console.log(fileUrl);
 
   return (
     <div className="w-full capitalize">
