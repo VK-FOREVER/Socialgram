@@ -80,6 +80,9 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
           <p className="small-medium lg:base-medium">{likes.length}</p>
         </div>
+        {/* TODO feature */}
+        {/* Comment icon */}
+
         {/* <div className="flex gap-2  items-center justify-center">
           <img
             src="/assets/icons/chat.svg"
