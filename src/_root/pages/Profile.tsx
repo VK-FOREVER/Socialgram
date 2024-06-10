@@ -3,6 +3,7 @@ import Loader from "@/components/shared/Loader";
 import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetUserById } from "@/lib/react-query/queriesAndMutations";
+import BannerImg from "/assets/images/banner.jpg";
 
 import {
   Link,
@@ -28,8 +29,10 @@ const Profile = () => {
   if (loading) {
     return <Loader />;
   }
-  const randomImage =
-    "https://source.unsplash.com/1600x900/?nature,space,coding,programing";
+
+  // URL Not Working
+  // const randomImage = "https://source.unsplash.com/random/?coding";
+
   const unAuthorized = currentUser?.$id !== user.id;
 
   if (gotError) {
@@ -45,7 +48,7 @@ const Profile = () => {
       <div className="z-0 flex items-center justify-center flex-col relative ">
         <img
           className="w-full h-[350px] object-cover rounded-t-lg"
-          src={randomImage}
+          src={BannerImg}
           alt="Banner"
         />
         <img
