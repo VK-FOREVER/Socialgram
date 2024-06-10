@@ -49,7 +49,7 @@ const Profile = () => {
           alt="Banner"
         />
         <img
-          className="w-32 h-w-32 rounded-full absolute top-[80%]"
+          className="w-32 h-32 rounded-full object-contain absolute top-[80%]"
           src={currentUser?.imageUrl}
           alt={currentUser?.username}
         />
@@ -91,7 +91,7 @@ const Profile = () => {
               <span className="text-light-3 text-base">
                 @{currentUser?.username}
               </span>
-              <div className="w-full text-justify text-base leading-6 tracking-tighter mt-2">
+              <div className="w-full text-center text-base leading-6 tracking-tighter mt-2">
                 <span className="text-light-2">
                   {currentUser?.bio ? (
                     currentUser.bio
