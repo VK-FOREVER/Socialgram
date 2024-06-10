@@ -13,10 +13,10 @@ const Home = () => {
   if (isError) {
     return (
       <div className="w-full flex items-center justify-center">
-        <h4 className="text-light-1 text-3xl font-semibold">
-          Something went wrong. <br />
-          Please re-fresh the page.
-        </h4>
+        <p className="text-light-1 text-xl font-semibold text-center">
+          Something went wrong. Please re-fresh the page or <br />
+          Check your Network Connection
+        </p>
       </div>
     );
   }
