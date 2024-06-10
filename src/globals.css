@@ -114,11 +114,11 @@
 
   /* All Users */
   .user-container {
-    @apply max-w-5xl flex flex-col items-start w-full gap-6 md:gap-9  md:p-14 py-10 px-5;
+    @apply max-w-6xl flex flex-col items-start w-full gap-6 md:gap-9  md:p-14 py-10 px-5;
   }
 
   .user-grid {
-    @apply w-full grid grid-cols-3 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-7 max-w-5xl;
+    @apply w-full grid grid-cols-3 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-7 max-w-6xl;
   }
 
   /* Explore */
