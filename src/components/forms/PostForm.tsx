@@ -140,7 +140,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
                 <FormControl>
                   <Input
                     type="text"
-                    placeholder="Your Location like: Dholakpur, Ohio and Nagaland"
+                    placeholder="Your Location like: Dholakpur, Ohio or Nagaland"
                     className="shad-input"
                     {...field}
                   />
