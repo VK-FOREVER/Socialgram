@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# SocialGram
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Screenshot 2024-08-21 084531](https://github.com/user-attachments/assets/6bc38e00-683d-407c-9c8e-5b3a24318c7f)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`Socialgram` is a social media web application inspired by Instagram, allowing users to share, like, and save images. Built with a modern tech stack, Socialgram offers a fast and responsive experience for users to connect and share moments visually.
 
-## Expanding the ESLint configuration
+## [Live link](https://socialgram-me.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Create Post**: Easily create a Post.
+- **Image Sharing**: Upload and share images with your followers.
+- **Like Images**: Show appreciation by liking images shared by others.
+- **Save Images**: Save images to view later in your saved collection.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Tech Stack
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Frontend**:
+  - [React.js](https://reactjs.org/): A JavaScript library for building user interfaces.
+  - [TypeScript](https://www.typescriptlang.org/): A statically typed superset of JavaScript.
+  - [Vite](https://vitejs.dev/): A fast build tool for modern web projects.
+  - [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework for rapid UI development.
+  - [Shadcn](https://shadcn.dev/): A component library designed for building modern UIs.
+  - [React Query](https://react-query.tanstack.com/): A powerful data-fetching library for React.
+
+- **Backend**:
+  - [Appwrite](https://appwrite.io/): An open-source backend as a service (BaaS) platform that provides a set of essential APIs for web and mobile apps.
+
+## Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/Socialgram.git
+   ```
+2. **Install deps and start:**
+
+   ```bash
+   npm install
+   npm start
+   ```
+
+### If you like it, give it a star.
